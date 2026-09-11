@@ -35,8 +35,10 @@ jobs:
             TELEGRAM_WEBHOOK_SECRET
             GITHUB_TOKEN
             ALLOWED_USER_ID
+            ALLOWED_CHAT_ID
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_WEBHOOK_SECRET: ${{ secrets.TELEGRAM_WEBHOOK_SECRET }}
           GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
           ALLOWED_USER_ID: ${{ secrets.TELEGRAM_ALLOWED_USER_ID }}
+          ALLOWED_CHAT_ID: ${{ secrets.TELEGRAM_ALLOWED_CHAT_ID }}

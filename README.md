@@ -81,12 +81,13 @@ Swaps try portions from 0.7 to 1.3 to keep the day inside the rules and say whic
    | `TELEGRAM_BOT_TOKEN` | from BotFather |
    | `TELEGRAM_WEBHOOK_SECRET` | any long random string, e.g. `openssl rand -hex 24` |
    | `TELEGRAM_ALLOWED_USER_ID` | your numeric Telegram id; message the bot once after step 5 and it tells you |
+   | `TELEGRAM_ALLOWED_CHAT_ID` | optional: a group's id (negative number) so everyone in that group can use the bot; add the bot to the group, send `/help`, and it replies with the id |
    | `BOT_GITHUB_TOKEN` | the fine-grained token from step 2 |
    | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | from step 3 |
 
 5. Run the **Deploy bot** workflow (Actions tab, or `gh workflow run bot-deploy.yml`). It prints the Worker URL, like `https://momos-diet-plan-bot.<you>.workers.dev`.
 6. Open `https://<worker-url>/setup?secret=<TELEGRAM_WEBHOOK_SECRET>` once. That registers the webhook and the command menu.
-7. Send `/help` to the bot.
+7. Send `/help` to the bot, or add it to your group and send `/help` there. In groups, commands work as `/today` or `/today@YourBotName`.
 
 The Worker only accepts updates carrying the webhook secret and only acts for the allowed user id. Tokens live in GitHub and Cloudflare secrets, never in the repo.
 

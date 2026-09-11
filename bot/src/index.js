@@ -3,7 +3,7 @@
  * site's plan.json, forward write commands to GitHub as a repository_dispatch.
  *
  * Secrets: TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, GITHUB_TOKEN
- * Vars:    ALLOWED_USER_ID, GITHUB_REPO (owner/name), SITE_URL
+ * Vars:    ALLOWED_USER_ID and/or ALLOWED_CHAT_ID (a group's negative id), GITHUB_REPO (owner/name), SITE_URL
  */
 import { parseCommand, readReply, WRITE_COMMANDS } from './commands.mjs';
 
@@ -25,7 +25,9 @@ async function handle(update, env) {
   const msg = update?.message ?? update?.edited_message;
   if (!msg?.text) return;
   const chatId = msg.chat.id;
-  if (String(msg.from?.id) !== String(env.ALLOWED_USER_ID)) return send(env, chatId, `This bot is private. Your Telegram id is <code>${msg.from?.id}</code>; set it as ALLOWED_USER_ID to use the bot.`);
+  const fromOk = env.ALLOWED_USER_ID && String(msg.from?.id) === String(env.ALLOWED_USER_ID);
+  const chatOk = env.ALLOWED_CHAT_ID && String(chatId) === String(env.ALLOWED_CHAT_ID);
+  if (!fromOk && !chatOk) return send(env, chatId, `This bot is private. Your Telegram id is <code>${msg.from?.id}</code> and this chat's id is <code>${chatId}</code>. Set ALLOWED_USER_ID (just you) or ALLOWED_CHAT_ID (everyone in this chat) and redeploy.`);
   const parsed = parseCommand(msg.text);
   if (!parsed) return send(env, chatId, 'Send /help for the command list.');
 
