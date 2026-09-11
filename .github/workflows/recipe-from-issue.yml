@@ -27,7 +27,7 @@ jobs:
         run: npm run compute-macros && npm run validate
       - name: Open pull request
         id: pr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           branch: recipe/${{ steps.write.outputs.slug }}
           title: "feat(recipe): ${{ steps.write.outputs.title }}"
