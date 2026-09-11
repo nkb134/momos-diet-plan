@@ -1,23 +1,26 @@
 ---
-/**
- * Vertical reel of the day's meals. Pure scroll-snap; JS only decorates.
- */
-interface Props { count: number }
-const { count } = Astro.props;
+/** Vertical reel of one day's meals. Pure scroll-snap; JS only decorates. */
+import MealSlide from './MealSlide.astro';
+import type { Slot } from '../lib/plan';
+interface Slide { slot: Slot; recipe: any; grams: Record<string, number>; macros: any; isAddOn: boolean }
+interface Props { id: string; slides: Slide[]; table: Record<string, { name: string; hint: string }>; dayDate: string; eagerFirst?: boolean }
+const { id, slides, table, dayDate, eagerFirst = false } = Astro.props;
 ---
-<div class="reel-frame">
-  <ol class="reel" aria-label="Meals of the day, swipe up for the next">
-    <slot />
+<div class="reel-frame" id={id}>
+  <ol class="reel" aria-label="Meals of the day. Swipe up for the next meal" tabindex="-1">
+    {slides.map((sl, i) => (
+      <MealSlide index={i} total={slides.length} slot={sl.slot} recipe={sl.recipe} grams={sl.grams} macros={sl.macros} table={table} isAddOn={sl.isAddOn} eager={eagerFirst && i === 0} dayDate={dayDate} />
+    ))}
   </ol>
   <ol class="dots" aria-hidden="true">
-    {Array.from({ length: count }, () => <li></li>)}
+    {slides.map(() => <li></li>)}
   </ol>
 </div>
 
-<style>
+<style is:global>
   .reel-frame {
     position: relative;
-    height: calc(100dvh - var(--bar-h));
+    height: calc(100dvh - var(--chrome-h, 64px));
     max-height: 900px;
     max-width: 430px;
     margin-inline: auto;
@@ -27,96 +30,48 @@ const { count } = Astro.props;
   @media (min-width: 640px) {
     .reel-frame { border-radius: var(--radius-lg); box-shadow: 0 30px 80px -30px oklch(0% 0 0 / 0.45); }
   }
-  .reel {
-    height: 100%;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    overscroll-behavior: contain;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-  }
+  .reel { height: 100%; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; scroll-behavior: smooth; }
   .reel::-webkit-scrollbar { display: none; }
-  .reel :global(.slide) {
-    position: relative;
-    height: 100%;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-  .reel :global(.track) {
-    display: flex;
-    height: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-  }
-  .reel :global(.track)::-webkit-scrollbar { display: none; }
-  .reel :global(.pane) {
-    position: relative;
-    flex: 0 0 100%;
-    height: 100%;
-    scroll-snap-align: start;
-    overflow: hidden;
-  }
-  /* pane indicator */
-  .reel :global(.slide .bar:first-child) { background: white; }
-  .reel :global(.slide[data-pane="1"] .bar:first-child) { background: rgb(255 255 255 / 0.35); }
-  .reel :global(.slide[data-pane="1"] .bar:last-child) { background: white; }
-  /* slide dots */
-  .dots {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    translate: 0 -50%;
-    display: grid;
-    gap: 6px;
-  }
-  .dots li {
-    width: 4px; height: 14px; border-radius: 999px;
-    background: rgb(255 255 255 / 0.35);
-    transition: background 200ms, height 200ms var(--ease-out-quart);
-  }
+  .slide { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; }
+  .track { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
+  .track::-webkit-scrollbar { display: none; }
+  .pane { position: relative; flex: 0 0 100%; height: 100%; scroll-snap-align: start; overflow: hidden; }
+  .slide .bar:nth-child(1) { background: white; }
+  .slide[data-pane="1"] .bar:nth-child(1), .slide[data-pane="2"] .bar:nth-child(1), .slide[data-pane="2"] .bar:nth-child(2) { background: rgb(255 255 255 / 0.35); }
+  .slide[data-pane="1"] .bar:nth-child(2), .slide[data-pane="2"] .bar:nth-child(3) { background: white; }
+  .dots { position: absolute; right: 10px; top: 50%; translate: 0 -50%; display: grid; gap: 6px; }
+  .dots li { width: 4px; height: 14px; border-radius: 999px; background: rgb(255 255 255 / 0.35); transition: background 200ms, height 200ms var(--ease-out-quart); }
   .dots li.active { background: white; height: 24px; }
-  @media (prefers-reduced-motion: reduce) {
-    .reel, .reel :global(.track) { scroll-behavior: auto; }
-  }
+  html[data-veg-only="true"] [data-addon] { display: none; }
+  @media (prefers-reduced-motion: reduce) { .reel, .track { scroll-behavior: auto; } }
 </style>
 
 <script>
-  // Decoration only: which pane is showing, which slide is active, arrow keys.
-  const frame = document.querySelector<HTMLElement>('.reel-frame');
-  const reel = frame?.querySelector<HTMLElement>('.reel');
-  if (frame && reel) {
-    const slides = [...reel.querySelectorAll<HTMLElement>('.slide')];
+  function initReel(frame: HTMLElement) {
+    if (frame.dataset.ready) return;
+    frame.dataset.ready = '1';
+    const reel = frame.querySelector<HTMLElement>('.reel')!;
     const dots = [...frame.querySelectorAll<HTMLElement>('.dots li')];
-
-    // pane index per slide
-    for (const slide of slides) {
+    const slides = () => [...reel.querySelectorAll<HTMLElement>('.slide')].filter((s) => s.offsetParent !== null || !frame.hidden);
+    for (const slide of reel.querySelectorAll<HTMLElement>('.slide')) {
       const track = slide.querySelector<HTMLElement>('.track')!;
-      track.addEventListener('scroll', () => {
-        slide.dataset.pane = String(Math.round(track.scrollLeft / track.clientWidth));
-      }, { passive: true });
+      track.addEventListener('scroll', () => { slide.dataset.pane = String(Math.round(track.scrollLeft / track.clientWidth)); }, { passive: true });
     }
-
-    // active slide
     const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          const i = slides.indexOf(e.target as HTMLElement);
-          dots.forEach((d, j) => d.classList.toggle('active', j === i));
-          history.replaceState(null, '', `#${(e.target as HTMLElement).id}`);
-        }
+      for (const e of entries) if (e.isIntersecting) {
+        const all = [...reel.querySelectorAll<HTMLElement>('.slide')];
+        const i = all.indexOf(e.target as HTMLElement);
+        dots.forEach((d, j) => d.classList.toggle('active', j === i));
       }
     }, { root: reel, threshold: 0.6 });
-    slides.forEach((s) => io.observe(s));
-
-    // keyboard
+    reel.querySelectorAll('.slide').forEach((s) => io.observe(s));
     reel.addEventListener('keydown', (ev) => {
-      const active = slides.findIndex((s, j) => dots[j]?.classList.contains('active'));
-      const track = slides[active]?.querySelector<HTMLElement>('.track');
+      const all = slides();
+      const active = all.findIndex((s) => { const r = s.getBoundingClientRect(), f = reel.getBoundingClientRect(); return Math.abs(r.top - f.top) < r.height / 2; });
+      const track = all[active]?.querySelector<HTMLElement>('.track');
       const map: Record<string, () => void> = {
-        ArrowDown: () => slides[active + 1]?.scrollIntoView({ block: 'start' }),
-        ArrowUp: () => slides[active - 1]?.scrollIntoView({ block: 'start' }),
+        ArrowDown: () => all[active + 1]?.scrollIntoView({ block: 'start' }),
+        ArrowUp: () => all[active - 1]?.scrollIntoView({ block: 'start' }),
         ArrowRight: () => track?.scrollBy({ left: track.clientWidth }),
         ArrowLeft: () => track?.scrollBy({ left: -track.clientWidth }),
       };
@@ -124,4 +79,7 @@ const { count } = Astro.props;
       if (fn) { ev.preventDefault(); fn(); }
     });
   }
+  function init() { document.querySelectorAll<HTMLElement>('.reel-frame').forEach(initReel); }
+  init();
+  document.addEventListener('astro:page-load', init);
 </script>

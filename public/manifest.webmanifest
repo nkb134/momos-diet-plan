@@ -1,0 +1,9 @@
+{
+  "name": "Momo's Diet Plan",
+  "short_name": "Diet Plan",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#faf8f5",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

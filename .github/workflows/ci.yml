@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Astro check
+        run: npm run check
+      - name: Plan validator
+        run: npm run validate
+      - name: Reference totals
+        run: npm run check-reference
+      - name: Build
+        run: npm run build
+      - name: Link check
+        run: npx --yes linkinator ./dist --recurse --skip "^(?!file:)" --silent

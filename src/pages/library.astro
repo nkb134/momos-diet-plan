@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import RecipeImage from '../components/RecipeImage.astro';
+import FssaiMark from '../components/FssaiMark.astro';
+import { slotLabel } from '../lib/plan';
+
+const recipes = (await getCollection('recipes')).map((r) => r.data).sort((a, b) => a.title.localeCompare(b.title));
+const cuisines = [...new Set(recipes.map((r) => r.cuisine))].sort();
+const tags = [...new Set(recipes.flatMap((r) => r.tags))].sort();
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Recipes · Momo's Diet Plan" description="Every recipe in the plan, filterable by meal, diet, cuisine, time, and macros.">
+  <SiteHeader current="library" />
+  <main class="mx-auto max-w-5xl px-4 pb-16 pt-6 sm:pt-10">
+    <h1 class="text-4xl sm:text-5xl">Recipes</h1>
+    <p class="mt-2 text-muted"><output id="count">{recipes.length}</output> of {recipes.length} · figures per serving, estimates</p>
+
+    <form id="filters" class="mt-6 grid gap-3 rounded-lg border border-line bg-surface p-4 sm:grid-cols-3 lg:grid-cols-4 print:hidden" aria-label="Filter recipes">
+      <label class="sm:col-span-3 lg:col-span-4"><span class="sr-only">Search</span><input type="search" name="q" placeholder="Search titles, ingredients, tags" class="w-full rounded-md border border-line bg-paper px-3 py-2" autocomplete="off" /></label>
+      <label class="text-sm"><span class="text-muted">Meal</span><select name="meal" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5"><option value="">Any</option>{Object.entries(slotLabel).map(([k, v]) => <option value={k}>{v}</option>)}</select></label>
+      <label class="text-sm"><span class="text-muted">Diet</span><select name="diet" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5"><option value="">Any</option><option value="veg">Veg</option><option value="egg">Egg</option><option value="nonveg">Non-veg</option></select></label>
+      <label class="text-sm"><span class="text-muted">Cuisine</span><select name="cuisine" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5"><option value="">Any</option>{cuisines.map((c) => <option>{c}</option>)}</select></label>
+      <label class="text-sm"><span class="text-muted">Load</span><select name="load" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5"><option value="">Any</option><option>light</option><option>moderate</option><option>hearty</option></select></label>
+      <label class="text-sm"><span class="text-muted">Max time (min)</span><input type="number" name="time" min="0" step="5" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5" /></label>
+      <label class="text-sm"><span class="text-muted">Min protein (g)</span><input type="number" name="protein" min="0" step="5" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5" /></label>
+      <label class="text-sm"><span class="text-muted">Max net carbs (g)</span><input type="number" name="carbs" min="0" step="5" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5" /></label>
+      <label class="text-sm"><span class="text-muted">Min fibre (g)</span><input type="number" name="fibre" min="0" step="1" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5" /></label>
+      <label class="text-sm sm:col-span-2"><span class="text-muted">Tag</span><select name="tag" class="mt-1 w-full rounded-md border border-line bg-paper px-2 py-1.5"><option value="">Any</option>{tags.map((t) => <option>{t}</option>)}</select></label>
+      <button type="reset" class="self-end rounded-md border border-line px-3 py-1.5 text-sm hover:bg-paper">Clear</button>
+    </form>
+
+    <ul id="grid" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {recipes.map((r) => (
+        <li class="card" data-slug={r.slug} data-meals={r.meals.join(' ')} data-diet={r.diet} data-cuisine={r.cuisine} data-load={r.load} data-time={r.prepMin + r.cookMin} data-protein={r.macros.protein_g} data-carbs={r.macros.netCarbs_g} data-fibre={r.macros.fibre_g} data-tags={r.tags.join(' ')} data-text={`${r.title} ${r.ingredients.map((i) => i.item).join(' ')} ${r.tags.join(' ')} ${r.cuisine}`.toLowerCase()}>
+          <a href={`${base}recipes/${r.slug}/`} class="tile group block overflow-hidden rounded-lg bg-surface ring-1 ring-line transition-shadow hover:shadow-[0_12px_32px_-16px_oklch(0%_0_0/0.25)]">
+            <div class="relative aspect-[4/3] overflow-hidden bg-line">
+              <RecipeImage image={r.image} slug={r.slug} title={r.title} class="absolute inset-0 size-full object-cover" widths={[480, 800]} sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw" />
+              {r.diet !== 'veg' && <span class="absolute left-3 top-3 rounded-full bg-nonveg px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-white">Add-on</span>}
+            </div>
+            <div class="p-4">
+              <p class="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted"><FssaiMark diet={r.diet} class="size-3" />{r.meals.map((x) => slotLabel[x]).join(' · ')} · {r.cuisine}</p>
+              <h2 class="mt-1 text-xl leading-tight">{r.title}</h2>
+              <p class="mt-2 flex flex-wrap gap-x-3 text-sm tabular-nums text-muted">
+                <span><span class="font-medium text-ink">{r.macros.protein_g} g</span> protein</span><span>{r.macros.kcal} kcal</span><span>{r.macros.netCarbs_g} g net carbs</span><span>{r.macros.fibre_g} g fibre</span>{r.prepMin + r.cookMin > 0 && <span>{r.prepMin + r.cookMin} min</span>}
+              </p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p id="empty" class="mt-10 hidden text-center text-muted">Nothing matches. Clear a filter or two.</p>
+  </main>
+
+  <script>
+    function init() {
+      const form = document.getElementById('filters') as HTMLFormElement | null;
+      if (!form || form.dataset.ready) return;
+      form.dataset.ready = '1';
+      const cards = [...document.querySelectorAll<HTMLElement>('#grid .card')];
+      const count = document.getElementById('count')!, empty = document.getElementById('empty')!;
+      const apply = () => {
+        const f = new FormData(form);
+        const q = String(f.get('q') || '').toLowerCase().trim().split(/\s+/).filter(Boolean);
+        const meal = f.get('meal'), diet = f.get('diet'), cuisine = f.get('cuisine'), load = f.get('load'), tag = f.get('tag');
+        const time = Number(f.get('time')) || Infinity, protein = Number(f.get('protein')) || 0, carbs = Number(f.get('carbs')) || Infinity, fibre = Number(f.get('fibre')) || 0;
+        let n = 0;
+        for (const c of cards) {
+          const d = c.dataset;
+          const ok = (!meal || d.meals!.split(' ').includes(String(meal))) && (!diet || d.diet === diet) && (!cuisine || d.cuisine === cuisine) && (!load || d.load === load)
+            && (!tag || d.tags!.split(' ').includes(String(tag))) && Number(d.time) <= time && Number(d.protein) >= protein && Number(d.carbs) <= carbs && Number(d.fibre) >= fibre
+            && q.every((w) => d.text!.includes(w));
+          c.hidden = !ok; if (ok) n++;
+        }
+        count.textContent = String(n); empty.hidden = n > 0;
+      };
+      form.addEventListener('input', apply);
+      form.addEventListener('reset', () => setTimeout(apply));
+      apply();
+    }
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

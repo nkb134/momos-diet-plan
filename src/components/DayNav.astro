@@ -1,0 +1,37 @@
+---
+/**
+ * Date switcher. Fixed to the bottom on phones (thumb reach), inline under
+ * the header on wider screens. One button per plan day, grouped by week.
+ */
+import { formatDate } from '../lib/plan';
+interface Props { days: { date: string; day: string; week: number; training: string }[]; today: string }
+const { days, today } = Astro.props;
+const weeks = [...new Set(days.map((d) => d.week))];
+---
+<nav class="daynav" aria-label="Choose a day">
+  <div class="mx-auto flex max-w-5xl items-stretch gap-1 overflow-x-auto px-3 py-2 [scrollbar-width:none] sm:justify-center">
+    {weeks.map((w) => (
+      <div class="flex items-stretch gap-1">
+        <span class="hidden self-center pr-1 text-[10px] font-medium uppercase tracking-wider text-muted sm:block">W{w}</span>
+        {days.filter((d) => d.week === w).map((d) => (
+          <button type="button" class="daybtn" data-date={d.date} aria-pressed="false" data-today={d.date === today ? '' : undefined} data-training={d.training}>
+            <span class="text-[10px] uppercase tracking-wider">{d.day.slice(0, 3)}</span>
+            <span class="text-base font-medium tabular-nums leading-none">{formatDate(d.date, { day: 'numeric' })}</span>
+            <span class="sr-only">{formatDate(d.date, { month: 'long' })}, {d.training} day</span>
+          </button>
+        ))}
+        {w !== weeks[weeks.length - 1] && <span class="mx-1 w-px self-stretch bg-line" aria-hidden="true"></span>}
+      </div>
+    ))}
+  </div>
+</nav>
+<style>
+  .daynav { position: sticky; bottom: 0; z-index: 20; background: color-mix(in oklch, var(--color-paper) 88%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--color-line); padding-bottom: env(safe-area-inset-bottom); }
+  @media (min-width: 640px) { .daynav { position: static; border-top: 0; border-bottom: 1px solid var(--color-line); background: transparent; backdrop-filter: none; } }
+  .daybtn { display: grid; gap: 2px; justify-items: center; min-width: 44px; padding: 6px 8px; border-radius: var(--radius-md); color: var(--color-muted); transition: background 150ms, color 150ms; scroll-snap-align: center; }
+  .daybtn:hover { background: var(--color-surface); color: var(--color-ink); }
+  .daybtn[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); }
+  .daybtn[data-today] > span:nth-child(2) { position: relative; }
+  .daybtn[data-today] > span:nth-child(2)::after { content: ''; position: absolute; left: 50%; bottom: -5px; width: 4px; height: 4px; border-radius: 999px; background: var(--color-accent); translate: -50%; }
+  .daybtn[aria-pressed="true"][data-today] > span:nth-child(2)::after { background: var(--color-accent); }
+</style>

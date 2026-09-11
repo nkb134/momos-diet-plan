@@ -1,0 +1,175 @@
+# Week 1. Generated from diet-chart-seed.yaml; portion and anchorGrams are fixed.
+week: 1
+title: Week 1
+days:
+  - day: Saturday
+    date: 2026-09-12
+    training: rest
+    meals:
+      breakfast:
+        veg: chana-dhokla-curd
+        portion: 0.89
+        anchorGrams:
+          hung_curd: 115
+      lunch:
+        veg: paneer-sabzi-thali
+        portion: 1.23
+        anchorGrams:
+          paneer_lowfat: 140
+      snack:
+        veg: tofu-cucumber-salad
+        portion: 0.8
+        anchorGrams:
+          tofu: 195
+        nonVegAddOn: boiled-egg-addon
+      dinner:
+        veg: mushroom-paneer-bhurji
+        portion: 0.8
+        anchorGrams:
+          paneer_lowfat: 105
+  - day: Sunday
+    date: 2026-09-13
+    training: rest
+    meals:
+      breakfast:
+        veg: thepla-paneer-curd
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 65
+      lunch:
+        veg: soya-veg-bowl
+        portion: 1
+        anchorGrams:
+          soya_chunks: 55
+      snack:
+        veg: paneer-peanut-bowl
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 110
+      dinner:
+        veg: tofu-tikka-salad
+        portion: 0.89
+        anchorGrams:
+          tofu: 265
+  - day: Monday
+    date: 2026-09-14
+    training: lift
+    meals:
+      breakfast:
+        veg: moong-chilla-paneer
+        portion: 1.25
+        anchorGrams:
+          paneer_lowfat: 60
+      lunch:
+        veg: rajma-brownrice
+        portion: 1.25
+        anchorGrams:
+          paneer_lowfat: 35
+      snack:
+        veg: sprouts-chaat
+        portion: 1.01
+        anchorGrams:
+          greek_curd: 140
+      dinner:
+        veg: paneer-tikka-greens
+        portion: 1.25
+        anchorGrams:
+          paneer_lowfat: 165
+  - day: Tuesday
+    date: 2026-09-15
+    training: lift
+    meals:
+      breakfast:
+        veg: besan-chilla-curd
+        portion: 1
+        anchorGrams:
+          hung_curd: 195
+      lunch:
+        veg: dal-tadka-paneer-roti
+        portion: 1.21
+        anchorGrams:
+          paneer_lowfat: 140
+      snack:
+        veg: paneer-tikka-snack
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 120
+      dinner:
+        veg: moong-soup-tofu
+        portion: 1
+        anchorGrams:
+          tofu: 275
+        nonVegAddOn: grilled-fish-addon
+  - day: Wednesday
+    date: 2026-09-16
+    training: swim
+    meals:
+      breakfast:
+        veg: oats-sprouts-curd
+        portion: 1.11
+        anchorGrams:
+          curd_toned: 425
+      lunch:
+        veg: mushroom-matar-paneer
+        portion: 1.05
+        anchorGrams:
+          paneer_lowfat: 130
+      snack:
+        veg: hung-curd-flax-bowl
+        portion: 0.8
+        anchorGrams:
+          hung_curd: 320
+      dinner:
+        veg: palak-tofu-jowar
+        portion: 0.8
+        anchorGrams:
+          tofu: 295
+  - day: Thursday
+    date: 2026-09-17
+    training: lift
+    meals:
+      breakfast:
+        veg: paneer-bhurji-jowar
+        portion: 0.98
+        anchorGrams:
+          paneer_lowfat: 125
+      lunch:
+        veg: masoor-bhindi-rice
+        portion: 1.02
+        anchorGrams:
+          paneer_lowfat: 105
+        nonVegAddOn: tandoori-chicken-addon
+      snack:
+        veg: roasted-chana-buttermilk
+        portion: 1.02
+        anchorGrams:
+          kala_chana: 60
+      dinner:
+        veg: dal-palak-veg
+        portion: 0.89
+        anchorGrams:
+          paneer_lowfat: 80
+  - day: Friday
+    date: 2026-09-18
+    training: lift
+    meals:
+      breakfast:
+        veg: pesarattu-hungcurd
+        portion: 1.25
+        anchorGrams:
+          hung_curd: 330
+      lunch:
+        veg: sambar-rice-poriyal
+        portion: 1.25
+        anchorGrams:
+          paneer_lowfat: 45
+      snack:
+        veg: soya-chaat
+        portion: 0.8
+        anchorGrams:
+          soya_chunks: 20
+      dinner:
+        veg: paneer-bhurji-salad
+        portion: 1.25
+        anchorGrams:
+          paneer_lowfat: 155

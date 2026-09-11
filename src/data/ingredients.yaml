@@ -1,0 +1,771 @@
+# Per 100 g. Sources recorded per row (IFCT 2017 / USDA FDC). Edited by hand only for `source`.
+almonds:
+  name: Almonds
+  aisle: nuts-seeds
+  hint: 10 almonds ≈ 12 g
+  kcal: 579
+  protein_g: 21
+  carb_g: 22
+  fibre_g: 12.5
+  fat_g: 50
+  source: USDA FDC 170567 Nuts, almonds
+amla:
+  name: Amla
+  aisle: fruits
+  hint: 1 amla ≈ 20 g
+  kcal: 44
+  protein_g: 0.9
+  carb_g: 10
+  fibre_g: 4.3
+  fat_g: 0.6
+  source: IFCT 2017 E021 Goosberry
+atta:
+  name: Whole wheat atta
+  aisle: dals-grains
+  hint: 1 katori ≈ 120 g
+  kcal: 341
+  protein_g: 12
+  carb_g: 69
+  fibre_g: 11
+  fat_g: 1.7
+  source: IFCT 2017 A019 Wheat flour, atta
+baingan:
+  name: Baingan (brinjal)
+  aisle: vegetables
+  hint: 1 medium ≈ 250 g
+  kcal: 25
+  protein_g: 1
+  carb_g: 6
+  fibre_g: 3
+  fat_g: 0.2
+  source: IFCT 2017 D031 Brinjal - all varieties
+bajra_flour:
+  name: Bajra flour
+  aisle: dals-grains
+  hint: 1 katori ≈ 120 g
+  kcal: 361
+  protein_g: 11
+  carb_g: 67
+  fibre_g: 11
+  fat_g: 5
+  source: IFCT 2017 A003 Bajra
+beans_french:
+  name: French beans
+  aisle: vegetables
+  hint: 1 katori chopped ≈ 100 g
+  kcal: 31
+  protein_g: 1.8
+  carb_g: 7
+  fibre_g: 3.4
+  fat_g: 0.1
+  source: IFCT 2017 D050 French beans, hybrid
+beetroot:
+  name: Beetroot
+  aisle: vegetables
+  hint: 1 medium ≈ 120 g
+  kcal: 43
+  protein_g: 1.6
+  carb_g: 10
+  fibre_g: 2.8
+  fat_g: 0.2
+  source: IFCT 2017 F001 Beet root
+besan:
+  name: Besan
+  aisle: dals-grains
+  hint: 1 katori ≈ 100 g
+  kcal: 387
+  protein_g: 22
+  carb_g: 58
+  fibre_g: 11
+  fat_g: 6.7
+  source: USDA FDC 174288 Chickpea flour (besan)
+bhindi:
+  name: Bhindi (okra)
+  aisle: vegetables
+  hint: 1 katori chopped ≈ 100 g
+  kcal: 33
+  protein_g: 1.9
+  carb_g: 7
+  fibre_g: 3.2
+  fat_g: 0.2
+  source: IFCT 2017 D056 Ladies finger
+buttermilk:
+  name: Buttermilk (chaas)
+  aisle: dairy
+  hint: 1 glass ≈ 250 g
+  kcal: 30
+  protein_g: 1.6
+  carb_g: 3
+  fibre_g: 0
+  fat_g: 1
+  source: USDA FDC 170874 Milk, buttermilk, fluid, cultured, lowfat
+cabbage:
+  name: Cabbage
+  aisle: vegetables
+  hint: 1 katori shredded ≈ 70 g
+  kcal: 25
+  protein_g: 1.3
+  carb_g: 5.8
+  fibre_g: 2.5
+  fat_g: 0.1
+  source: IFCT 2017 C015 Cabbage, green
+capsicum:
+  name: Capsicum
+  aisle: vegetables
+  hint: 1 medium ≈ 100 g
+  kcal: 27
+  protein_g: 1
+  carb_g: 6
+  fibre_g: 2
+  fat_g: 0.2
+  source: IFCT 2017 D033 Capsicum, green
+carrot:
+  name: Carrot
+  aisle: vegetables
+  hint: 1 medium ≈ 70 g
+  kcal: 41
+  protein_g: 0.9
+  carb_g: 10
+  fibre_g: 2.8
+  fat_g: 0.2
+  source: IFCT 2017 F002 Carrot, orange
+cauliflower:
+  name: Cauliflower
+  aisle: vegetables
+  hint: 1 katori florets ≈ 100 g
+  kcal: 25
+  protein_g: 1.9
+  carb_g: 5
+  fibre_g: 2
+  fat_g: 0.3
+  source: IFCT 2017 D036 Cauliflower
+chana_dal:
+  name: Chana dal
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 190 g
+  kcal: 360
+  protein_g: 20
+  carb_g: 60
+  fibre_g: 13
+  fat_g: 5
+  source: IFCT 2017 B001 Bengal gram, dal
+chia:
+  name: Chia seeds
+  aisle: nuts-seeds
+  hint: 1 tbsp ≈ 12 g
+  kcal: 486
+  protein_g: 17
+  carb_g: 42
+  fibre_g: 34
+  fat_g: 31
+  source: USDA FDC 170554 Seeds, chia seeds, dried
+chicken_breast:
+  name: Chicken breast
+  aisle: nonveg
+  hint: ""
+  kcal: 165
+  protein_g: 31
+  carb_g: 0
+  fibre_g: 0
+  fat_g: 3.6
+  source: USDA FDC 171477 Chicken, broilers or fryers, breast, meat only, cooked, roasted
+coconut_fresh:
+  name: Fresh coconut, grated
+  aisle: vegetables
+  hint: 1 tbsp ≈ 8 g
+  kcal: 354
+  protein_g: 3.3
+  carb_g: 15
+  fibre_g: 9
+  fat_g: 33
+  source: USDA FDC 170169 Nuts, coconut meat, raw
+coriander:
+  name: Fresh coriander
+  aisle: vegetables
+  hint: 1 mutthi ≈ 10 g
+  kcal: 23
+  protein_g: 2.1
+  carb_g: 3.7
+  fibre_g: 2.8
+  fat_g: 0.5
+  source: IFCT 2017 G009 Coriander leaves
+cucumber:
+  name: Cucumber
+  aisle: vegetables
+  hint: 1 medium ≈ 150 g
+  kcal: 15
+  protein_g: 0.7
+  carb_g: 3.6
+  fibre_g: 0.5
+  fat_g: 0.1
+  source: IFCT 2017 D043 Cucumber, green, elongate
+curd_toned:
+  name: Curd (toned milk)
+  aisle: dairy
+  hint: 1 katori ≈ 150 g
+  kcal: 60
+  protein_g: 3.4
+  carb_g: 4.4
+  fibre_g: 0
+  fat_g: 3
+  source: USDA FDC 171284 Yogurt, plain, whole milk
+drumstick:
+  name: Drumstick
+  aisle: vegetables
+  hint: 1 stick ≈ 60 g
+  kcal: 37
+  protein_g: 2.1
+  carb_g: 8.5
+  fibre_g: 3.2
+  fat_g: 0.2
+  source: IFCT 2017 D046 Drumstick
+egg:
+  name: Egg, whole
+  aisle: nonveg
+  hint: 1 egg ≈ 50 g
+  kcal: 155
+  protein_g: 13
+  carb_g: 1.1
+  fibre_g: 0
+  fat_g: 11
+  source: USDA FDC 173424 Egg, whole, cooked, hard-boiled
+egg_white:
+  name: Egg white
+  aisle: nonveg
+  hint: 1 white ≈ 33 g
+  kcal: 52
+  protein_g: 11
+  carb_g: 0.7
+  fibre_g: 0
+  fat_g: 0.2
+  source: USDA FDC 172183 Egg, white, raw, fresh
+fish_rohu:
+  name: Rohu fish
+  aisle: nonveg
+  hint: ""
+  kcal: 97
+  protein_g: 16.6
+  carb_g: 0
+  fibre_g: 0
+  fat_g: 3
+  source: IFCT 2017 S006 Rohu
+flaxseed:
+  name: Flaxseed, ground
+  aisle: nuts-seeds
+  hint: 1 tbsp ≈ 8 g
+  kcal: 534
+  protein_g: 18
+  carb_g: 29
+  fibre_g: 27
+  fat_g: 42
+  source: USDA FDC 169414 Seeds, flaxseed
+foxtail_millet:
+  name: Foxtail millet (kangni)
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 331
+  protein_g: 12
+  carb_g: 60
+  fibre_g: 8
+  fat_g: 4
+  source: IFCT 2017 A017 Varagu
+ghee:
+  name: Ghee
+  aisle: masalas-oils
+  hint: 1 tsp ≈ 5 g
+  kcal: 900
+  protein_g: 0
+  carb_g: 0
+  fibre_g: 0
+  fat_g: 100
+  source: IFCT 2017 T013 Ghee
+ginger_garlic:
+  name: Ginger-garlic paste
+  aisle: masalas-oils
+  hint: 1 tsp ≈ 5 g
+  kcal: 100
+  protein_g: 4
+  carb_g: 20
+  fibre_g: 3
+  fat_g: 0.5
+  source: IFCT 2017 G014 Ginger, fresh + G011 Garlic, big clove (1:1 mean)
+greek_curd:
+  name: Greek / thick curd
+  aisle: dairy
+  hint: 1 katori ≈ 150 g
+  kcal: 59
+  protein_g: 10
+  carb_g: 3.6
+  fibre_g: 0
+  fat_g: 0.4
+  source: USDA FDC 170894 Yogurt, Greek, plain, nonfat
+green_chilli:
+  name: Green chilli
+  aisle: vegetables
+  hint: 1 chilli ≈ 4 g
+  kcal: 40
+  protein_g: 2
+  carb_g: 9
+  fibre_g: 3
+  fat_g: 0.4
+  source: IFCT 2017 G008 Chillies, green - all varieties
+green_peas:
+  name: Green peas
+  aisle: vegetables
+  hint: 1 katori ≈ 130 g
+  kcal: 81
+  protein_g: 5.4
+  carb_g: 14
+  fibre_g: 5
+  fat_g: 0.4
+  source: IFCT 2017 D061 Peas, fresh
+guava:
+  name: Guava
+  aisle: fruits
+  hint: 1 medium ≈ 150 g
+  kcal: 68
+  protein_g: 2.6
+  carb_g: 14
+  fibre_g: 5.4
+  fat_g: 1
+  source: IFCT 2017 E028 Guava, white flesh
+hung_curd:
+  name: Hung curd
+  aisle: dairy
+  hint: 1 katori ≈ 150 g
+  kcal: 98
+  protein_g: 9.5
+  carb_g: 4
+  fibre_g: 0
+  fat_g: 4.5
+  source: USDA FDC 171304 Yogurt, Greek, plain, whole milk
+jowar_flour:
+  name: Jowar flour
+  aisle: dals-grains
+  hint: 1 roti ≈ 30 g flour
+  kcal: 349
+  protein_g: 10
+  carb_g: 72
+  fibre_g: 9.7
+  fat_g: 1.9
+  source: IFCT 2017 A005 Jowar
+kabuli_chana:
+  name: Kabuli chana
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 360
+  protein_g: 19
+  carb_g: 61
+  fibre_g: 17
+  fat_g: 6
+  source: USDA FDC 173756 Chickpeas (garbanzo beans, bengal gram), mature seeds, raw
+kala_chana:
+  name: Kala chana
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 360
+  protein_g: 20
+  carb_g: 61
+  fibre_g: 18
+  fat_g: 5
+  source: IFCT 2017 B002 Bengal gram, whole
+lauki:
+  name: Lauki (bottle gourd)
+  aisle: vegetables
+  hint: 1 small ≈ 400 g
+  kcal: 14
+  protein_g: 0.6
+  carb_g: 3.4
+  fibre_g: 0.5
+  fat_g: 0
+  source: IFCT 2017 D007 Bottle gourd, elongate, pale green
+lemon:
+  name: Lemon
+  aisle: fruits
+  hint: 1 lemon ≈ 40 g
+  kcal: 29
+  protein_g: 1.1
+  carb_g: 9
+  fibre_g: 2.8
+  fat_g: 0.3
+  source: USDA FDC 167746 Lemons, raw, without peel
+lobia:
+  name: Lobia (black-eyed peas)
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 336
+  protein_g: 24
+  carb_g: 60
+  fibre_g: 11
+  fat_g: 1.3
+  source: IFCT 2017 B006 Cowpea, white
+masoor_dal:
+  name: Masoor dal
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 190 g
+  kcal: 352
+  protein_g: 25
+  carb_g: 60
+  fibre_g: 11
+  fat_g: 1
+  source: IFCT 2017 B013 Lentil dal
+methi_leaves:
+  name: Fresh methi leaves
+  aisle: vegetables
+  hint: 1 bunch ≈ 100 g
+  kcal: 49
+  protein_g: 4.4
+  carb_g: 6
+  fibre_g: 4.9
+  fat_g: 0.9
+  source: IFCT 2017 C020 Fenugreek leaves
+milk_toned:
+  name: Toned milk
+  aisle: dairy
+  hint: 1 glass ≈ 250 g
+  kcal: 58
+  protein_g: 3.2
+  carb_g: 4.7
+  fibre_g: 0
+  fat_g: 3
+  source: Amul Taaza toned milk label (per 100 ml)
+moong_dal:
+  name: Moong dal (yellow)
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 190 g
+  kcal: 348
+  protein_g: 24
+  carb_g: 59
+  fibre_g: 16
+  fat_g: 1.2
+  source: IFCT 2017 B010 Green gram, dal
+moong_sprouts:
+  name: Moong sprouts
+  aisle: dals-grains
+  hint: 1 katori ≈ 100 g
+  kcal: 30
+  protein_g: 3
+  carb_g: 6
+  fibre_g: 1.8
+  fat_g: 0.2
+  source: USDA FDC 169957 Mung beans, mature seeds, sprouted, raw
+moringa_leaves:
+  name: Moringa (drumstick) leaves
+  aisle: vegetables
+  hint: 1 mutthi ≈ 15 g
+  kcal: 64
+  protein_g: 9
+  carb_g: 8
+  fibre_g: 2
+  fat_g: 1.4
+  source: IFCT 2017 C019 Drumstick leaves
+mushroom:
+  name: Button mushroom
+  aisle: vegetables
+  hint: 1 packet ≈ 200 g
+  kcal: 22
+  protein_g: 3.1
+  carb_g: 3.3
+  fibre_g: 1
+  fat_g: 0.3
+  source: IFCT 2017 J001 Button mushroom, fresh
+oats:
+  name: Rolled oats
+  aisle: dals-grains
+  hint: 1 katori ≈ 90 g
+  kcal: 389
+  protein_g: 17
+  carb_g: 66
+  fibre_g: 10
+  fat_g: 7
+  source: USDA FDC 169705 Oats (Includes foods for USDA's Food Distribution Program)
+oil:
+  name: Cooking oil
+  aisle: masalas-oils
+  hint: 1 tsp ≈ 4.5 g
+  kcal: 884
+  protein_g: 0
+  carb_g: 0
+  fibre_g: 0
+  fat_g: 100
+  source: USDA FDC 171411 Oil, soybean, salad or cooking
+onion:
+  name: Onion
+  aisle: vegetables
+  hint: 1 medium ≈ 100 g
+  kcal: 40
+  protein_g: 1.1
+  carb_g: 9
+  fibre_g: 1.7
+  fat_g: 0.1
+  source: IFCT 2017 G017 Onion, big
+palak:
+  name: Palak (spinach)
+  aisle: vegetables
+  hint: 1 bunch ≈ 250 g
+  kcal: 23
+  protein_g: 2.9
+  carb_g: 3.6
+  fibre_g: 2.2
+  fat_g: 0.4
+  source: IFCT 2017 C033 Spinach
+paneer:
+  name: Paneer
+  aisle: dairy
+  hint: ""
+  kcal: 296
+  protein_g: 18.3
+  carb_g: 6.1
+  fibre_g: 0
+  fat_g: 22
+  source: IFCT 2017 L003 Paneer
+paneer_lowfat:
+  name: Low-fat paneer
+  aisle: dairy
+  hint: ""
+  kcal: 210
+  protein_g: 22
+  carb_g: 5
+  fibre_g: 0
+  fat_g: 12
+  source: Milky Mist High Protein Low Fat Paneer label
+papaya:
+  name: Papaya
+  aisle: fruits
+  hint: 1 katori cubes ≈ 150 g
+  kcal: 43
+  protein_g: 0.5
+  carb_g: 11
+  fibre_g: 1.7
+  fat_g: 0.3
+  source: IFCT 2017 E049 Papaya, ripe
+peanut_butter:
+  name: Peanut butter
+  aisle: nuts-seeds
+  hint: 1 tbsp ≈ 16 g
+  kcal: 588
+  protein_g: 25
+  carb_g: 20
+  fibre_g: 6
+  fat_g: 50
+  source: USDA FDC 174266 Peanut butter, smooth style, with salt (Includes foods for USDA's Food Distribution Program)
+peanuts:
+  name: Peanuts
+  aisle: nuts-seeds
+  hint: 1 mutthi ≈ 25 g
+  kcal: 567
+  protein_g: 26
+  carb_g: 16
+  fibre_g: 9
+  fat_g: 49
+  source: USDA FDC 172430 Peanuts, all types, raw
+poha:
+  name: Poha (flattened rice)
+  aisle: dals-grains
+  hint: 1 katori ≈ 60 g
+  kcal: 346
+  protein_g: 6.6
+  carb_g: 77
+  fibre_g: 1.5
+  fat_g: 1.2
+  source: IFCT 2017 A011 Rice flakes
+prawns:
+  name: Prawns
+  aisle: nonveg
+  hint: ""
+  kcal: 99
+  protein_g: 24
+  carb_g: 0.2
+  fibre_g: 0
+  fat_g: 0.3
+  source: USDA FDC 171971 Crustaceans, shrimp, mixed species, cooked, moist heat
+pumpkin:
+  name: Pumpkin
+  aisle: vegetables
+  hint: 1 katori cubes ≈ 120 g
+  kcal: 26
+  protein_g: 1
+  carb_g: 6.5
+  fibre_g: 0.5
+  fat_g: 0.1
+  source: USDA FDC 168448 Pumpkin, raw
+quinoa:
+  name: Quinoa
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 170 g
+  kcal: 368
+  protein_g: 14
+  carb_g: 64
+  fibre_g: 7
+  fat_g: 6
+  source: USDA FDC 168874 Quinoa, uncooked
+radish:
+  name: Radish (mooli)
+  aisle: vegetables
+  hint: 1 medium ≈ 120 g
+  kcal: 16
+  protein_g: 0.7
+  carb_g: 3.4
+  fibre_g: 1.6
+  fat_g: 0.1
+  source: IFCT 2017 F010 Radish, elongate, white skin
+ragi_flour:
+  name: Ragi flour
+  aisle: dals-grains
+  hint: 1 katori ≈ 120 g
+  kcal: 328
+  protein_g: 7.3
+  carb_g: 72
+  fibre_g: 11
+  fat_g: 1.3
+  source: IFCT 2017 A010 Ragi
+rajma:
+  name: Rajma
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 333
+  protein_g: 24
+  carb_g: 60
+  fibre_g: 25
+  fat_g: 1
+  source: IFCT 2017 B020 Rajmah, red
+rava:
+  name: Rava (sooji)
+  aisle: dals-grains
+  hint: 1 katori ≈ 160 g
+  kcal: 360
+  protein_g: 12
+  carb_g: 73
+  fibre_g: 3.5
+  fat_g: 1
+  source: IFCT 2017 A022 Wheat, semolina
+rice_brown:
+  name: Brown rice
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 362
+  protein_g: 7.9
+  carb_g: 76
+  fibre_g: 3.5
+  fat_g: 2.9
+  source: IFCT 2017 A013 Rice, raw, brown
+rice_white:
+  name: White rice
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 180 g
+  kcal: 345
+  protein_g: 6.8
+  carb_g: 78
+  fibre_g: 0.6
+  fat_g: 0.5
+  source: IFCT 2017 A015 Rice, raw, milled
+sattu:
+  name: Sattu
+  aisle: dals-grains
+  hint: 1 katori ≈ 100 g
+  kcal: 400
+  protein_g: 22
+  carb_g: 58
+  fibre_g: 17
+  fat_g: 6
+  source: Fortune Chana Sattu label
+sesame:
+  name: Sesame seeds
+  aisle: nuts-seeds
+  hint: 1 tbsp ≈ 9 g
+  kcal: 573
+  protein_g: 18
+  carb_g: 23
+  fibre_g: 12
+  fat_g: 50
+  source: USDA FDC 170150 Seeds, sesame seeds, whole, dried
+soya_chunks:
+  name: Soya chunks
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 50 g
+  kcal: 345
+  protein_g: 52
+  carb_g: 33
+  fibre_g: 13
+  fat_g: 0.5
+  source: Nutrela Soya Chunks label
+spices:
+  name: Dry masalas (mixed)
+  aisle: masalas-oils
+  hint: 1 tsp ≈ 2.5 g
+  kcal: 300
+  protein_g: 10
+  carb_g: 50
+  fibre_g: 25
+  fat_g: 8
+  source: USDA FDC 170924 Spices, curry powder
+tamarind:
+  name: Tamarind
+  aisle: masalas-oils
+  hint: small lemon-sized ball ≈ 15 g
+  kcal: 239
+  protein_g: 2.8
+  carb_g: 62
+  fibre_g: 5.1
+  fat_g: 0.6
+  source: IFCT 2017 E064 Tamarind, pulp
+tinda:
+  name: Tinda
+  aisle: vegetables
+  hint: 1 tinda ≈ 60 g
+  kcal: 20
+  protein_g: 0.8
+  carb_g: 4.5
+  fibre_g: 1.5
+  fat_g: 0.1
+  source: IFCT 2017 D073 Tinda, tender
+tofu:
+  name: Tofu (firm)
+  aisle: dairy
+  hint: ""
+  kcal: 76
+  protein_g: 8
+  carb_g: 1.9
+  fibre_g: 0.3
+  fat_g: 4.8
+  source: USDA FDC 172476 Tofu, raw, regular, prepared with calcium sulfate
+tomato:
+  name: Tomato
+  aisle: vegetables
+  hint: 1 medium ≈ 100 g
+  kcal: 18
+  protein_g: 0.9
+  carb_g: 3.9
+  fibre_g: 1.2
+  fat_g: 0.2
+  source: IFCT 2017 D075 Tomato, ripe, hybrid
+toor_dal:
+  name: Toor dal
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 190 g
+  kcal: 343
+  protein_g: 22
+  carb_g: 62
+  fibre_g: 15
+  fat_g: 1.5
+  source: IFCT 2017 B021 Red gram, dal
+urad_dal:
+  name: Urad dal
+  aisle: dals-grains
+  hint: 1 katori dry ≈ 190 g
+  kcal: 341
+  protein_g: 25
+  carb_g: 59
+  fibre_g: 18
+  fat_g: 1.6
+  source: IFCT 2017 B003 Black gram, dal
+walnuts:
+  name: Walnuts
+  aisle: nuts-seeds
+  hint: 4 halves ≈ 12 g
+  kcal: 654
+  protein_g: 15
+  carb_g: 14
+  fibre_g: 6.7
+  fat_g: 65
+  source: USDA FDC 170187 Nuts, walnuts, english

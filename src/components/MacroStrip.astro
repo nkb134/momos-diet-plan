@@ -1,0 +1,25 @@
+---
+/** Compact per-macro indicators: bar + value against target. Protein and net carbs carry the weight. */
+interface Item { key: string; value: number; target: number; unit: string; primary?: boolean; range?: [number, number] }
+interface Props { items: Item[]; class?: string }
+const { items, class: cls = '' } = Astro.props;
+---
+<ul class:list={['grid grid-cols-2 gap-x-4 gap-y-1 sm:flex sm:flex-wrap sm:gap-x-5 sm:gap-y-2', cls]} aria-label="Totals against targets">
+  {items.map((m) => {
+    const goal = m.range ? m.range[1] : m.target;
+    const pct = Math.min(100, Math.round((m.value / goal) * 100));
+    const over = m.range ? m.value > m.range[1] : false;
+    const label = m.range ? `${m.key} ${m.value} ${m.unit}, target ${m.range[0]} to ${m.range[1]}` : `${m.key} ${m.value} of ${m.target} ${m.unit}`;
+    return (
+      <li class="flex items-center gap-2" aria-label={label}>
+        <span class:list={['relative hidden h-1 overflow-hidden rounded-full bg-line sm:block', m.primary ? 'w-14' : 'w-8']} aria-hidden="true">
+          <span class:list={['absolute inset-y-0 left-0 rounded-full', over ? 'bg-nonveg' : m.primary ? 'bg-accent' : 'bg-muted']} style={`width:${pct}%`}></span>
+        </span>
+        <span class:list={['tabular-nums leading-none', m.primary ? 'text-sm font-medium' : 'text-xs text-muted']}>
+          {m.value}<span class="font-normal text-muted">/{m.range ? m.range[1] : m.target}</span>
+        </span>
+        <span class="text-[11px] uppercase tracking-wider text-muted">{m.key}</span>
+      </li>
+    );
+  })}
+</ul>

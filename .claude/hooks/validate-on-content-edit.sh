@@ -13,7 +13,7 @@ case "$file" in
 esac
 [ -f "$root/scripts/validate-plan.mjs" ] || exit 0
 cd "$root" || exit 0
-out=$(node scripts/validate-plan.mjs 2>&1); rc=$?
+out=$(NODE_NO_WARNINGS=1 node --experimental-strip-types scripts/validate-plan.mjs --quiet 2>&1); rc=$?
 if [ $rc -ne 0 ]; then
   printf 'validate-plan.mjs failed after editing %s:\n%s\n' "$file" "$out" >&2
   exit 2

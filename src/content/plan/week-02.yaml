@@ -1,0 +1,175 @@
+# Week 2. Generated from diet-chart-seed.yaml; portion and anchorGrams are fixed.
+week: 2
+title: Week 2
+days:
+  - day: Saturday
+    date: 2026-09-19
+    training: rest
+    meals:
+      breakfast:
+        veg: ragi-dosa-paneer
+        portion: 0.8
+        anchorGrams:
+          paneer_lowfat: 105
+      lunch:
+        veg: moong-paneer-thali
+        portion: 1.18
+        anchorGrams:
+          paneer_lowfat: 105
+      snack:
+        veg: tofu-cucumber-salad
+        portion: 0.81
+        anchorGrams:
+          tofu: 195
+      dinner:
+        veg: baingan-bharta-curd
+        portion: 0.82
+        anchorGrams:
+          paneer_lowfat: 75
+        nonVegAddOn: chicken-stew-addon
+  - day: Sunday
+    date: 2026-09-20
+    training: rest
+    meals:
+      breakfast:
+        veg: tofu-akuri
+        portion: 0.8
+        anchorGrams:
+          tofu: 300
+      lunch:
+        veg: grilled-paneer-salad-lunch
+        portion: 0.98
+        anchorGrams:
+          paneer_lowfat: 115
+      snack:
+        veg: paneer-peanut-bowl
+        portion: 0.8
+        anchorGrams:
+          paneer_lowfat: 60
+      dinner:
+        veg: paneer-tikka-greens
+        portion: 0.8
+        anchorGrams:
+          paneer_lowfat: 85
+  - day: Monday
+    date: 2026-09-21
+    training: lift
+    meals:
+      breakfast:
+        veg: sattu-paratha-curd
+        portion: 1.18
+        anchorGrams:
+          sattu: 85
+      lunch:
+        veg: soya-curry-rice
+        portion: 0.99
+        anchorGrams:
+          soya_chunks: 50
+      snack:
+        veg: sprouts-chaat
+        portion: 0.98
+        anchorGrams:
+          greek_curd: 185
+      dinner:
+        veg: lauki-chana-dal-paneer
+        portion: 1.23
+        anchorGrams:
+          paneer_lowfat: 220
+  - day: Tuesday
+    date: 2026-09-22
+    training: lift
+    meals:
+      breakfast:
+        veg: quinoa-paneer-upma
+        portion: 1.14
+        anchorGrams:
+          paneer_lowfat: 90
+      lunch:
+        veg: kala-chana-millet
+        portion: 1.09
+        anchorGrams:
+          paneer_lowfat: 45
+        nonVegAddOn: egg-curry-addon
+      snack:
+        veg: chana-sundal-snack
+        portion: 1
+        anchorGrams:
+          greek_curd: 195
+      dinner:
+        veg: methi-paneer-bajra
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 180
+  - day: Wednesday
+    date: 2026-09-23
+    training: swim
+    meals:
+      breakfast:
+        veg: soya-masala-oats
+        portion: 0.96
+        anchorGrams:
+          soya_chunks: 24
+      lunch:
+        veg: chana-dal-lauki-roti
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 110
+      snack:
+        veg: hung-curd-flax-bowl
+        portion: 0.99
+        anchorGrams:
+          hung_curd: 270
+      dinner:
+        veg: moringa-dal-tofu
+        portion: 0.9
+        anchorGrams:
+          greek_curd: 65
+  - day: Thursday
+    date: 2026-09-24
+    training: lift
+    meals:
+      breakfast:
+        veg: poha-sprouts-peanut
+        portion: 1.09
+        anchorGrams:
+          hung_curd: 215
+      lunch:
+        veg: lobia-masala-roti
+        portion: 1.18
+        anchorGrams:
+          paneer_lowfat: 33
+        nonVegAddOn: fish-curry-addon
+      snack:
+        veg: paneer-tikka-snack
+        portion: 0.93
+        anchorGrams:
+          paneer_lowfat: 110
+      dinner:
+        veg: cabbage-paneer-thoran
+        portion: 1.1
+        anchorGrams:
+          paneer_lowfat: 140
+  - day: Friday
+    date: 2026-09-25
+    training: lift
+    meals:
+      breakfast:
+        veg: idli-sambar-curd
+        portion: 0.99
+        anchorGrams:
+          toor_dal: 55
+      lunch:
+        veg: chole-jowar
+        portion: 0.8
+        anchorGrams:
+          paneer_lowfat: 70
+      snack:
+        veg: roasted-chana-buttermilk
+        portion: 0.9
+        anchorGrams:
+          kala_chana: 65
+      dinner:
+        veg: veg-clear-soup-paneer
+        portion: 1
+        anchorGrams:
+          paneer_lowfat: 265

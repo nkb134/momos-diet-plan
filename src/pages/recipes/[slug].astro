@@ -1,0 +1,182 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import RecipeImage from '../../components/RecipeImage.astro';
+import FssaiMark from '../../components/FssaiMark.astro';
+import LiteYouTube from '../../components/LiteYouTube.astro';
+import { loadPlan, slotLabel, formatDate } from '../../lib/plan';
+
+export async function getStaticPaths() {
+  const recipes = await getCollection('recipes');
+  return recipes.map((r) => ({ params: { slug: r.data.slug }, props: { recipe: r.data } }));
+}
+const { recipe } = Astro.props;
+const { days } = await loadPlan();
+const base = import.meta.env.BASE_URL;
+const usedOn = days.flatMap((d) => d.meals.filter((m) => m.recipe.slug === recipe.slug || m.addOn?.recipe.slug === recipe.slug).map((m) => ({ date: d.date, day: d.day, slot: m.slot })));
+const total = recipe.prepMin + recipe.cookMin;
+const m = recipe.macros;
+const glance = [
+  { k: 'Protein', v: `${m.protein_g} g` }, { k: 'Net carbs', v: `${m.netCarbs_g} g` }, { k: 'Fibre', v: `${m.fibre_g} g` }, { k: 'Fat', v: `${m.fat_g} g` }, { k: 'Energy', v: `${m.kcal} kcal` },
+];
+---
+<Base title={`${recipe.title} · Momo's Diet Plan`} description={`${recipe.title}: ${m.protein_g} g protein, ${m.kcal} kcal per serving. ${recipe.cuisine}.`}>
+  <SiteHeader current="recipe" />
+  <main class="mx-auto max-w-5xl px-4 pb-24 pt-6 sm:pt-10" data-slug={recipe.slug}>
+    <article class="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+      <div class="lg:sticky lg:top-20 lg:self-start">
+        <div class="relative overflow-hidden rounded-lg bg-line" style="aspect-ratio: 4 / 3;">
+          <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading="eager" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 560px, 100vw" decorative={false} />
+        </div>
+        {recipe.video && (
+          <section class="mt-6 print:hidden" aria-labelledby="video-h">
+            <h2 id="video-h" class="text-xs font-medium uppercase tracking-[0.16em] text-muted">Watch a similar method</h2>
+            <div class="mx-auto mt-2 w-full max-w-[320px] overflow-hidden rounded-lg" style="aspect-ratio: 9 / 16;">
+              <LiteYouTube id={recipe.video.youtubeId} title={recipe.video.title || recipe.title} isShort={recipe.video.isShort} class="relative size-full" />
+            </div>
+            <p class="mt-2 text-xs text-muted">{recipe.video.title}{recipe.video.channel ? ` · ${recipe.video.channel}` : ''}. Quantities here are fixed by the plan; follow the technique, not the amounts.</p>
+          </section>
+        )}
+      </div>
+
+      <div>
+        <p class="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-muted">
+          <FssaiMark diet={recipe.diet} />
+          <span>{recipe.meals.map((x) => slotLabel[x]).join(' · ')}</span>
+          <span aria-hidden="true">·</span>
+          <span>{recipe.cuisine}{recipe.region ? `, ${recipe.region}` : ''}</span>
+        </p>
+        <h1 class="mt-3 text-4xl sm:text-5xl">{recipe.title}</h1>
+        <dl class="mt-5 flex flex-wrap gap-x-6 gap-y-2 border-y border-line py-3 text-sm">
+          {total > 0 && <div><dt class="sr-only">Time</dt><dd><span class="font-medium tabular-nums">{total} min</span> <span class="text-muted">({recipe.prepMin} prep + {recipe.cookMin} cook)</span></dd></div>}
+          <div><dt class="sr-only">Difficulty</dt><dd class="capitalize">{recipe.difficulty}</dd></div>
+          <div><dt class="sr-only">Load</dt><dd class="capitalize">{recipe.load}</dd></div>
+        </dl>
+        <dl class="mt-3 grid grid-cols-5 gap-2">
+          {glance.map((g) => <div><dt class="text-[11px] uppercase tracking-wider text-muted">{g.k}</dt><dd class="text-lg font-medium tabular-nums leading-tight">{g.v}</dd></div>)}
+        </dl>
+        <p class="mt-1 text-xs text-muted">Per serving · estimates computed from the ingredient table</p>
+
+        <section class="mt-8" aria-labelledby="ing-h">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 id="ing-h" class="text-2xl">Ingredients</h2>
+            <div class="scaler flex items-center gap-2 text-sm print:hidden" data-serves={recipe.serves}>
+              <span class="text-muted">Cooks for</span>
+              <button type="button" class="grid size-7 place-items-center rounded-full border border-line hover:bg-surface" data-step="-1" aria-label="Fewer servings">−</button>
+              <output class="w-5 text-center font-medium tabular-nums" aria-live="polite">{recipe.serves}</output>
+              <button type="button" class="grid size-7 place-items-center rounded-full border border-line hover:bg-surface" data-step="1" aria-label="More servings">+</button>
+            </div>
+          </div>
+          <ul class="mt-3 divide-y divide-line">
+            {recipe.ingredients.map((i, n) => (
+              <li>
+                <label class="flex cursor-pointer items-baseline gap-3 py-2">
+                  <input type="checkbox" class="ing-check mt-1 size-4 shrink-0 accent-[var(--color-accent)] print:hidden" data-i={n} />
+                  <span class="flex-1"><span class="ing-name">{i.item}</span>{i.household ? <span class="text-muted"> · {i.household}</span> : null}{i.note ? <span class="text-muted"> · {i.note}</span> : null}</span>
+                  <span class="shrink-0 tabular-nums text-muted"><span class="ing-qty" data-g={i.qty}>{Math.round(i.qty * recipe.serves)}</span> {i.unit}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {recipe.swaps.length > 0 && (
+          <section class="mt-8" aria-labelledby="swap-h">
+            <h2 id="swap-h" class="text-2xl">Swaps</h2>
+            <ul class="mt-3 space-y-2 text-sm">
+              {recipe.swaps.map((s) => <li><span class="font-medium">{s.for}</span> <span class="text-muted">→</span> {s.use}{s.why ? <span class="text-muted"> · {s.why}</span> : null}</li>)}
+            </ul>
+          </section>
+        )}
+
+        <section class="mt-8" aria-labelledby="steps-h">
+          <div class="flex items-center justify-between gap-3">
+            <h2 id="steps-h" class="text-2xl">Method</h2>
+            {recipe.steps.length > 0 && <button type="button" id="cook-mode" class="rounded-full bg-ink px-4 py-1.5 text-sm font-medium text-paper print:hidden" aria-pressed="false">Cook mode</button>}
+          </div>
+          {recipe.steps.length ? (
+            <ol class="steps mt-3 space-y-4">
+              {recipe.steps.map((s, n) => (
+                <li class="step flex gap-4" data-n={n}>
+                  <span class="font-display text-2xl leading-none text-accent tabular-nums">{n + 1}</span>
+                  <p class="leading-relaxed">{s}</p>
+                </li>
+              ))}
+            </ol>
+          ) : <p class="mt-3 text-sm text-muted">Method coming soon.</p>}
+          {recipe.notes && <p class="mt-5 rounded-md bg-surface p-4 text-sm leading-relaxed ring-1 ring-line">{recipe.notes}</p>}
+        </section>
+
+        <footer class="mt-10 space-y-2 text-xs text-muted">
+          {recipe.equipment.length > 0 && <p>Equipment: {recipe.equipment.join(', ')}</p>}
+          {recipe.tags.length > 0 && <p class="flex flex-wrap gap-1.5">{recipe.tags.map((t) => <span class="rounded-full border border-line px-2 py-0.5">{t}</span>)}</p>}
+          {usedOn.length > 0 && <p>On the plan: {usedOn.map((u) => `${u.day} ${formatDate(u.date)} (${slotLabel[u.slot].toLowerCase()})`).join(', ')}.</p>}
+          <p><a href={base} class="underline">← Back to the chart</a> · <a href={`${base}library/`} class="underline">All recipes</a></p>
+        </footer>
+      </div>
+    </article>
+
+    <div id="cook-overlay" class="fixed inset-0 z-50 hidden flex-col bg-paper text-ink print:hidden" role="dialog" aria-modal="true" aria-label="Cook mode">
+      <div class="flex items-center justify-between border-b border-line px-5 py-3">
+        <span class="text-xs font-medium uppercase tracking-[0.16em] text-muted">Step <output id="cook-n">1</output> of {recipe.steps.length}</span>
+        <button type="button" id="cook-close" class="rounded-full border border-line px-3 py-1 text-sm">Exit</button>
+      </div>
+      <p id="cook-text" class="flex-1 overflow-y-auto px-6 py-8 font-display text-3xl leading-snug sm:text-4xl"></p>
+      <div class="flex items-center justify-between gap-3 border-t border-line px-5 py-4">
+        <button type="button" id="cook-prev" class="rounded-full border border-line px-5 py-2 text-sm">Previous</button>
+        <span id="cook-lock" class="text-xs text-muted"></span>
+        <button type="button" id="cook-next" class="rounded-full bg-ink px-5 py-2 text-sm font-medium text-paper">Next</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function init() {
+      const main = document.querySelector<HTMLElement>('main[data-slug]');
+      if (!main || main.dataset.ready) return;
+      main.dataset.ready = '1';
+      const slug = main.dataset.slug!;
+
+      const scaler = main.querySelector<HTMLElement>('.scaler');
+      if (scaler) {
+        let n = Number(scaler.dataset.serves);
+        const out = scaler.querySelector('output')!;
+        const render = () => { out.textContent = String(n); main.querySelectorAll<HTMLElement>('.ing-qty').forEach((q) => { q.textContent = String(Math.round(Number(q.dataset.g) * n)); }); };
+        scaler.querySelectorAll<HTMLButtonElement>('[data-step]').forEach((b) => b.addEventListener('click', () => { n = Math.min(8, Math.max(1, n + Number(b.dataset.step))); render(); }));
+      }
+
+      const key = `checked:${slug}`;
+      let checked: number[] = []; try { checked = JSON.parse(localStorage.getItem(key) || '[]'); } catch {}
+      main.querySelectorAll<HTMLInputElement>('.ing-check').forEach((c) => {
+        c.checked = checked.includes(Number(c.dataset.i));
+        c.addEventListener('change', () => {
+          const i = Number(c.dataset.i); checked = c.checked ? [...new Set([...checked, i])] : checked.filter((x) => x !== i);
+          try { localStorage.setItem(key, JSON.stringify(checked)); } catch {}
+        });
+      });
+
+      const btn = document.getElementById('cook-mode'); const ov = document.getElementById('cook-overlay');
+      if (btn && ov) {
+        const steps = [...main.querySelectorAll<HTMLElement>('.step p')].map((p) => p.textContent || '');
+        let i = 0; let lock: any = null;
+        const text = document.getElementById('cook-text')!, num = document.getElementById('cook-n')!, lockEl = document.getElementById('cook-lock')!;
+        const render = () => { text.textContent = steps[i] ?? ''; num.textContent = String(i + 1); };
+        const open = async () => {
+          ov.classList.remove('hidden'); ov.classList.add('flex'); document.documentElement.dataset.cookMode = '1'; btn.setAttribute('aria-pressed', 'true'); render();
+          try { if ('wakeLock' in navigator) { lock = await (navigator as any).wakeLock.request('screen'); lockEl.textContent = 'Screen stays awake'; } } catch { lockEl.textContent = ''; }
+          document.getElementById('cook-next')?.focus();
+        };
+        const close = () => { ov.classList.add('hidden'); ov.classList.remove('flex'); delete document.documentElement.dataset.cookMode; btn.setAttribute('aria-pressed', 'false'); lock?.release?.(); lock = null; btn.focus(); };
+        btn.addEventListener('click', open);
+        document.getElementById('cook-close')?.addEventListener('click', close);
+        document.getElementById('cook-next')?.addEventListener('click', () => { if (i < steps.length - 1) { i++; render(); } else close(); });
+        document.getElementById('cook-prev')?.addEventListener('click', () => { if (i > 0) { i--; render(); } });
+        ov.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); if (e.key === 'ArrowRight') document.getElementById('cook-next')?.click(); if (e.key === 'ArrowLeft') document.getElementById('cook-prev')?.click(); });
+        document.addEventListener('visibilitychange', async () => { if (lock && document.visibilityState === 'visible') { try { lock = await (navigator as any).wakeLock.request('screen'); } catch {} } });
+      }
+    }
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+</Base>

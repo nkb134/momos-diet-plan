@@ -1,0 +1,1173 @@
+[
+ {
+  "key": "almonds",
+  "source": "USDA FDC 170567 Nuts, almonds",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170567/nutrients",
+  "primary": {
+   "kcal": 579,
+   "protein_g": 21.2,
+   "carb_g": 21.6,
+   "fibre_g": 12.5,
+   "fat_g": 49.9
+  },
+  "maxDeviationPct": 1.9,
+  "note": "Exact match."
+ },
+ {
+  "key": "amla",
+  "source": "IFCT 2017 E021 Goosberry",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 23.7,
+   "protein_g": 0.34,
+   "carb_g": 4.39,
+   "fibre_g": 7.75,
+   "fat_g": 0.16,
+   "carb_total_g": 12.14,
+   "energy_kJ": 99.0
+  },
+  "maxDeviationPct": 164.7,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT lists amla as 'Goosberry' (Emblica officinalis). Table is ~2x IFCT energy and carb; source of table values unclear (not USDA, which has no amla entry)."
+ },
+ {
+  "key": "atta",
+  "source": "IFCT 2017 A019 Wheat flour, atta",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 320.3,
+   "protein_g": 10.57,
+   "carb_g": 64.17,
+   "fibre_g": 11.36,
+   "fat_g": 1.53,
+   "carb_total_g": 75.53,
+   "energy_kJ": 1340.0
+  },
+  "maxDeviationPct": 13.5,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table values match the older NIN (Gopalan 1989) wheat-flour figures rather than IFCT 2017."
+ },
+ {
+  "key": "baingan",
+  "source": "IFCT 2017 D031 Brinjal - all varieties",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 25.3,
+   "protein_g": 1.48,
+   "carb_g": 3.52,
+   "fibre_g": 3.98,
+   "fat_g": 0.32,
+   "carb_total_g": 7.5,
+   "energy_kJ": 106.0
+  },
+  "maxDeviationPct": 32.4,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT 'all varieties' mean. Table values match USDA 'Eggplant, raw'."
+ },
+ {
+  "key": "bajra_flour",
+  "source": "IFCT 2017 A003 Bajra",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 348.0,
+   "protein_g": 10.96,
+   "carb_g": 61.78,
+   "fibre_g": 11.49,
+   "fat_g": 5.43,
+   "carb_total_g": 73.27,
+   "energy_kJ": 1456.0
+  },
+  "maxDeviationPct": 8.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Whole bajra grain; IFCT has no separate flour entry. Table carb 67 vs IFCT total 73."
+ },
+ {
+  "key": "beans_french",
+  "source": "IFCT 2017 D050 French beans, hybrid",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 22.2,
+   "protein_g": 2.12,
+   "carb_g": 2.63,
+   "fibre_g": 4.18,
+   "fat_g": 0.19,
+   "carb_total_g": 6.81,
+   "energy_kJ": 93.0
+  },
+  "maxDeviationPct": 39.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Hybrid variety (D049 country: 24 kcal, 2.49 protein). Table matches USDA 'Beans, snap, green, raw'."
+ },
+ {
+  "key": "beetroot",
+  "source": "IFCT 2017 F001 Beet root",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 35.6,
+   "protein_g": 1.95,
+   "carb_g": 6.18,
+   "fibre_g": 3.31,
+   "fat_g": 0.14,
+   "carb_total_g": 9.49,
+   "energy_kJ": 149.0
+  },
+  "maxDeviationPct": 20.8,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table matches USDA 'Beets, raw' (43/1.61/9.56/2.8/0.17)."
+ },
+ {
+  "key": "besan",
+  "source": "USDA FDC 174288 Chickpea flour (besan)",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174288/nutrients",
+  "primary": {
+   "kcal": 387,
+   "protein_g": 22.4,
+   "carb_g": 57.8,
+   "fibre_g": 10.8,
+   "fat_g": 6.69
+  },
+  "maxDeviationPct": 1.8,
+  "note": "USDA has an explicit 'Chickpea flour (besan)' entry; exact match. IFCT has no besan flour (nearest IFCT B001 Bengal gram dal: 329 kcal, 21.55 protein)."
+ },
+ {
+  "key": "bhindi",
+  "source": "IFCT 2017 D056 Ladies finger",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 27.5,
+   "protein_g": 2.08,
+   "carb_g": 3.62,
+   "fibre_g": 4.08,
+   "fat_g": 0.22,
+   "carb_total_g": 7.7,
+   "energy_kJ": 115.0
+  },
+  "maxDeviationPct": 20.0,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT 'Ladies finger'. Table matches USDA 'Okra, raw' (33/1.93/7.45/3.2/0.19)."
+ },
+ {
+  "key": "buttermilk",
+  "source": "USDA FDC 170874 Milk, buttermilk, fluid, cultured, lowfat",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170874/nutrients",
+  "primary": {
+   "kcal": 40,
+   "protein_g": 3.31,
+   "carb_g": 4.79,
+   "fibre_g": 0,
+   "fat_g": 0.88
+  },
+  "maxDeviationPct": 51.7,
+  "note": "No primary entry for chaas. Nearest is USDA cultured low-fat buttermilk (values read via SR mirror recipal.com; FDC id from caloriefriend/myfooddata). Table looks like curd diluted ~1:1 with water, hence ~half the protein."
+ },
+ {
+  "key": "cabbage",
+  "source": "IFCT 2017 C015 Cabbage, green",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 21.5,
+   "protein_g": 1.36,
+   "carb_g": 3.25,
+   "fibre_g": 2.76,
+   "fat_g": 0.12,
+   "carb_total_g": 6.01,
+   "energy_kJ": 90.0
+  },
+  "maxDeviationPct": 16.3,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Green cabbage. Table matches USDA 'Cabbage, raw' (25/1.28/5.8/2.5/0.1)."
+ },
+ {
+  "key": "capsicum",
+  "source": "IFCT 2017 D033 Capsicum, green",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 16.3,
+   "protein_g": 1.11,
+   "carb_g": 1.84,
+   "fibre_g": 2.06,
+   "fat_g": 0.34,
+   "carb_total_g": 3.9,
+   "energy_kJ": 68.0
+  },
+  "maxDeviationPct": 65.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Green capsicum. Table is USDA-like (between USDA green 20 kcal and red 31 kcal peppers)."
+ },
+ {
+  "key": "carrot",
+  "source": "IFCT 2017 F002 Carrot, orange",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 33.2,
+   "protein_g": 0.95,
+   "carb_g": 5.55,
+   "fibre_g": 4.18,
+   "fat_g": 0.47,
+   "carb_total_g": 9.73,
+   "energy_kJ": 139.0
+  },
+  "maxDeviationPct": 33.0,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Orange carrot (F003 red: 38 kcal, 6.71 avail carb). Table matches USDA 'Carrots, raw' (41/0.93/9.58/2.8/0.24)."
+ },
+ {
+  "key": "cauliflower",
+  "source": "IFCT 2017 D036 Cauliflower",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 22.9,
+   "protein_g": 2.15,
+   "carb_g": 2.03,
+   "fibre_g": 3.71,
+   "fat_g": 0.44,
+   "carb_total_g": 5.74,
+   "energy_kJ": 96.0
+  },
+  "maxDeviationPct": 46.1,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table matches USDA 'Cauliflower, raw' (25/1.92/4.97/2/0.28)."
+ },
+ {
+  "key": "chana_dal",
+  "source": "IFCT 2017 B001 Bengal gram, dal",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 329.1,
+   "protein_g": 21.55,
+   "carb_g": 46.72,
+   "fibre_g": 15.15,
+   "fat_g": 5.31,
+   "carb_total_g": 61.87,
+   "energy_kJ": 1377.0
+  },
+  "maxDeviationPct": 14.2,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table (360/20/60/13/5) close to IFCT once carb is taken as available+fibre (61.9)."
+ },
+ {
+  "key": "chia",
+  "source": "USDA FDC 170554 Seeds, chia seeds, dried",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170554/nutrients",
+  "primary": {
+   "kcal": 486,
+   "protein_g": 16.5,
+   "carb_g": 42.1,
+   "fibre_g": 34.4,
+   "fat_g": 30.7
+  },
+  "maxDeviationPct": 3.0,
+  "note": "Exact match."
+ },
+ {
+  "key": "chicken_breast",
+  "source": "USDA FDC 171477 Chicken, broilers or fryers, breast, meat only, cooked, roasted",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171477/nutrients",
+  "primary": {
+   "kcal": 165,
+   "protein_g": 31.0,
+   "carb_g": 0.0,
+   "fibre_g": 0.0,
+   "fat_g": 3.57
+  },
+  "maxDeviationPct": 0.0,
+  "note": "Table matches USDA cooked/roasted breast exactly. IFCT N003 raw skinless breast: 168 kcal, 21.81 protein, 9.0 fat (raw, different basis)."
+ },
+ {
+  "key": "coconut_fresh",
+  "source": "USDA FDC 170169 Nuts, coconut meat, raw",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170169/nutrients",
+  "primary": {
+   "kcal": 354,
+   "protein_g": 3.33,
+   "carb_g": 15.2,
+   "fibre_g": 9.0,
+   "fat_g": 33.5
+  },
+  "maxDeviationPct": 1.3,
+  "note": "Exact match to USDA raw coconut meat. IFCT H007 'Coconut, kernel, fresh': 409 kcal, 3.84 protein, 6.3 avail carb, 10.42 fibre, 41.38 fat (much higher fat)."
+ },
+ {
+  "key": "coriander",
+  "source": "IFCT 2017 G009 Coriander leaves",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 31.1,
+   "protein_g": 3.52,
+   "carb_g": 1.93,
+   "fibre_g": 4.66,
+   "fat_g": 0.7,
+   "carb_total_g": 6.59,
+   "energy_kJ": 130.0
+  },
+  "maxDeviationPct": 43.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table matches USDA 'Coriander (cilantro) leaves, raw' (23/2.13/3.67/2.8/0.52); IFCT protein 3.52 and carb differ."
+ },
+ {
+  "key": "cucumber",
+  "source": "IFCT 2017 D043 Cucumber, green, elongate",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 19.6,
+   "protein_g": 0.71,
+   "carb_g": 3.48,
+   "fibre_g": 2.14,
+   "fat_g": 0.16,
+   "carb_total_g": 5.62,
+   "energy_kJ": 82.0
+  },
+  "maxDeviationPct": 76.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Green elongate cucumber. Table matches USDA 'Cucumber, with peel, raw' (15/0.65/3.63/0.5/0.11)."
+ },
+ {
+  "key": "curd_toned",
+  "source": "USDA FDC 171284 Yogurt, plain, whole milk",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171284/nutrients",
+  "primary": {
+   "kcal": 61,
+   "protein_g": 3.47,
+   "carb_g": 4.66,
+   "fibre_g": 0,
+   "fat_g": 3.25
+  },
+  "maxDeviationPct": 5.6,
+  "note": "No primary entry for toned-milk curd. Nearest primary is USDA plain whole-milk yogurt; Amul Masti Dahi label (openfoodfacts) reads 65 kcal/4.0 protein/4.6 carb/3.1 fat per 100 g."
+ },
+ {
+  "key": "drumstick",
+  "source": "IFCT 2017 D046 Drumstick",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 29.4,
+   "protein_g": 2.62,
+   "carb_g": 3.76,
+   "fibre_g": 6.83,
+   "fat_g": 0.12,
+   "carb_total_g": 10.59,
+   "energy_kJ": 123.0
+  },
+  "maxDeviationPct": 53.1,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Drumstick pods. Table matches USDA 170483 'Drumstick pods, raw' (37/2.1/8.53/3.2/0.2)."
+ },
+ {
+  "key": "egg",
+  "source": "USDA FDC 173424 Egg, whole, cooked, hard-boiled",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173424/nutrients",
+  "primary": {
+   "kcal": 155,
+   "protein_g": 12.6,
+   "carb_g": 1.12,
+   "fibre_g": 0.0,
+   "fat_g": 10.6
+  },
+  "maxDeviationPct": 3.2,
+  "note": "Table matches USDA hard-boiled egg. IFCT M004 'Egg, poultry, whole, boiled': 148 kcal, 13.43 protein, 10.54 fat."
+ },
+ {
+  "key": "egg_white",
+  "source": "USDA FDC 172183 Egg, white, raw, fresh",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172183/nutrients",
+  "primary": {
+   "kcal": 52.0,
+   "protein_g": 10.9,
+   "carb_g": 0.73,
+   "fibre_g": 0.0,
+   "fat_g": 0.17
+  },
+  "maxDeviationPct": 4.1,
+  "note": "Exact match. IFCT M002 raw white: 45 kcal, 10.84 protein, 0.06 fat."
+ },
+ {
+  "key": "fish_rohu",
+  "source": "IFCT 2017 S006 Rohu",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 102.3,
+   "protein_g": 19.71,
+   "carb_g": 0.0,
+   "fibre_g": 0.0,
+   "fat_g": 2.39,
+   "carb_total_g": 0.0,
+   "energy_kJ": 428.0
+  },
+  "maxDeviationPct": 15.8,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Raw rohu. Table protein 16.6 vs IFCT 19.71."
+ },
+ {
+  "key": "flaxseed",
+  "source": "USDA FDC 169414 Seeds, flaxseed",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169414/nutrients",
+  "primary": {
+   "kcal": 534,
+   "protein_g": 18.3,
+   "carb_g": 28.9,
+   "fibre_g": 27.3,
+   "fat_g": 42.2
+  },
+  "maxDeviationPct": 1.6,
+  "note": "Exact match (whole seed; USDA has no separate ground entry)."
+ },
+ {
+  "key": "foxtail_millet",
+  "source": "IFCT 2017 A017 Varagu",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 331.7,
+   "protein_g": 8.92,
+   "carb_g": 66.19,
+   "fibre_g": 6.39,
+   "fat_g": 2.55,
+   "carb_total_g": 72.58,
+   "energy_kJ": 1388.0
+  },
+  "maxDeviationPct": 56.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT A017 'Varagu' is given as Setaria italica with local names Kangni/Thinai/Rala, i.e. foxtail millet (the English gloss 'Kodo millet' in IFCT is inconsistent). Table matches older NIN foxtail figures (331/12.3/60.9)."
+ },
+ {
+  "key": "ghee",
+  "source": "IFCT 2017 T013 Ghee",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": null,
+   "protein_g": 0.0,
+   "carb_g": 0.0,
+   "fibre_g": 0.0,
+   "fat_g": 100.0,
+   "carb_total_g": 0.0,
+   "energy_kJ": 0.0
+  },
+  "maxDeviationPct": 0.0,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT lists ghee at 100 g fat/0 protein/0 carb; the mirror gives no energy figure (null). USDA 173412 'Butter oil, anhydrous': 876 kcal, 0.28 protein, 99.5 fat. Table 900 kcal is the label/Atwater figure."
+ },
+ {
+  "key": "ginger_garlic",
+  "source": "IFCT 2017 G014 Ginger, fresh + G011 Garlic, big clove (1:1 mean)",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 89.4,
+   "protein_g": 4.57,
+   "carb_g": 15.45,
+   "fibre_g": 5.29,
+   "fat_g": 0.51,
+   "carb_total_g": 20.74
+  },
+  "maxDeviationPct": 43.3,
+  "note": "No primary entry for paste; nearest is a 1:1 mean of IFCT fresh ginger (55 kcal/2.22/8.97/5.36/0.85) and garlic (124 kcal/6.92/21.93/5.22/0.16). Commercial pastes also contain oil/salt/acid."
+ },
+ {
+  "key": "greek_curd",
+  "source": "USDA FDC 170894 Yogurt, Greek, plain, nonfat",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170894/nutrients",
+  "primary": {
+   "kcal": 59,
+   "protein_g": 10.2,
+   "carb_g": 3.6,
+   "fibre_g": 0,
+   "fat_g": 0.39
+  },
+  "maxDeviationPct": 2.0,
+  "note": "Exact match to USDA nonfat Greek yogurt (values from FDC API search result)."
+ },
+ {
+  "key": "green_chilli",
+  "source": "IFCT 2017 G008 Chillies, green - all varieties",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 42.3,
+   "protein_g": 2.36,
+   "carb_g": 5.86,
+   "fibre_g": 4.77,
+   "fat_g": 0.72,
+   "carb_total_g": 10.63,
+   "energy_kJ": 177.0
+  },
+  "maxDeviationPct": 37.1,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT all-varieties mean. Table matches USDA 'Peppers, hot chili, green, raw' (40/2/9.46/1.5/0.2)."
+ },
+ {
+  "key": "green_peas",
+  "source": "IFCT 2017 D061 Peas, fresh",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 81.3,
+   "protein_g": 7.25,
+   "carb_g": 11.88,
+   "fibre_g": 6.32,
+   "fat_g": 0.13,
+   "carb_total_g": 18.2,
+   "energy_kJ": 340.0
+  },
+  "maxDeviationPct": 25.5,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Fresh peas. Table matches USDA 170419 'Peas, green, raw' (81/5.42/14.4/5.7/0.4)."
+ },
+ {
+  "key": "guava",
+  "source": "IFCT 2017 E028 Guava, white flesh",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 32.3,
+   "protein_g": 1.44,
+   "carb_g": 5.13,
+   "fibre_g": 8.59,
+   "fat_g": 0.32,
+   "carb_total_g": 13.72,
+   "energy_kJ": 135.0
+  },
+  "maxDeviationPct": 110.5,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. White-flesh guava (E029 pink: 47 kcal, 9.14 avail carb, 7.39 fibre). Table matches USDA 173044 'Guavas, common, raw' (68/2.55/14.3/5.4/0.95) exactly."
+ },
+ {
+  "key": "hung_curd",
+  "source": "USDA FDC 171304 Yogurt, Greek, plain, whole milk",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171304/nutrients",
+  "primary": {
+   "kcal": 97,
+   "protein_g": 9.0,
+   "carb_g": 3.98,
+   "fibre_g": 0,
+   "fat_g": 5.0
+  },
+  "maxDeviationPct": 5.6,
+  "note": "No primary entry for hung curd; nearest is USDA whole-milk Greek yogurt (strained curd), which matches within 6%."
+ },
+ {
+  "key": "jowar_flour",
+  "source": "IFCT 2017 A005 Jowar",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 334.1,
+   "protein_g": 9.97,
+   "carb_g": 67.68,
+   "fibre_g": 10.22,
+   "fat_g": 1.73,
+   "carb_total_g": 77.9,
+   "energy_kJ": 1398.0
+  },
+  "maxDeviationPct": 7.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Whole jowar grain; IFCT has no separate flour entry. Table matches older NIN jowar (349/10.4/72.6/1.9)."
+ },
+ {
+  "key": "kabuli_chana",
+  "source": "USDA FDC 173756 Chickpeas (garbanzo beans, bengal gram), mature seeds, raw",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/173756/nutrients",
+  "primary": {
+   "kcal": 378,
+   "protein_g": 20.5,
+   "carb_g": 63.0,
+   "fibre_g": 12.2,
+   "fat_g": 6.04
+  },
+  "maxDeviationPct": 39.3,
+  "note": "IFCT has no kabuli (white) chickpea; B002 'Bengal gram, whole' is desi/kala chana. USDA SR Legacy chickpeas raw (2019 revision: 378 kcal, 12.2 fibre); the table's 360/19/61/17/6 matches the pre-2019 SR release of the same entry."
+ },
+ {
+  "key": "kala_chana",
+  "source": "IFCT 2017 B002 Bengal gram, whole",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 287.0,
+   "protein_g": 18.77,
+   "carb_g": 39.56,
+   "fibre_g": 25.22,
+   "fat_g": 5.11,
+   "carb_total_g": 64.78,
+   "energy_kJ": 1201.0
+  },
+  "maxDeviationPct": 28.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Bengal gram whole (desi). IFCT 287 kcal and 64.8 total carb vs table 360/61."
+ },
+ {
+  "key": "lauki",
+  "source": "IFCT 2017 D007 Bottle gourd, elongate, pale green",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 11.0,
+   "protein_g": 0.53,
+   "carb_g": 1.68,
+   "fibre_g": 2.12,
+   "fat_g": 0.13,
+   "carb_total_g": 3.8,
+   "energy_kJ": 46.0
+  },
+  "maxDeviationPct": 76.4,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Elongate pale-green bottle gourd. Table matches USDA 'Gourd, white-flowered (calabash), raw' (14/0.62/3.39/0.5/0.02)."
+ },
+ {
+  "key": "lemon",
+  "source": "USDA FDC 167746 Lemons, raw, without peel",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/167746/nutrients",
+  "primary": {
+   "kcal": 29.0,
+   "protein_g": 1.1,
+   "carb_g": 9.32,
+   "fibre_g": 2.8,
+   "fat_g": 0.3
+  },
+  "maxDeviationPct": 3.4,
+  "note": "Exact match. IFCT has only lemon juice (E033: 37 kcal), no whole-fruit entry."
+ },
+ {
+  "key": "lobia",
+  "source": "IFCT 2017 B006 Cowpea, white",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 320.3,
+   "protein_g": 21.25,
+   "carb_g": 53.77,
+   "fibre_g": 11.7,
+   "fat_g": 1.14,
+   "carb_total_g": 65.47,
+   "energy_kJ": 1340.0
+  },
+  "maxDeviationPct": 12.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. White cowpea (B005 brown: 20.36 protein). Table protein 24 vs IFCT 21.25; table matches USDA 'Cowpeas, common, mature seeds, raw' (336/23.5/60/10.6/1.3)."
+ },
+ {
+  "key": "masoor_dal",
+  "source": "IFCT 2017 B013 Lentil dal",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 322.4,
+   "protein_g": 24.35,
+   "carb_g": 52.53,
+   "fibre_g": 10.43,
+   "fat_g": 0.75,
+   "carb_total_g": 62.96,
+   "energy_kJ": 1349.0
+  },
+  "maxDeviationPct": 9.2,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Lentil dal (dehusked, split)."
+ },
+ {
+  "key": "methi_leaves",
+  "source": "IFCT 2017 C020 Fenugreek leaves",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 34.4,
+   "protein_g": 3.68,
+   "carb_g": 2.17,
+   "fibre_g": 4.9,
+   "fat_g": 0.83,
+   "carb_total_g": 7.07,
+   "energy_kJ": 144.0
+  },
+  "maxDeviationPct": 42.4,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Fenugreek leaves. Table matches older NIN figures (49 kcal/4.4 protein/6.0 carb); IFCT gives 34 kcal."
+ },
+ {
+  "key": "milk_toned",
+  "source": "Amul Taaza toned milk label (per 100 ml)",
+  "url": "https://www.healthifyme.com/web/nutrifacts/amul-taaza-toned-fresh-milk-5d16f3c288",
+  "primary": {
+   "kcal": 58,
+   "protein_g": 3.0,
+   "carb_g": 4.8,
+   "fibre_g": 0,
+   "fat_g": 3.0
+  },
+  "maxDeviationPct": 6.7,
+  "note": "Toned milk (FSSAI: 3.0% fat, 8.5% SNF) has no IFCT/USDA entry; IFCT L002 whole cow milk is 73 kcal/3.26/4.94/4.48 fat. Nearest primary is USDA 171265 whole milk 3.25% (61/3.15/4.8/0/3.25). Table matches the Amul Taaza label."
+ },
+ {
+  "key": "moong_dal",
+  "source": "IFCT 2017 B010 Green gram, dal",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 325.8,
+   "protein_g": 23.88,
+   "carb_g": 52.59,
+   "fibre_g": 9.37,
+   "fat_g": 1.35,
+   "carb_total_g": 61.96,
+   "energy_kJ": 1363.0
+  },
+  "maxDeviationPct": 70.8,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Green gram dal. Table fibre 16 vs IFCT 9.37 (table fibre looks like whole moong, B011: 17.04)."
+ },
+ {
+  "key": "moong_sprouts",
+  "source": "USDA FDC 169957 Mung beans, mature seeds, sprouted, raw",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169957/nutrients",
+  "primary": {
+   "kcal": 30.0,
+   "protein_g": 3.04,
+   "carb_g": 5.94,
+   "fibre_g": 1.8,
+   "fat_g": 0.18
+  },
+  "maxDeviationPct": 1.3,
+  "note": "Exact match. IFCT has no sprouted mung entry."
+ },
+ {
+  "key": "moringa_leaves",
+  "source": "IFCT 2017 C019 Drumstick leaves",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 67.4,
+   "protein_g": 6.41,
+   "carb_g": 5.62,
+   "fibre_g": 8.21,
+   "fat_g": 1.64,
+   "carb_total_g": 13.83,
+   "energy_kJ": 282.0
+  },
+  "maxDeviationPct": 75.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Drumstick leaves. Table matches USDA 168416 'Drumstick leaves, raw' (64/9.4/8.28/2/1.4); IFCT protein 6.41, fibre 8.21."
+ },
+ {
+  "key": "mushroom",
+  "source": "IFCT 2017 J001 Button mushroom, fresh",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 27.5,
+   "protein_g": 3.68,
+   "carb_g": 1.98,
+   "fibre_g": 3.11,
+   "fat_g": 0.42,
+   "carb_total_g": 5.09,
+   "energy_kJ": 115.0
+  },
+  "maxDeviationPct": 67.8,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Fresh button mushroom. Table matches USDA 169251 'Mushrooms, white, raw' (22/3.09/3.26/1/0.34)."
+ },
+ {
+  "key": "oats",
+  "source": "USDA FDC 169705 Oats (Includes foods for USDA's Food Distribution Program)",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/169705/nutrients",
+  "primary": {
+   "kcal": 389,
+   "protein_g": 16.9,
+   "carb_g": 66.3,
+   "fibre_g": 10.6,
+   "fat_g": 6.9
+  },
+  "maxDeviationPct": 0.6,
+  "note": "Exact match (SR Legacy 'Oats', whole grain; 173904 regular/quick oats is 379 kcal)."
+ },
+ {
+  "key": "oil",
+  "source": "USDA FDC 171411 Oil, soybean, salad or cooking",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171411/nutrients",
+  "primary": {
+   "kcal": 884,
+   "protein_g": 0,
+   "carb_g": 0,
+   "fibre_g": 0,
+   "fat_g": 100
+  },
+  "maxDeviationPct": 0.0,
+  "note": "Generic cooking oil; all refined oils are 884 kcal/100 g fat in USDA and 100 g fat in IFCT T001-T012. Exact match."
+ },
+ {
+  "key": "onion",
+  "source": "IFCT 2017 G017 Onion, big",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 48.0,
+   "protein_g": 1.5,
+   "carb_g": 9.56,
+   "fibre_g": 2.45,
+   "fat_g": 0.24,
+   "carb_total_g": 12.01,
+   "energy_kJ": 201.0
+  },
+  "maxDeviationPct": 26.7,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Big onion (IFCT files onion under condiments). Table matches USDA 170000 'Onions, raw' (40/1.1/9.34/1.7/0.1) exactly."
+ },
+ {
+  "key": "palak",
+  "source": "IFCT 2017 C033 Spinach",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 24.4,
+   "protein_g": 2.14,
+   "carb_g": 2.05,
+   "fibre_g": 2.38,
+   "fat_g": 0.64,
+   "carb_total_g": 4.43,
+   "energy_kJ": 102.0
+  },
+  "maxDeviationPct": 35.5,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Table matches USDA 168462 'Spinach, raw' (23/2.86/3.63/2.2/0.39) exactly."
+ },
+ {
+  "key": "paneer",
+  "source": "IFCT 2017 L003 Paneer",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 257.9,
+   "protein_g": 18.86,
+   "carb_g": 12.41,
+   "fibre_g": 0.0,
+   "fat_g": 14.78,
+   "carb_total_g": 12.41,
+   "energy_kJ": 1079.0
+  },
+  "maxDeviationPct": 50.8,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT paneer: 258 kcal, 18.86 protein, 12.41 carb, 14.78 fat. Table fat 22 g and carb 6.1 g differ markedly (table resembles a full-fat commercial label, e.g. Mother Dairy 300 kcal/20 protein/23.3 fat)."
+ },
+ {
+  "key": "paneer_lowfat",
+  "source": "Milky Mist High Protein Low Fat Paneer label",
+  "url": "https://www.fatsecret.co.in/calories-nutrition/milky-mist/high-protein-low-fat-paneer/100g",
+  "primary": {
+   "kcal": 190,
+   "protein_g": 25,
+   "carb_g": 6.7,
+   "fibre_g": null,
+   "fat_g": 7
+  },
+  "maxDeviationPct": 71.4,
+  "note": "No primary entry. Manufacturer label (Milky Mist): 190 kcal/25 protein/6.7 carb/7 fat; Amul low-fat paneer ~180 kcal. Table fat 12 g is well above these labels."
+ },
+ {
+  "key": "papaya",
+  "source": "IFCT 2017 E049 Papaya, ripe",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 23.9,
+   "protein_g": 0.42,
+   "carb_g": 4.61,
+   "fibre_g": 2.83,
+   "fat_g": 0.16,
+   "carb_total_g": 7.44,
+   "energy_kJ": 100.0
+  },
+  "maxDeviationPct": 79.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Ripe papaya. Table matches USDA 169926 'Papayas, raw' (43/0.47/10.8/1.7/0.26) exactly."
+ },
+ {
+  "key": "peanut_butter",
+  "source": "USDA FDC 174266 Peanut butter, smooth style, with salt (Includes foods for USDA's Food Distribution Program)",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/174266/nutrients",
+  "primary": {
+   "kcal": 598,
+   "protein_g": 22.2,
+   "carb_g": 22.3,
+   "fibre_g": 5.0,
+   "fat_g": 51.4
+  },
+  "maxDeviationPct": 20.0,
+  "note": "Smooth style with salt (2019 revision 598 kcal/22.2 protein). Table 588/25/20/6/50 matches the pre-2019 SR release of the same entry."
+ },
+ {
+  "key": "peanuts",
+  "source": "USDA FDC 172430 Peanuts, all types, raw",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172430/nutrients",
+  "primary": {
+   "kcal": 567,
+   "protein_g": 25.8,
+   "carb_g": 16.1,
+   "fibre_g": 8.5,
+   "fat_g": 49.2
+  },
+  "maxDeviationPct": 0.8,
+  "note": "Exact match. IFCT H012 Ground nut exists but its row in the ifct2017 mirror is malformed (energy 6 kJ), so USDA is cited."
+ },
+ {
+  "key": "poha",
+  "source": "IFCT 2017 A011 Rice flakes",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 353.7,
+   "protein_g": 7.44,
+   "carb_g": 76.75,
+   "fibre_g": 3.46,
+   "fat_g": 1.14,
+   "carb_total_g": 80.21,
+   "energy_kJ": 1480.0
+  },
+  "maxDeviationPct": 56.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Rice flakes. Table fibre 1.5 vs IFCT 3.46 (diff >1 g)."
+ },
+ {
+  "key": "prawns",
+  "source": "USDA FDC 171971 Crustaceans, shrimp, mixed species, cooked, moist heat",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/171971/nutrients",
+  "primary": {
+   "kcal": 119,
+   "protein_g": 22.78,
+   "carb_g": 1.52,
+   "fibre_g": 0,
+   "fat_g": 1.7
+  },
+  "maxDeviationPct": 86.8,
+  "note": "Current SR Legacy entry (2019 revision, values via logixpathchef mirror). Table 99/24/0.2/0/0.3 matches the pre-2019 SR release of the same NDB 15150. IFCT S008 'Prawns, big' (raw): 91 kcal, 19.24 protein, 0.52 fat."
+ },
+ {
+  "key": "pumpkin",
+  "source": "USDA FDC 168448 Pumpkin, raw",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168448/nutrients",
+  "primary": {
+   "kcal": 26,
+   "protein_g": 1.0,
+   "carb_g": 6.5,
+   "fibre_g": 0.5,
+   "fat_g": 0.1
+  },
+  "maxDeviationPct": 0.0,
+  "note": "Rule exception: cited USDA because the table matches it exactly; IFCT D066 'Pumpkin, orange, round': 23 kcal, 0.84 protein, 4.0 avail carb + 2.56 fibre, 0.16 fat (within 15% on total carb)."
+ },
+ {
+  "key": "quinoa",
+  "source": "USDA FDC 168874 Quinoa, uncooked",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/168874/nutrients",
+  "primary": {
+   "kcal": 368,
+   "protein_g": 14.1,
+   "carb_g": 64.2,
+   "fibre_g": 7.0,
+   "fat_g": 6.07
+  },
+  "maxDeviationPct": 0.7,
+  "note": "Exact match. IFCT A009 quinoa differs (328 kcal, 13.11 protein, 53.65 avail carb, 14.66 fibre, 5.5 fat)."
+ },
+ {
+  "key": "radish",
+  "source": "IFCT 2017 F010 Radish, elongate, white skin",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 32.3,
+   "protein_g": 0.77,
+   "carb_g": 6.56,
+   "fibre_g": 2.65,
+   "fat_g": 0.15,
+   "carb_total_g": 9.21,
+   "energy_kJ": 135.0
+  },
+  "maxDeviationPct": 63.1,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Elongate white radish (mooli). Table matches USDA 169276 'Radishes, raw' (16/0.68/3.4/1.6/0.1) exactly; IFCT 32 kcal, 6.56 avail carb."
+ },
+ {
+  "key": "ragi_flour",
+  "source": "IFCT 2017 A010 Ragi",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 320.7,
+   "protein_g": 7.16,
+   "carb_g": 66.82,
+   "fibre_g": 11.18,
+   "fat_g": 1.92,
+   "carb_total_g": 78.0,
+   "energy_kJ": 1342.0
+  },
+  "maxDeviationPct": 7.7,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Whole ragi grain. Table matches older NIN ragi (328/7.3/72/3.6 crude fibre/1.3)."
+ },
+ {
+  "key": "rajma",
+  "source": "IFCT 2017 B020 Rajmah, red",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 299.2,
+   "protein_g": 19.91,
+   "carb_g": 48.61,
+   "fibre_g": 16.57,
+   "fat_g": 1.77,
+   "carb_total_g": 65.18,
+   "energy_kJ": 1252.0
+  },
+  "maxDeviationPct": 50.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Red rajmah (B018 black 298 kcal, B019 brown 298 kcal similar). Table matches USDA 175193 'Beans, kidney, all types, mature seeds, raw' (333/23.6/60/24.9/0.83) exactly; IFCT protein 19.91 and fibre 16.57 differ."
+ },
+ {
+  "key": "rava",
+  "source": "IFCT 2017 A022 Wheat, semolina",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 333.7,
+   "protein_g": 11.38,
+   "carb_g": 68.43,
+   "fibre_g": 9.72,
+   "fat_g": 0.74,
+   "carb_total_g": 78.15,
+   "energy_kJ": 1396.0
+  },
+  "maxDeviationPct": 64.0,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Wheat semolina. Table matches older NIN suji (348/10.4/74.8)."
+ },
+ {
+  "key": "rice_brown",
+  "source": "IFCT 2017 A013 Rice, raw, brown",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 353.7,
+   "protein_g": 9.16,
+   "carb_g": 74.8,
+   "fibre_g": 4.43,
+   "fat_g": 1.24,
+   "carb_total_g": 79.23,
+   "energy_kJ": 1480.0
+  },
+  "maxDeviationPct": 133.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. IFCT raw brown rice: 354 kcal, 9.16 protein, 1.24 fat. Table close to USDA 169703 'Rice, brown, long-grain, raw' (367/7.54/76.25/3.6/3.2, 2019 revision; pre-2019 370/7.94/77.2/3.5/2.92)."
+ },
+ {
+  "key": "rice_white",
+  "source": "IFCT 2017 A015 Rice, raw, milled",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 356.4,
+   "protein_g": 7.94,
+   "carb_g": 78.24,
+   "fibre_g": 2.81,
+   "fat_g": 0.52,
+   "carb_total_g": 81.05,
+   "energy_kJ": 1491.0
+  },
+  "maxDeviationPct": 78.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Raw milled rice. Table matches older NIN rice raw milled (345/6.8/78.2/0.2/0.5); IFCT 356 kcal, 7.94 protein, 2.81 fibre."
+ },
+ {
+  "key": "sattu",
+  "source": "Fortune Chana Sattu label",
+  "url": "https://www.fatsecret.co.in/calories-nutrition/fortune/chana-sattu/100g",
+  "primary": {
+   "kcal": 418,
+   "protein_g": 23,
+   "carb_g": 68,
+   "fibre_g": null,
+   "fat_g": 6
+  },
+  "maxDeviationPct": 14.7,
+  "note": "No primary entry for roasted-gram flour. Fortune label: 418 kcal/23 protein/68 carb/6 fat (fibre not declared); other brands 394-411 kcal. Nearest IFCT is B001 Bengal gram dal (329 kcal, 21.55 protein, 15.15 fibre, 5.31 fat) before roasting/moisture loss."
+ },
+ {
+  "key": "sesame",
+  "source": "USDA FDC 170150 Seeds, sesame seeds, whole, dried",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170150/nutrients",
+  "primary": {
+   "kcal": 573,
+   "protein_g": 17.7,
+   "carb_g": 23.4,
+   "fibre_g": 11.8,
+   "fat_g": 49.7
+  },
+  "maxDeviationPct": 1.7,
+  "note": "Exact match. IFCT H011 'Gingelly seeds, white' differs: 520 kcal, 21.7 protein, 10.83 avail carb, 16.99 fibre, 43.05 fat."
+ },
+ {
+  "key": "soya_chunks",
+  "source": "Nutrela Soya Chunks label",
+  "url": "https://www.fatsecret.co.in/calories-nutrition/nutrela/soya-chunks/100g",
+  "primary": {
+   "kcal": 354,
+   "protein_g": 53.19,
+   "carb_g": 33.5,
+   "fibre_g": null,
+   "fat_g": 0.82
+  },
+  "maxDeviationPct": 2.5,
+  "note": "No primary entry (textured soy protein). Nutrela label: 354 kcal/53.19 protein/33.5 carb/0.82 fat; fibre not declared on the mirrored label (Nutrela marketing states ~13 g). Table within 3%."
+ },
+ {
+  "key": "spices",
+  "source": "USDA FDC 170924 Spices, curry powder",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170924/nutrients",
+  "primary": {
+   "kcal": 325,
+   "protein_g": 14.3,
+   "carb_g": 55.8,
+   "fibre_g": 53.2,
+   "fat_g": 14.0
+  },
+  "maxDeviationPct": 53.0,
+  "note": "'Mixed dry masalas' is an assumption, not a food entry; nearest primary is USDA curry powder. Table fibre 25 vs 53.2 and fat 8 vs 14 differ, but at 2.5 g/tsp the absolute impact is small."
+ },
+ {
+  "key": "tamarind",
+  "source": "IFCT 2017 E064 Tamarind, pulp",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 288.5,
+   "protein_g": 2.92,
+   "carb_g": 67.35,
+   "fibre_g": 5.31,
+   "fat_g": 0.15,
+   "carb_total_g": 72.66,
+   "energy_kJ": 1207.0
+  },
+  "maxDeviationPct": 17.2,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Tamarind pulp. Table matches USDA 167763 'Tamarinds, raw' (239/2.8/62.5/5.1/0.6) exactly; IFCT gives 288 kcal, 67.35 avail carb."
+ },
+ {
+  "key": "tinda",
+  "source": "IFCT 2017 D073 Tinda, tender",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 13.9,
+   "protein_g": 1.02,
+   "carb_g": 1.9,
+   "fibre_g": 2.0,
+   "fat_g": 0.17,
+   "carb_total_g": 3.9,
+   "energy_kJ": 58.0
+  },
+  "maxDeviationPct": 43.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Tender tinda. Table (20 kcal, 4.5 carb) higher than IFCT (14 kcal, 1.9 avail + 2.0 fibre); no USDA entry."
+ },
+ {
+  "key": "tofu",
+  "source": "USDA FDC 172476 Tofu, raw, regular, prepared with calcium sulfate",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/172476/nutrients",
+  "primary": {
+   "kcal": 76,
+   "protein_g": 8.08,
+   "carb_g": 1.87,
+   "fibre_g": 0.3,
+   "fat_g": 4.78
+  },
+  "maxDeviationPct": 1.6,
+  "note": "Exact match to USDA 'regular' tofu (named 'firm' in the table; USDA 172475 'firm' is 144 kcal/17.3 protein)."
+ },
+ {
+  "key": "tomato",
+  "source": "IFCT 2017 D075 Tomato, ripe, hybrid",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 18.9,
+   "protein_g": 0.76,
+   "carb_g": 3.2,
+   "fibre_g": 1.58,
+   "fat_g": 0.25,
+   "carb_total_g": 4.78,
+   "energy_kJ": 79.0
+  },
+  "maxDeviationPct": 18.4,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Ripe hybrid tomato (D076 local: 20 kcal, 0.9 protein, 0.47 fat). Table matches USDA 170457 'Tomatoes, red, ripe, raw' (18/0.88/3.89/1.2/0.2) exactly."
+ },
+ {
+  "key": "toor_dal",
+  "source": "IFCT 2017 B021 Red gram, dal",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 330.8,
+   "protein_g": 21.7,
+   "carb_g": 55.23,
+   "fibre_g": 9.06,
+   "fat_g": 1.56,
+   "carb_total_g": 64.29,
+   "energy_kJ": 1384.0
+  },
+  "maxDeviationPct": 65.6,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Red gram dal. Table fibre 15 vs IFCT 9.06 (table fibre looks like whole red gram, B022: 22.84)."
+ },
+ {
+  "key": "urad_dal",
+  "source": "IFCT 2017 B003 Black gram, dal",
+  "url": "https://ifct2017.com/",
+  "primary": {
+   "kcal": 324.1,
+   "protein_g": 23.06,
+   "carb_g": 51.0,
+   "fibre_g": 11.93,
+   "fat_g": 1.69,
+   "carb_total_g": 62.93,
+   "energy_kJ": 1356.0
+  },
+  "maxDeviationPct": 50.9,
+  "note": "IFCT carb is available carbohydrate; carb deviation computed vs available+fibre (carb_total_g) to match the table's by-difference convention. Black gram dal. Table fibre 18 vs IFCT 11.93 (whole urad B004: 20.41)."
+ },
+ {
+  "key": "walnuts",
+  "source": "USDA FDC 170187 Nuts, walnuts, english",
+  "url": "https://fdc.nal.usda.gov/fdc-app.html#/food-details/170187/nutrients",
+  "primary": {
+   "kcal": 654,
+   "protein_g": 15.2,
+   "carb_g": 13.7,
+   "fibre_g": 6.7,
+   "fat_g": 65.2
+  },
+  "maxDeviationPct": 2.2,
+  "note": "Exact match."
+ }
+]

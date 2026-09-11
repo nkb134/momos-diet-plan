@@ -1,65 +1,104 @@
 ---
 import Base from '../layouts/Base.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import DayNav from '../components/DayNav.astro';
 import Reel from '../components/Reel.astro';
-import MealSlide from '../components/MealSlide.astro';
+import MacroStrip from '../components/MacroStrip.astro';
+import ShoppingList from '../components/ShoppingList.astro';
+import { loadPlan, todayIso, formatDate, shoppingList, trainingLabel } from '../lib/plan';
 import { planConfig } from '../plan.config';
 
-const startLabel = new Date(planConfig.startDate + 'T00:00:00').toLocaleDateString('en-IN', {
-  day: 'numeric', month: 'short', timeZone: planConfig.timeZone,
+const { days, table } = await loadPlan();
+const today = todayIso();
+const inPlan = days.some((d) => d.date === today);
+const defaultDate = inPlan ? today : days[0]!.date;
+const weeks = [...new Set(days.map((d) => d.week))];
+type Slide = { slot: (typeof days)[number]['meals'][number]['slot']; recipe: any; grams: Record<string, number>; macros: any; isAddOn: boolean };
+const views = days.map((d) => {
+  const slides: Slide[] = [];
+  for (const m of d.meals) {
+    slides.push({ slot: m.slot, recipe: m.recipe, grams: m.grams, macros: m.macros, isAddOn: false });
+    if (m.addOn) slides.push({ slot: m.slot, recipe: m.addOn.recipe, grams: m.addOn.grams, macros: m.addOn.macros, isAddOn: true });
+  }
+  return { d, slides, list: shoppingList([d], table) };
 });
-
-// Static preview of Week 1, Saturday. Ingredient grams are the seed values
-// with the plan's portion and anchorGrams applied; macros are from the
-// reference plan. All of this becomes collection-driven in milestone 2.
-const day = {
-  name: 'Saturday', training: 'Rest day',
-  totals: [
-    { key: 'Protein', value: 144, target: 150, unit: 'g' },
-    { key: 'Net carbs', value: 116, target: 120, unit: 'g' },
-    { key: 'Fibre', value: 38, target: 35, unit: 'g' },
-    { key: 'Energy', value: 1956, target: 1900, unit: 'kcal' },
-  ],
-  meals: [
-    { slot: 'Breakfast', slug: 'chana-dhokla-curd', dish: 'Chana Dal Dhokla with Curd', minutes: 35, diet: 'veg' as const,
-      macros: [{ key: 'Protein', value: 30, target: 35, unit: 'g' }, { key: 'Net carbs', value: 37, target: 40, unit: 'g' }, { key: 'Fibre', value: 10, target: 8, unit: 'g' }, { key: 'Energy', value: 508, target: 500, unit: 'kcal' }],
-      ingredients: [{ name: 'Toned curd', grams: 178 }, { name: 'Hung curd', grams: 115 }, { name: 'Chana dal', grams: 49 }, { name: 'Flaxseed', grams: 9 }, { name: 'Coriander', grams: 9 }, { name: 'Green chilli', grams: 4 }] },
-    { slot: 'Lunch', slug: 'paneer-sabzi-thali', dish: 'Paneer Sabzi Thali with Bhindi and Lauki', minutes: 40, diet: 'veg' as const,
-      macros: [{ key: 'Protein', value: 64, target: 50, unit: 'g' }, { key: 'Net carbs', value: 53, target: 55, unit: 'g' }, { key: 'Fibre', value: 15, target: 12, unit: 'g' }, { key: 'Energy', value: 789, target: 700, unit: 'kcal' }],
-      ingredients: [{ name: 'Greek curd', grams: 221 }, { name: 'Bhindi', grams: 148 }, { name: 'Lauki', grams: 148 }, { name: 'Low-fat paneer', grams: 140 }, { name: 'Cucumber', grams: 74 }, { name: 'Jowar flour', grams: 31 }] },
-    { slot: 'Snack', slug: 'tofu-cucumber-salad', dish: 'Sesame Tofu and Cucumber Salad', minutes: 15, diet: 'veg' as const,
-      macros: [{ key: 'Protein', value: 20, target: 25, unit: 'g' }, { key: 'Net carbs', value: 11, target: 20, unit: 'g' }, { key: 'Fibre', value: 7, target: 5, unit: 'g' }, { key: 'Energy', value: 293, target: 300, unit: 'kcal' }],
-      ingredients: [{ name: 'Tofu', grams: 195 }, { name: 'Cucumber', grams: 80 }, { name: 'Cabbage', grams: 48 }, { name: 'Carrot', grams: 32 }, { name: 'Flaxseed', grams: 8 }, { name: 'Sesame', grams: 6 }] },
-    { slot: 'Dinner', slug: 'mushroom-paneer-bhurji', dish: 'Mushroom Paneer Bhurji', minutes: 20, diet: 'veg' as const,
-      macros: [{ key: 'Protein', value: 30, target: 45, unit: 'g' }, { key: 'Net carbs', value: 14, target: 25, unit: 'g' }, { key: 'Fibre', value: 6, target: 10, unit: 'g' }, { key: 'Energy', value: 365, target: 600, unit: 'kcal' }],
-      ingredients: [{ name: 'Mushroom', grams: 120 }, { name: 'Low-fat paneer', grams: 105 }, { name: 'Tomato', grams: 40 }, { name: 'Capsicum', grams: 40 }, { name: 'Onion', grams: 32 }, { name: 'Coriander', grams: 8 }] },
-  ],
-};
 ---
 <Base title="Momo's Diet Plan">
-  <main class="[--bar-h:64px]">
-    <!-- day bar -->
-    <header class="reveal mx-auto flex h-[var(--bar-h)] max-w-5xl items-center justify-between gap-4 px-5" style="--i:0">
-      <div class="flex items-baseline gap-2.5">
-        <h1 class="font-display text-2xl">{day.name}</h1>
-        <span class="whitespace-nowrap text-sm text-muted">{startLabel}</span>
-        <span class="hidden rounded-full border border-line bg-surface px-2.5 py-0.5 text-xs font-medium uppercase tracking-wider text-muted sm:inline">{day.training}</span>
-      </div>
-      <ul class="flex gap-x-4" aria-label="Day totals against targets">
-        {day.totals.map((m, i) => (
-          <li class:list={['flex flex-col items-end leading-tight tabular-nums', i > 1 && 'hidden sm:flex']} aria-label={`${m.key} ${m.value} of ${m.target} ${m.unit}`}>
-            <span class:list={['whitespace-nowrap text-sm', i < 2 ? 'font-medium' : 'text-muted']}>{m.value}<span class="font-normal text-muted">/{m.target}</span></span>
-            <span class="whitespace-nowrap text-[11px] uppercase tracking-wider text-muted">{m.key}</span>
-          </li>
-        ))}
-      </ul>
-    </header>
+  <SiteHeader current="chart" />
+  <main id="chart" class="[--chrome-h:240px] sm:[--chrome-h:200px]">
+    <div class="hidden sm:block"><DayNav days={days} today={today} /></div>
 
-    <div class="reveal" style="--i:1">
-      <Reel count={day.meals.length}>
-        {day.meals.map((meal, i) => (
-          <MealSlide index={i} total={day.meals.length} {...meal} />
-        ))}
-      </Reel>
+    {views.map(({ d, slides, list }) => (
+        <section class="day mx-auto max-w-5xl px-0 sm:px-4" id={`d-${d.date}`} data-date={d.date} data-week={d.week} hidden={d.date !== defaultDate} aria-label={`${d.day} ${formatDate(d.date)}`}>
+          <div class="daybar flex flex-wrap items-end justify-between gap-x-6 gap-y-1.5 px-4 py-2 sm:py-3 sm:px-0">
+            <div class="flex items-baseline gap-2.5">
+              <h1 class="font-display text-2xl leading-none">{d.day}</h1>
+              <span class="text-sm text-muted">{formatDate(d.date)}</span>
+              <span class="rounded-full border border-line bg-surface px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-muted" title="Sets today's net-carb ceiling">{trainingLabel[d.training]}</span>
+              {d.date === today && <span class="rounded-full bg-accent px-2 py-0.5 text-[11px] font-medium uppercase tracking-wider text-ink">Today</span>}
+            </div>
+            <div class="flex items-center gap-3">
+              <MacroStrip items={[
+                { key: 'Protein', value: d.totals.protein_g, target: d.targets.protein_g, unit: 'g', primary: true },
+                { key: 'Net carbs', value: d.totals.netCarbs_g, target: d.targets.netCarbs_g[1], range: d.targets.netCarbs_g, unit: 'g', primary: true },
+                { key: 'Fibre', value: d.totals.fibre_g, target: d.targets.fibre_g, unit: 'g' },
+                { key: 'kcal', value: d.totals.kcal, target: d.targets.kcal, unit: 'kcal' },
+              ]} />
+              <button type="button" class="rounded-full border border-line px-3 py-1 text-xs hover:bg-surface" data-open={`shop-${d.date}`} aria-label="Shopping list for this day"><span class="sm:hidden" aria-hidden="true">🛒</span><span class="hidden sm:inline">Shopping list</span></button>
+            </div>
+          </div>
+          <Reel id={`reel-${d.date}`} slides={slides} table={table} dayDate={d.date} eagerFirst={d.date === defaultDate} />
+          <ShoppingList id={`shop-${d.date}`} title={`${d.day} ${formatDate(d.date)}`} list={list} note="Quantities cook every veg dish for 2 and each add-on for 1." />
+        </section>
+    ))}
+
+    {weeks.map((w) => (
+      <ShoppingList id={`shop-week-${w}`} title={`Week ${w} shopping list`} list={shoppingList(days.filter((d) => d.week === w), table)} note="Seven days. Veg dishes for 2, add-ons for 1." />
+    ))}
+    <div class="mx-auto flex max-w-5xl flex-wrap gap-2 px-4 py-4 text-xs text-muted">
+      {weeks.map((w) => <button type="button" class="rounded-full border border-line px-3 py-1 hover:bg-surface" data-open={`shop-week-${w}`}>Week {w} shopping list</button>)}
+      <span class="ml-auto self-center">Plan starts {formatDate(planConfig.startDate, { day: 'numeric', month: 'long' })} · all figures are estimates</span>
     </div>
+    <div class="sm:hidden"><DayNav days={days} today={today} /></div>
   </main>
+
+  <script>
+    function init() {
+      const sections = [...document.querySelectorAll<HTMLElement>('section.day')];
+      if (!sections.length) return;
+      const buttons = [...document.querySelectorAll<HTMLButtonElement>('.daybtn')];
+      const dates = sections.map((s) => s.dataset.date!);
+      const pick = (): string => {
+        const h = location.hash.replace('#', '');
+        if (dates.includes(h)) return h;
+        try { const s = localStorage.getItem('day'); if (s && dates.includes(s)) return s; } catch {}
+        return sections.find((s) => !s.hidden)?.dataset.date ?? dates[0]!;
+      };
+      const show = (date: string, push = false) => {
+        for (const s of sections) s.hidden = s.dataset.date !== date;
+        for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.date === date));
+        buttons.find((b) => b.dataset.date === date && b.offsetParent)?.scrollIntoView({ inline: 'center', block: 'nearest' });
+        try { localStorage.setItem('day', date); } catch {}
+        requestAnimationFrame(() => measure());
+        if (push) history.replaceState(null, '', `#${date}`);
+        // let lazy images inside the newly shown reel start loading
+        document.getElementById(`reel-${date}`)?.querySelector('.reel')?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+      };
+      buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.date!, true)));
+      const chart = document.getElementById('chart')!;
+      const measure = () => {
+        const header = document.querySelector<HTMLElement>('header')?.offsetHeight ?? 0;
+        const bar = document.querySelector<HTMLElement>('section.day:not([hidden]) .daybar')?.offsetHeight ?? 0;
+        const navs = [...document.querySelectorAll<HTMLElement>('.daynav')].filter((n) => n.offsetParent).reduce((a, n) => a + n.offsetHeight, 0);
+        chart.style.setProperty('--chrome-h', `${header + bar + navs}px`);
+      };
+      new ResizeObserver(measure).observe(document.body);
+      addEventListener('resize', measure);
+      addEventListener('hashchange', () => show(pick()));
+      document.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((b) => b.addEventListener('click', () => (document.getElementById(b.dataset.open!) as HTMLDialogElement)?.showModal()));
+      show(pick());
+    }
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
 </Base>

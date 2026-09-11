@@ -1,0 +1,58 @@
+name: New recipe
+description: Add a recipe from your phone. A workflow turns this into a pull request.
+title: "recipe: <dish name>"
+labels: [recipe]
+body:
+  - type: input
+    id: title
+    attributes: { label: Title, placeholder: Aloo Methi }
+    validations: { required: true }
+  - type: dropdown
+    id: diet
+    attributes: { label: Diet, options: [veg, egg, nonveg] }
+    validations: { required: true }
+  - type: checkboxes
+    id: meals
+    attributes:
+      label: Meal slots
+      options:
+        - label: breakfast
+        - label: lunch
+        - label: snack
+        - label: dinner
+  - type: input
+    id: cuisine
+    attributes: { label: Cuisine, placeholder: North Indian }
+    validations: { required: true }
+  - type: dropdown
+    id: load
+    attributes: { label: Load, options: [light, moderate, hearty] }
+    validations: { required: true }
+  - type: input
+    id: time
+    attributes: { label: "Prep and cook minutes", placeholder: "10, 20" }
+    validations: { required: true }
+  - type: input
+    id: serves
+    attributes: { label: Serves, placeholder: "2" }
+  - type: textarea
+    id: ingredients
+    attributes:
+      label: Ingredients
+      description: One per line as `<ingredient_key> <grams per serving>`. Keys are the ids in src/data/ingredients.yaml.
+      placeholder: |
+        paneer_lowfat 120
+        palak 150
+        oil 5
+    validations: { required: true }
+  - type: input
+    id: anchor
+    attributes: { label: Anchor ingredient key, description: The protein the plan scales, placeholder: paneer_lowfat }
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes: { label: Steps, description: One per line, in your own words. }
+    validations: { required: true }
+  - type: textarea
+    id: notes
+    attributes: { label: Notes }

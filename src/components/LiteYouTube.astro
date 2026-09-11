@@ -1,0 +1,40 @@
+---
+/**
+ * Poster-first YouTube embed. Before the tap it is one thumbnail image; the
+ * iframe (youtube-nocookie, autoplay) is created only on click. Shorts get
+ * the portrait thumbnail with a landscape fallback.
+ */
+interface Props { id: string; title: string; isShort?: boolean; class?: string }
+const { id, title, isShort = true, class: cls = '' } = Astro.props;
+---
+<div class:list={['yt overflow-hidden bg-black', cls]} data-yt={id} data-short={isShort ? '1' : '0'}>
+  <img
+    src={`https://i.ytimg.com/vi/${id}/${isShort ? 'oardefault' : 'hqdefault'}.jpg`}
+    onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'`}
+    alt="" loading="lazy" decoding="async"
+    class="absolute inset-0 size-full object-cover opacity-90" />
+  <button type="button" class="yt-play absolute inset-0 grid place-items-center" aria-label={`Play video: ${title}`}>
+    <span class="grid size-16 place-items-center rounded-full bg-white/90 text-ink shadow-lg transition-transform duration-300 ease-[var(--ease-spring)] group-hover:scale-105">
+      <svg class="ml-1 size-7" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+    </span>
+  </button>
+</div>
+<script>
+  function init() {
+    document.querySelectorAll<HTMLElement>('.yt:not([data-ready])').forEach((el) => {
+      el.dataset.ready = '1';
+      el.querySelector('.yt-play')?.addEventListener('click', () => {
+        const id = el.dataset.yt!;
+        const f = document.createElement('iframe');
+        f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+        f.title = el.querySelector('button')?.getAttribute('aria-label') ?? 'Video';
+        f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+        f.allowFullscreen = true;
+        f.className = 'absolute inset-0 size-full';
+        el.replaceChildren(f);
+      });
+    });
+  }
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

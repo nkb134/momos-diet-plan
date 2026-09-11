@@ -1,58 +1,70 @@
 ---
 /**
- * One meal in the reel. Vertical snap target. Inside, a horizontal track with
- * two panes: the photo with headline macros, then the same photo blurred
- * behind key ingredients and the full macro set. Swiping is native scroll-snap;
- * the only JS is the pane indicator and arrow keys, added in Reel.astro.
+ * One meal in the reel: photo + headline, blurred ingredients + macros, and
+ * an optional video pane. Native scroll-snap; the pane indicator and arrow
+ * keys are wired in Reel.astro.
  */
-interface Macro { key: string; value: number; target: number; unit: string }
+import RecipeImage from './RecipeImage.astro';
+import FssaiMark from './FssaiMark.astro';
+import LiteYouTube from './LiteYouTube.astro';
+import { slotTargets } from '../nutrition.config';
+import type { MealView, Slot } from '../lib/plan';
+import { slotLabel } from '../lib/plan';
+
 interface Props {
-  index: number;
-  total: number;
-  slot: string;
-  dish: string;
-  slug: string;
-  minutes: number;
-  diet: 'veg' | 'egg' | 'nonveg';
-  macros: Macro[];
-  ingredients: { name: string; grams: number }[];
+  index: number; total: number; slot: Slot;
+  recipe: MealView['recipe']; grams: Record<string, number>; macros: MealView['macros'];
+  table: Record<string, { name: string; hint: string }>;
+  isAddOn?: boolean; eager?: boolean; dayDate: string;
 }
-const { index, total, slot, dish, slug, minutes, diet, macros, ingredients } = Astro.props;
+const { index, total, slot, recipe, grams, macros, table, isAddOn = false, eager = false, dayDate } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const img = `${base}recipes/${slug}.jpg`;
-const protein = macros.find((m) => m.key === 'Protein')!;
-const kcal = macros.find((m) => m.key === 'Energy')!;
-const mark = diet === 'veg' ? 'var(--color-veg)' : 'var(--color-nonveg)';
+const target = slotTargets[slot];
+const label = isAddOn ? `${slotLabel[slot]} add-on` : slotLabel[slot];
+const cooked = recipe.serves;
+const ingredientRows = Object.entries(grams)
+  .map(([key, g]) => ({ key, name: table[key]?.name ?? key, grams: Math.round(g * cooked), household: recipe.ingredients.find((i) => i.key === key)?.household ?? '' }))
+  .filter((r) => !['spices', 'oil'].includes(r.key))
+  .sort((a, b) => b.grams - a.grams).slice(0, 7);
+const panes = 2 + (recipe.video ? 1 : 0);
+const detail = [
+  { key: 'Protein', value: macros.protein_g, target: target.protein_g, unit: 'g' },
+  { key: 'Net carbs', value: macros.netCarbs_g, unit: 'g' },
+  { key: 'Fibre', value: macros.fibre_g, unit: 'g' },
+  { key: 'Energy', value: macros.kcal, target: target.kcal, unit: 'kcal' },
+];
 ---
-<li class="slide" id={`meal-${index}`} data-slot={slot} aria-label={`${slot}: ${dish}`}>
-  <div class="track" tabindex="0" aria-roledescription="carousel" aria-label={`${slot} card, swipe for ingredients`}>
-    <!-- pane 1: photo + headline -->
+<li class="slide" id={`m-${dayDate}-${index}`} data-addon={isAddOn ? '' : undefined} aria-label={`${label}: ${recipe.title}`}>
+  <div class="track" tabindex="0" aria-roledescription="carousel" aria-label={`${label} card. Swipe or use arrow keys for ingredients${recipe.video ? ' and video' : ''}`}>
     <section class="pane" aria-label="Photo and headline macros">
-      <img src={img} alt="" width="1024" height="768" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" class="absolute inset-0 size-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/25" aria-hidden="true"></div>
+      <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading={eager ? 'eager' : 'lazy'} />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30" aria-hidden="true"></div>
       <div class="relative flex h-full flex-col justify-between p-5 text-white">
         <div class="flex items-center justify-between pt-3">
-          <span class="rounded-full bg-white/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] backdrop-blur">{slot}</span>
+          <span class:list={['rounded-full px-3 py-1 text-xs font-medium uppercase tracking-[0.16em] backdrop-blur', isAddOn ? 'bg-nonveg/80' : 'bg-white/15']}>{label}</span>
           <span class="text-xs tabular-nums text-white/80">{index + 1} / {total}</span>
         </div>
         <div>
-          <p class="mb-2 flex items-center gap-2 text-xs text-white/80">
-            <svg class="size-3.5" viewBox="0 0 16 16" role="img" aria-label={diet === 'veg' ? 'Vegetarian' : 'Non-vegetarian'}>
-              <rect x="1" y="1" width="14" height="14" fill="none" stroke={mark} stroke-width="1.5" /><circle cx="8" cy="8" r="3.5" fill={mark} />
-            </svg>
-            {minutes} min
+          <p class="mb-2 flex items-center gap-2 text-xs text-white/85">
+            <FssaiMark diet={recipe.diet} />
+            {recipe.prepMin + recipe.cookMin > 0 ? `${recipe.prepMin + recipe.cookMin} min` : ''} · cooks for {cooked}
           </p>
-          <h2 class="font-display text-4xl leading-[1.02] [text-shadow:0_1px_12px_rgb(0_0_0/0.35)]">{dish}</h2>
+          <h2 class="font-display text-4xl leading-[1.02] [text-shadow:0_1px_12px_rgb(0_0_0/0.35)]">{recipe.title}</h2>
           <dl class="mt-4 flex flex-wrap gap-2">
             <div class="flex items-baseline gap-1.5 rounded-full bg-accent px-3 py-1.5 text-ink">
               <dt class="sr-only">Protein</dt>
-              <dd class="text-lg font-semibold tabular-nums leading-none">{protein.value}<span class="text-sm font-normal"> g</span></dd>
+              <dd class="text-lg font-semibold tabular-nums leading-none">{macros.protein_g}<span class="text-sm font-normal"> g</span></dd>
               <dd class="text-xs leading-none">protein</dd>
             </div>
             <div class="flex items-baseline gap-1.5 rounded-full bg-white/15 px-3 py-1.5 backdrop-blur">
               <dt class="sr-only">Energy</dt>
-              <dd class="text-lg font-semibold tabular-nums leading-none">{kcal.value}</dd>
+              <dd class="text-lg font-semibold tabular-nums leading-none">{macros.kcal}</dd>
               <dd class="text-xs leading-none">kcal</dd>
+            </div>
+            <div class="flex items-baseline gap-1.5 rounded-full bg-white/15 px-3 py-1.5 backdrop-blur">
+              <dt class="sr-only">Net carbs</dt>
+              <dd class="text-lg font-semibold tabular-nums leading-none">{macros.netCarbs_g}<span class="text-sm font-normal"> g</span></dd>
+              <dd class="text-xs leading-none">net carbs</dd>
             </div>
           </dl>
           <p class="mt-5 text-xs text-white/70">Swipe for ingredients <span aria-hidden="true">→</span></p>
@@ -60,36 +72,44 @@ const mark = diet === 'veg' ? 'var(--color-veg)' : 'var(--color-nonveg)';
       </div>
     </section>
 
-    <!-- pane 2: blurred photo + ingredients + full macros -->
     <section class="pane" aria-label="Key ingredients and macros">
-      <img src={img} alt="" width="1024" height="768" loading="lazy" decoding="async" class="absolute inset-0 size-full scale-110 object-cover blur-2xl brightness-[.45] saturate-125" aria-hidden="true" />
+      <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full scale-110 object-cover blur-2xl brightness-[.4] saturate-125" widths={[480]} />
       <div class="relative flex h-full flex-col justify-end p-5 text-white">
-        <p class="text-xs font-medium uppercase tracking-[0.16em] text-white/70">{slot} · key ingredients</p>
+        <p class="text-xs font-medium uppercase tracking-[0.16em] text-white/70">{label} · cooks for {cooked}</p>
         <ul class="mt-3 divide-y divide-white/10">
-          {ingredients.map((i) => (
-            <li class="flex items-baseline justify-between py-2 text-base">
-              <span>{i.name}</span>
-              <span class="tabular-nums text-white/70">{i.grams} g</span>
+          {ingredientRows.map((i) => (
+            <li class="flex items-baseline justify-between gap-3 py-2 text-base">
+              <span>{i.name}{i.household ? <span class="text-white/60"> · {i.household}</span> : null}</span>
+              <span class="shrink-0 tabular-nums text-white/70">{i.grams} g</span>
             </li>
           ))}
         </ul>
         <dl class="mt-5 grid grid-cols-4 gap-2 border-t border-white/15 pt-4">
-          {macros.map((m) => (
+          {detail.map((m) => (
             <div>
               <dt class="text-[11px] uppercase tracking-wider text-white/60">{m.key}</dt>
-              <dd class="mt-0.5 text-xl font-semibold tabular-nums leading-none">{m.value}<span class="text-xs font-normal text-white/60"> /{m.target}</span></dd>
+              <dd class="mt-0.5 text-xl font-semibold tabular-nums leading-none">{m.value}{m.target ? <span class="text-xs font-normal text-white/60"> /{m.target}</span> : null}</dd>
             </div>
           ))}
         </dl>
-        <a href={`${base}recipes/${slug}/`} class="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-ink">
+        <p class="mt-2 text-[11px] text-white/50">Per person · estimates from the ingredient table</p>
+        <a href={`${base}recipes/${recipe.slug}/`} class="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-ink">
           Full recipe <span aria-hidden="true">→</span>
         </a>
       </div>
     </section>
+
+    {recipe.video && (
+      <section class="pane group" aria-label="Video of a similar method">
+        <LiteYouTube id={recipe.video.youtubeId} title={recipe.video.title || recipe.title} isShort={recipe.video.isShort} class="absolute inset-0" />
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-5 pt-16 text-white">
+          <p class="text-xs font-medium uppercase tracking-[0.16em] text-white/70">Watch a similar method</p>
+          <p class="mt-1 line-clamp-2 text-sm">{recipe.video.title}{recipe.video.channel ? <span class="text-white/60"> · {recipe.video.channel}</span> : null}</p>
+        </div>
+      </section>
+    )}
   </div>
-  <!-- pane indicator, driven by data-pane set in Reel.astro -->
   <div class="pointer-events-none absolute inset-x-5 top-3 flex gap-1.5" aria-hidden="true">
-    <span class="bar h-0.5 flex-1 rounded-full bg-white/35"></span>
-    <span class="bar h-0.5 flex-1 rounded-full bg-white/35"></span>
+    {Array.from({ length: panes }, () => <span class="bar h-0.5 flex-1 rounded-full bg-white/35"></span>)}
   </div>
 </li>

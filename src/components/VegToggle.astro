@@ -1,0 +1,25 @@
+---
+/** Site-wide "vegetarian only": hides every non-veg add-on. Persists to localStorage. */
+---
+<button type="button" id="veg-toggle" class="vegtoggle" aria-pressed="false" title="Vegetarian only">
+  <svg class="size-3.5" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" fill="none" stroke="var(--color-veg)" stroke-width="1.5"/><circle cx="8" cy="8" r="3.5" fill="var(--color-veg)"/></svg>
+  <span>Veg only</span>
+</button>
+<style>
+  .vegtoggle { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; border: 1px solid var(--color-line); color: var(--color-muted); font-size: 0.8rem; transition: background 150ms, color 150ms; }
+  .vegtoggle[aria-pressed="true"] { background: var(--color-veg); border-color: var(--color-veg); color: white; }
+  .vegtoggle[aria-pressed="true"] svg rect { stroke: white; } .vegtoggle[aria-pressed="true"] svg circle { fill: white; }
+</style>
+<script>
+  function init() {
+    const b = document.getElementById('veg-toggle');
+    if (!b || b.dataset.ready) return;
+    b.dataset.ready = '1';
+    const apply = (on: boolean) => { document.documentElement.dataset.vegOnly = String(on); b.setAttribute('aria-pressed', String(on)); };
+    let on = false; try { on = localStorage.getItem('veg-only') === 'true'; } catch {}
+    apply(on);
+    b.addEventListener('click', () => { on = !on; apply(on); try { localStorage.setItem('veg-only', String(on)); } catch {} });
+  }
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

@@ -1,0 +1,23 @@
+---
+import VegToggle from './VegToggle.astro';
+import ThemeToggle from './ThemeToggle.astro';
+interface Props { current?: 'chart' | 'library' | 'recipe' }
+const { current } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+<header class="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur print:hidden">
+  <div class="mx-auto flex h-14 max-w-5xl items-center justify-between gap-3 px-4">
+    <a href={base} class="font-display text-xl leading-none">Momo's <em class="text-accent">Diet Plan</em></a>
+    <nav class="flex items-center gap-1 text-sm" aria-label="Site">
+      <a href={base} class:list={['navlink', current === 'chart' && 'active']} aria-current={current === 'chart' ? 'page' : undefined}>Chart</a>
+      <a href={`${base}library/`} class:list={['navlink', current === 'library' && 'active']} aria-current={current === 'library' ? 'page' : undefined}>Recipes</a>
+      <VegToggle />
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+<style>
+  .navlink { padding: 6px 10px; border-radius: var(--radius-sm); color: var(--color-muted); }
+  .navlink:hover { color: var(--color-ink); background: var(--color-surface); }
+  .navlink.active { color: var(--color-ink); font-weight: 500; }
+</style>

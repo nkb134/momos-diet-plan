@@ -1,0 +1,13 @@
+---
+/** FSSAI veg / non-veg mark as inline SVG with a text alternative. */
+interface Props { diet: 'veg' | 'egg' | 'nonveg'; class?: string }
+const { diet, class: cls = 'size-3.5' } = Astro.props;
+const veg = diet === 'veg';
+const colour = veg ? 'var(--color-veg)' : 'var(--color-nonveg)';
+const label = veg ? 'Vegetarian' : diet === 'egg' ? 'Contains egg' : 'Non-vegetarian';
+---
+<svg class={cls} viewBox="0 0 16 16" role="img" aria-label={label}>
+  <title>{label}</title>
+  <rect x="1" y="1" width="14" height="14" fill="none" stroke={colour} stroke-width="1.5" />
+  {veg ? <circle cx="8" cy="8" r="3.5" fill={colour} /> : <path d="M8 4.5 12 11.5H4Z" fill={colour} />}
+</svg>

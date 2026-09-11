@@ -1,0 +1,43 @@
+name: Recipe from issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  scaffold:
+    if: contains(github.event.issue.labels.*.name, 'recipe')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Write recipe file from the issue body
+        id: write
+        env:
+          BODY: ${{ github.event.issue.body }}
+        run: node scripts/recipe-from-issue.mjs
+      - name: Compute macros and validate
+        run: npm run compute-macros && npm run validate
+      - name: Open pull request
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: recipe/${{ steps.write.outputs.slug }}
+          title: "feat(recipe): ${{ steps.write.outputs.title }}"
+          commit-message: "feat(recipe): add ${{ steps.write.outputs.slug }}"
+          body: |
+            Scaffolded from #${{ github.event.issue.number }}. Add `src/assets/recipes/${{ steps.write.outputs.slug }}.jpg` before merging, or the placeholder card will be used.
+      - name: Comment on the issue
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Recipe file written and macros computed: ${{ steps.pr.outputs.pull-request-url }}
+            Preview after merge: https://nkb134.github.io/momos-diet-plan/recipes/${{ steps.write.outputs.slug }}/

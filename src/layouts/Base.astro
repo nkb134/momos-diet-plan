@@ -3,25 +3,42 @@ import '@fontsource-variable/geist';
 import '@fontsource/instrument-serif/400.css';
 import '@fontsource/instrument-serif/400-italic.css';
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 
-interface Props {
-  title: string;
-  description?: string;
-}
-const { title, description = "A 14-day high-protein, carb-cycled vegetarian meal plan." } = Astro.props;
+interface Props { title: string; description?: string; ogImage?: string }
+const { title, description = 'A 14-day high-protein, carb-cycled vegetarian meal plan with recipes.', ogImage } = Astro.props;
 const base = import.meta.env.BASE_URL;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#faf8f5" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
     <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="manifest" href={`${base}manifest.webmanifest`} />
     <title>{title}</title>
+    <ClientRouter />
+    <script is:inline>
+      // Theme and veg-only before first paint so nothing flashes.
+      try {
+        var t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.dataset.theme = 'dark';
+        var v = localStorage.getItem('veg-only'); if (v === 'true') document.documentElement.dataset.vegOnly = 'true';
+      } catch (e) {}
+    </script>
   </head>
   <body class="min-h-dvh bg-paper text-ink">
     <slot />
+    <script>
+      if ('serviceWorker' in navigator) {
+        const base = import.meta.env.BASE_URL;
+        addEventListener('load', () => navigator.serviceWorker.register(`${base}sw.js`, { scope: base }).catch(() => {}));
+      }
+    </script>
   </body>
 </html>

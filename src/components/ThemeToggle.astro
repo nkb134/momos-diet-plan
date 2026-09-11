@@ -1,0 +1,19 @@
+---
+/** Manual light/dark override. Light is the default; the choice persists. */
+---
+<button type="button" id="theme-toggle" class="grid size-8 place-items-center rounded-full text-muted hover:bg-surface hover:text-ink" aria-label="Switch to dark theme" aria-pressed="false">
+  <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+</button>
+<script>
+  function init() {
+    const b = document.getElementById('theme-toggle');
+    if (!b || b.dataset.ready) return;
+    b.dataset.ready = '1';
+    const apply = (dark: boolean) => { document.documentElement.dataset.theme = dark ? 'dark' : 'light'; b.setAttribute('aria-pressed', String(dark)); b.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme'); };
+    let dark = false; try { dark = localStorage.getItem('theme') === 'dark'; } catch {}
+    apply(dark);
+    b.addEventListener('click', () => { dark = !dark; apply(dark); try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {} });
+  }
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

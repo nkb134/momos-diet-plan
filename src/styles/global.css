@@ -103,3 +103,14 @@
 /* image tiles: the photo is the colour; only user interaction moves it */
 .tile img { transition: transform 600ms var(--ease-out-quart); }
 .tile:hover img, .tile:focus-within img { transform: scale(1.03); }
+
+/* ---------- print ---------- */
+@media print {
+  .daynav, .reel-frame, dialog::backdrop, [data-print-hide] { display: none !important; }
+  body { background: white; color: black; }
+  a { color: inherit; text-decoration: none; }
+  .recipe-print { display: block; }
+}
+
+/* cook mode: big steps, one at a time, screen stays awake */
+html[data-cook-mode] body { overflow: hidden; }
