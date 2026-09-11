@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+---
+<Base title="Momo's Diet Plan">
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <p class="font-display text-lg font-semibold uppercase text-chilli">Milestone 1</p>
+    <h1 class="mt-2 text-4xl font-extrabold">Momo's Diet Plan</h1>
+    <p class="mt-4 max-w-prose text-lg">
+      Placeholder page. The chart, recipes, and validator land in the next milestones.
+    </p>
+    <div class="mt-8 border-t-rule border-ink pt-4 text-sm">
+      <p>Base path: <code>{base}</code></p>
+      <p>Font check: <span class="font-display text-xl font-semibold uppercase">Barlow Condensed</span> / <span class="font-body">Barlow</span></p>
+      <p class="mt-2 flex gap-2">
+        <span class="inline-block h-4 w-4 bg-chilli" aria-hidden="true"></span>
+        <span class="inline-block h-4 w-4 bg-turmeric" aria-hidden="true"></span>
+        <span class="inline-block h-4 w-4 bg-veg" aria-hidden="true"></span>
+        <span class="inline-block h-4 w-4 bg-nonveg" aria-hidden="true"></span>
+        <span>token colours</span>
+      </p>
+    </div>
+  </main>
+</Base>

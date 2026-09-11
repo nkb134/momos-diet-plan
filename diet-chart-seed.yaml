@@ -1,0 +1,1242 @@
+# Seed data for the diet chart site.
+# Drop into src/data/ and src/content/. Macros are derived from `ingredients`,
+# never hand-written. Verify every ingredient row against IFCT 2017 / USDA before use.
+
+ingredients:  # per 100 g: kcal, protein_g, carb_g, fibre_g, fat_g
+  almonds: { kcal: 579, protein_g: 21.0, carb_g: 22.0, fibre_g: 12.5, fat_g: 50.0, source: TODO }
+  amla: { kcal: 44, protein_g: 0.9, carb_g: 10.0, fibre_g: 4.3, fat_g: 0.6, source: TODO }
+  atta: { kcal: 341, protein_g: 12.0, carb_g: 69.0, fibre_g: 11.0, fat_g: 1.7, source: TODO }
+  baingan: { kcal: 25, protein_g: 1.0, carb_g: 6.0, fibre_g: 3.0, fat_g: 0.2, source: TODO }
+  bajra_flour: { kcal: 361, protein_g: 11.0, carb_g: 67.0, fibre_g: 11.0, fat_g: 5.0, source: TODO }
+  beans_french: { kcal: 31, protein_g: 1.8, carb_g: 7.0, fibre_g: 3.4, fat_g: 0.1, source: TODO }
+  beetroot: { kcal: 43, protein_g: 1.6, carb_g: 10.0, fibre_g: 2.8, fat_g: 0.2, source: TODO }
+  besan: { kcal: 387, protein_g: 22.0, carb_g: 58.0, fibre_g: 11.0, fat_g: 6.7, source: TODO }
+  bhindi: { kcal: 33, protein_g: 1.9, carb_g: 7.0, fibre_g: 3.2, fat_g: 0.2, source: TODO }
+  buttermilk: { kcal: 30, protein_g: 1.6, carb_g: 3.0, fibre_g: 0.0, fat_g: 1.0, source: TODO }
+  cabbage: { kcal: 25, protein_g: 1.3, carb_g: 5.8, fibre_g: 2.5, fat_g: 0.1, source: TODO }
+  capsicum: { kcal: 27, protein_g: 1.0, carb_g: 6.0, fibre_g: 2.0, fat_g: 0.2, source: TODO }
+  carrot: { kcal: 41, protein_g: 0.9, carb_g: 10.0, fibre_g: 2.8, fat_g: 0.2, source: TODO }
+  cauliflower: { kcal: 25, protein_g: 1.9, carb_g: 5.0, fibre_g: 2.0, fat_g: 0.3, source: TODO }
+  chana_dal: { kcal: 360, protein_g: 20.0, carb_g: 60.0, fibre_g: 13.0, fat_g: 5.0, source: TODO }
+  chia: { kcal: 486, protein_g: 17.0, carb_g: 42.0, fibre_g: 34.0, fat_g: 31.0, source: TODO }
+  chicken_breast: { kcal: 165, protein_g: 31.0, carb_g: 0.0, fibre_g: 0.0, fat_g: 3.6, source: TODO }
+  coconut_fresh: { kcal: 354, protein_g: 3.3, carb_g: 15.0, fibre_g: 9.0, fat_g: 33.0, source: TODO }
+  coriander: { kcal: 23, protein_g: 2.1, carb_g: 3.7, fibre_g: 2.8, fat_g: 0.5, source: TODO }
+  cucumber: { kcal: 15, protein_g: 0.7, carb_g: 3.6, fibre_g: 0.5, fat_g: 0.1, source: TODO }
+  curd_toned: { kcal: 60, protein_g: 3.4, carb_g: 4.4, fibre_g: 0.0, fat_g: 3.0, source: TODO }
+  drumstick: { kcal: 37, protein_g: 2.1, carb_g: 8.5, fibre_g: 3.2, fat_g: 0.2, source: TODO }
+  egg: { kcal: 155, protein_g: 13.0, carb_g: 1.1, fibre_g: 0.0, fat_g: 11.0, source: TODO }
+  egg_white: { kcal: 52, protein_g: 11.0, carb_g: 0.7, fibre_g: 0.0, fat_g: 0.2, source: TODO }
+  fish_rohu: { kcal: 97, protein_g: 16.6, carb_g: 0.0, fibre_g: 0.0, fat_g: 3.0, source: TODO }
+  flaxseed: { kcal: 534, protein_g: 18.0, carb_g: 29.0, fibre_g: 27.0, fat_g: 42.0, source: TODO }
+  foxtail_millet: { kcal: 331, protein_g: 12.0, carb_g: 60.0, fibre_g: 8.0, fat_g: 4.0, source: TODO }
+  ghee: { kcal: 900, protein_g: 0.0, carb_g: 0.0, fibre_g: 0.0, fat_g: 100.0, source: TODO }
+  ginger_garlic: { kcal: 100, protein_g: 4.0, carb_g: 20.0, fibre_g: 3.0, fat_g: 0.5, source: TODO }
+  greek_curd: { kcal: 59, protein_g: 10.0, carb_g: 3.6, fibre_g: 0.0, fat_g: 0.4, source: TODO }
+  green_chilli: { kcal: 40, protein_g: 2.0, carb_g: 9.0, fibre_g: 3.0, fat_g: 0.4, source: TODO }
+  green_peas: { kcal: 81, protein_g: 5.4, carb_g: 14.0, fibre_g: 5.0, fat_g: 0.4, source: TODO }
+  guava: { kcal: 68, protein_g: 2.6, carb_g: 14.0, fibre_g: 5.4, fat_g: 1.0, source: TODO }
+  hung_curd: { kcal: 98, protein_g: 9.5, carb_g: 4.0, fibre_g: 0.0, fat_g: 4.5, source: TODO }
+  jowar_flour: { kcal: 349, protein_g: 10.0, carb_g: 72.0, fibre_g: 9.7, fat_g: 1.9, source: TODO }
+  kabuli_chana: { kcal: 360, protein_g: 19.0, carb_g: 61.0, fibre_g: 17.0, fat_g: 6.0, source: TODO }
+  kala_chana: { kcal: 360, protein_g: 20.0, carb_g: 61.0, fibre_g: 18.0, fat_g: 5.0, source: TODO }
+  lauki: { kcal: 14, protein_g: 0.6, carb_g: 3.4, fibre_g: 0.5, fat_g: 0.0, source: TODO }
+  lemon: { kcal: 29, protein_g: 1.1, carb_g: 9.0, fibre_g: 2.8, fat_g: 0.3, source: TODO }
+  lobia: { kcal: 336, protein_g: 24.0, carb_g: 60.0, fibre_g: 11.0, fat_g: 1.3, source: TODO }
+  masoor_dal: { kcal: 352, protein_g: 25.0, carb_g: 60.0, fibre_g: 11.0, fat_g: 1.0, source: TODO }
+  methi_leaves: { kcal: 49, protein_g: 4.4, carb_g: 6.0, fibre_g: 4.9, fat_g: 0.9, source: TODO }
+  milk_toned: { kcal: 58, protein_g: 3.2, carb_g: 4.7, fibre_g: 0.0, fat_g: 3.0, source: TODO }
+  moong_dal: { kcal: 348, protein_g: 24.0, carb_g: 59.0, fibre_g: 16.0, fat_g: 1.2, source: TODO }
+  moong_sprouts: { kcal: 30, protein_g: 3.0, carb_g: 6.0, fibre_g: 1.8, fat_g: 0.2, source: TODO }
+  moringa_leaves: { kcal: 64, protein_g: 9.0, carb_g: 8.0, fibre_g: 2.0, fat_g: 1.4, source: TODO }
+  mushroom: { kcal: 22, protein_g: 3.1, carb_g: 3.3, fibre_g: 1.0, fat_g: 0.3, source: TODO }
+  oats: { kcal: 389, protein_g: 17.0, carb_g: 66.0, fibre_g: 10.0, fat_g: 7.0, source: TODO }
+  oil: { kcal: 884, protein_g: 0.0, carb_g: 0.0, fibre_g: 0.0, fat_g: 100.0, source: TODO }
+  onion: { kcal: 40, protein_g: 1.1, carb_g: 9.0, fibre_g: 1.7, fat_g: 0.1, source: TODO }
+  palak: { kcal: 23, protein_g: 2.9, carb_g: 3.6, fibre_g: 2.2, fat_g: 0.4, source: TODO }
+  paneer: { kcal: 296, protein_g: 18.3, carb_g: 6.1, fibre_g: 0.0, fat_g: 22.0, source: TODO }
+  paneer_lowfat: { kcal: 210, protein_g: 22.0, carb_g: 5.0, fibre_g: 0.0, fat_g: 12.0, source: TODO }
+  papaya: { kcal: 43, protein_g: 0.5, carb_g: 11.0, fibre_g: 1.7, fat_g: 0.3, source: TODO }
+  peanut_butter: { kcal: 588, protein_g: 25.0, carb_g: 20.0, fibre_g: 6.0, fat_g: 50.0, source: TODO }
+  peanuts: { kcal: 567, protein_g: 26.0, carb_g: 16.0, fibre_g: 9.0, fat_g: 49.0, source: TODO }
+  poha: { kcal: 346, protein_g: 6.6, carb_g: 77.0, fibre_g: 1.5, fat_g: 1.2, source: TODO }
+  prawns: { kcal: 99, protein_g: 24.0, carb_g: 0.2, fibre_g: 0.0, fat_g: 0.3, source: TODO }
+  pumpkin: { kcal: 26, protein_g: 1.0, carb_g: 6.5, fibre_g: 0.5, fat_g: 0.1, source: TODO }
+  quinoa: { kcal: 368, protein_g: 14.0, carb_g: 64.0, fibre_g: 7.0, fat_g: 6.0, source: TODO }
+  radish: { kcal: 16, protein_g: 0.7, carb_g: 3.4, fibre_g: 1.6, fat_g: 0.1, source: TODO }
+  ragi_flour: { kcal: 328, protein_g: 7.3, carb_g: 72.0, fibre_g: 11.0, fat_g: 1.3, source: TODO }
+  rajma: { kcal: 333, protein_g: 24.0, carb_g: 60.0, fibre_g: 25.0, fat_g: 1.0, source: TODO }
+  rava: { kcal: 360, protein_g: 12.0, carb_g: 73.0, fibre_g: 3.5, fat_g: 1.0, source: TODO }
+  rice_brown: { kcal: 362, protein_g: 7.9, carb_g: 76.0, fibre_g: 3.5, fat_g: 2.9, source: TODO }
+  rice_white: { kcal: 345, protein_g: 6.8, carb_g: 78.0, fibre_g: 0.6, fat_g: 0.5, source: TODO }
+  sattu: { kcal: 400, protein_g: 22.0, carb_g: 58.0, fibre_g: 17.0, fat_g: 6.0, source: TODO }
+  sesame: { kcal: 573, protein_g: 18.0, carb_g: 23.0, fibre_g: 12.0, fat_g: 50.0, source: TODO }
+  soya_chunks: { kcal: 345, protein_g: 52.0, carb_g: 33.0, fibre_g: 13.0, fat_g: 0.5, source: TODO }
+  spices: { kcal: 300, protein_g: 10.0, carb_g: 50.0, fibre_g: 25.0, fat_g: 8.0, source: TODO }
+  tamarind: { kcal: 239, protein_g: 2.8, carb_g: 62.0, fibre_g: 5.1, fat_g: 0.6, source: TODO }
+  tinda: { kcal: 20, protein_g: 0.8, carb_g: 4.5, fibre_g: 1.5, fat_g: 0.1, source: TODO }
+  tofu: { kcal: 76, protein_g: 8.0, carb_g: 1.9, fibre_g: 0.3, fat_g: 4.8, source: TODO }
+  tomato: { kcal: 18, protein_g: 0.9, carb_g: 3.9, fibre_g: 1.2, fat_g: 0.2, source: TODO }
+  toor_dal: { kcal: 343, protein_g: 22.0, carb_g: 62.0, fibre_g: 15.0, fat_g: 1.5, source: TODO }
+  urad_dal: { kcal: 341, protein_g: 25.0, carb_g: 59.0, fibre_g: 18.0, fat_g: 1.6, source: TODO }
+  walnuts: { kcal: 654, protein_g: 15.0, carb_g: 14.0, fibre_g: 6.7, fat_g: 65.0, source: TODO }
+
+recipes:
+  baingan-bharta-curd:
+    title: "Baingan Bharta with Paneer and Curd"
+    diet: veg
+    meals: [dinner]
+    cuisine: Punjabi
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      baingan: 200
+      onion: 45
+      tomato: 50
+      oil: 5.4
+      spices: 4
+      paneer_lowfat: 130
+      greek_curd: 180
+  besan-chilla-curd:
+    title: "Besan Chilla with Hung Curd and Mint"
+    diet: veg
+    meals: [breakfast]
+    cuisine: North Indian
+    load: moderate
+    anchor: hung_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      besan: 55
+      hung_curd: 150
+      onion: 40
+      capsicum: 40
+      tomato: 30
+      oil: 4.8
+      spices: 3
+      coriander: 10
+  boiled-egg-addon:
+    title: "Masala Boiled Eggs (add-on)"
+    diet: nonveg
+    meals: [snack]
+    cuisine: North Indian
+    load: light
+    anchor: egg   # protein component the plan scales
+    ingredients:  # grams, base serving
+      egg: 100
+      oil: 1.8
+      spices: 2
+      lemon: 5
+  cabbage-paneer-thoran:
+    title: "Cabbage Paneer Thoran with Buttermilk"
+    diet: veg
+    meals: [dinner]
+    cuisine: Kerala
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      cabbage: 150
+      coconut_fresh: 10
+      buttermilk: 250
+      carrot: 50
+      oil: 4.8
+      spices: 4
+      paneer_lowfat: 140
+  chana-dal-lauki-roti:
+    title: "Chana Dal with Lauki and Roti"
+    diet: veg
+    meals: [lunch]
+    cuisine: Bengali
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      chana_dal: 60
+      lauki: 150
+      atta: 40
+      tomato: 50
+      oil: 6.0
+      spices: 5
+      coconut_fresh: 7.0
+      paneer_lowfat: 50
+      greek_curd: 200
+  chana-dhokla-curd:
+    title: "Chana Dal Dhokla with Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Gujarati
+    load: light
+    anchor: hung_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 10
+      chana_dal: 55
+      curd_toned: 200
+      hung_curd: 60
+      green_chilli: 5
+      coriander: 10
+      oil: 3.6
+      sesame: 4.8
+      spices: 3
+  chana-sundal-snack:
+    title: "Kabuli Chana Sundal with Coconut"
+    diet: veg
+    meals: [snack]
+    cuisine: Tamil
+    load: light
+    anchor: greek_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      kabuli_chana: 55
+      coconut_fresh: 10
+      spices: 3
+      coriander: 8
+      greek_curd: 180
+  chicken-stew-addon:
+    title: "Pepper Chicken Stew (add-on)"
+    diet: nonveg
+    meals: [dinner]
+    cuisine: Kerala
+    load: light
+    anchor: chicken_breast   # protein component the plan scales
+    ingredients:  # grams, base serving
+      chicken_breast: 150
+      coconut_fresh: 10
+      onion: 35
+      carrot: 40
+      oil: 3.6
+      spices: 4
+  chole-jowar:
+    title: "Chole with Jowar Roti and Salad"
+    diet: veg
+    meals: [lunch]
+    cuisine: Punjabi
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      kabuli_chana: 70
+      jowar_flour: 45
+      onion: 50
+      tomato: 60
+      oil: 6.0
+      spices: 5
+      cucumber: 60
+      carrot: 40
+      paneer_lowfat: 40
+      greek_curd: 180
+  dal-palak-veg:
+    title: "Dal Palak with Steamed Vegetables"
+    diet: veg
+    meals: [dinner]
+    cuisine: North Indian
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 50
+      palak: 180
+      lauki: 120
+      carrot: 60
+      oil: 5.4
+      spices: 4
+      paneer_lowfat: 90
+      greek_curd: 100
+  dal-tadka-paneer-roti:
+    title: "Toor Dal Tadka with Paneer Sabzi and Roti"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      toor_dal: 55
+      atta: 40
+      capsicum: 50
+      onion: 40
+      tomato: 50
+      oil: 6.6
+      spices: 5
+      paneer_lowfat: 90
+      greek_curd: 100
+  egg-curry-addon:
+    title: "Egg Curry (add-on)"
+    diet: nonveg
+    meals: [lunch]
+    cuisine: Bengali
+    load: light
+    anchor: egg   # protein component the plan scales
+    ingredients:  # grams, base serving
+      egg: 100
+      onion: 40
+      tomato: 50
+      oil: 4.2
+      spices: 4
+      ginger_garlic: 6
+  fish-curry-addon:
+    title: "Rohu Curry, Andhra Style (add-on)"
+    diet: nonveg
+    meals: [lunch]
+    cuisine: Andhra
+    load: light
+    anchor: fish_rohu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      fish_rohu: 160
+      tomato: 50
+      onion: 35
+      tamarind: 6
+      oil: 4.8
+      spices: 4
+  grilled-fish-addon:
+    title: "Tawa-Grilled Fish (add-on)"
+    diet: nonveg
+    meals: [dinner]
+    cuisine: Kerala
+    load: light
+    anchor: fish_rohu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      fish_rohu: 170
+      oil: 3.6
+      spices: 4
+      lemon: 10
+      ginger_garlic: 6
+  grilled-paneer-salad-lunch:
+    title: "Grilled Paneer with Palak and Mushroom Salad"
+    diet: veg
+    meals: [lunch]
+    cuisine: Fusion
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      chia: 10
+      cabbage: 70
+      carrot: 50
+      palak: 150
+      mushroom: 110
+      cucumber: 80
+      beetroot: 50
+      sesame: 8.0
+      oil: 5.4
+      lemon: 10
+      spices: 4
+      paneer_lowfat: 170
+      greek_curd: 150
+  hung-curd-flax-bowl:
+    title: "Hung Curd Bowl with Flax and Guava"
+    diet: veg
+    meals: [snack]
+    cuisine: Fusion
+    load: light
+    anchor: hung_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      hung_curd: 220
+      flaxseed: 12
+      guava: 100
+      almonds: 8.0
+  idli-sambar-curd:
+    title: "Millet Idli with Sambar and Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Tamil
+    load: moderate
+    anchor: toor_dal   # protein component the plan scales
+    ingredients:  # grams, base serving
+      foxtail_millet: 35
+      urad_dal: 25
+      toor_dal: 30
+      curd_toned: 180
+      drumstick: 40
+      carrot: 30
+      tamarind: 5
+      oil: 3.6
+      spices: 4
+  kala-chana-millet:
+    title: "Kala Chana Sundal with Millet and Curd"
+    diet: veg
+    meals: [lunch]
+    cuisine: Tamil
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      kala_chana: 70
+      foxtail_millet: 45
+      coconut_fresh: 10
+      carrot: 50
+      oil: 5.4
+      spices: 5
+      paneer_lowfat: 40
+      greek_curd: 200
+  lauki-chana-dal-paneer:
+    title: "Lauki Chana Dal with Grilled Paneer"
+    diet: veg
+    meals: [dinner]
+    cuisine: Bengali
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      chana_dal: 40
+      lauki: 180
+      tomato: 40
+      oil: 4.8
+      spices: 4
+      coriander: 10
+      paneer_lowfat: 110
+  lobia-masala-roti:
+    title: "Lobia Masala with Roti and Salad"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      lobia: 70
+      atta: 40
+      onion: 50
+      tomato: 60
+      oil: 6.0
+      spices: 5
+      cucumber: 60
+      beetroot: 40
+      paneer_lowfat: 40
+      greek_curd: 200
+  masoor-bhindi-rice:
+    title: "Masoor Dal with Bhindi Masala and Brown Rice"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      masoor_dal: 55
+      bhindi: 120
+      rice_brown: 50
+      onion: 40
+      tomato: 50
+      oil: 6.6
+      spices: 5
+      paneer_lowfat: 50
+      greek_curd: 200
+  methi-paneer-bajra:
+    title: "Methi Paneer with Half Bajra Roti"
+    diet: veg
+    meals: [dinner]
+    cuisine: Rajasthani
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      methi_leaves: 120
+      bajra_flour: 25
+      onion: 40
+      tomato: 40
+      oil: 5.4
+      spices: 4
+      paneer_lowfat: 140
+  moong-chilla-paneer:
+    title: "Moong Dal Chilla with Paneer Stuffing"
+    diet: veg
+    meals: [breakfast]
+    cuisine: North Indian
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 55
+      onion: 40
+      tomato: 30
+      palak: 30
+      green_chilli: 5
+      oil: 4.8
+      spices: 3
+      coriander: 10
+      paneer_lowfat: 70
+  moong-paneer-thali:
+    title: "Whole Moong with Paneer and Vegetable Thali"
+    diet: veg
+    meals: [lunch]
+    cuisine: Maharashtrian
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 45
+      cauliflower: 120
+      beans_french: 80
+      flaxseed: 10
+      onion: 40
+      tomato: 50
+      oil: 6.0
+      spices: 5
+      cucumber: 60
+      paneer_lowfat: 130
+      greek_curd: 160
+  moong-soup-tofu:
+    title: "Moong Dal Soup with Tofu Stir-Fry"
+    diet: veg
+    meals: [dinner]
+    cuisine: Fusion
+    load: light
+    anchor: tofu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 40
+      tofu: 200
+      cabbage: 100
+      carrot: 60
+      beans_french: 60
+      oil: 5.4
+      ginger_garlic: 8
+      spices: 4
+  moringa-dal-tofu:
+    title: "Moringa Leaf Dal with Tofu Poriyal"
+    diet: veg
+    meals: [dinner]
+    cuisine: Tamil
+    load: light
+    anchor: greek_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 45
+      moringa_leaves: 80
+      tofu: 180
+      coconut_fresh: 8.4
+      oil: 4.8
+      spices: 4
+      greek_curd: 100
+  mushroom-matar-paneer:
+    title: "Mushroom Matar Paneer with Roti"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      mushroom: 120
+      green_peas: 50
+      atta: 40
+      onion: 40
+      tomato: 50
+      oil: 6.0
+      spices: 5
+      paneer_lowfat: 110
+      greek_curd: 150
+  mushroom-paneer-bhurji:
+    title: "Mushroom Paneer Bhurji"
+    diet: veg
+    meals: [dinner]
+    cuisine: North Indian
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      mushroom: 150
+      onion: 40
+      tomato: 50
+      capsicum: 50
+      oil: 5.4
+      spices: 4
+      coriander: 10
+      paneer_lowfat: 130
+  oats-sprouts-curd:
+    title: "Savoury Oats Upma with Sprouts and Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: South Indian
+    load: moderate
+    anchor: curd_toned   # protein component the plan scales
+    ingredients:  # grams, base serving
+      oats: 45
+      moong_sprouts: 90
+      curd_toned: 200
+      carrot: 40
+      beans_french: 40
+      peanuts: 9.0
+      oil: 3.6
+      spices: 3
+  palak-tofu-jowar:
+    title: "Palak Tofu with One Jowar Roti"
+    diet: veg
+    meals: [dinner]
+    cuisine: North Indian
+    load: light
+    anchor: tofu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      tofu: 200
+      palak: 200
+      jowar_flour: 30
+      onion: 35
+      tomato: 40
+      oil: 5.4
+      spices: 4
+      ginger_garlic: 8
+  paneer-bhurji-jowar:
+    title: "Paneer Bhurji with Jowar Roti"
+    diet: veg
+    meals: [breakfast]
+    cuisine: North Indian
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      jowar_flour: 40
+      onion: 50
+      tomato: 50
+      capsicum: 40
+      oil: 6.0
+      spices: 4
+      ginger_garlic: 6
+      paneer_lowfat: 120
+  paneer-bhurji-salad:
+    title: "Paneer Bhurji with Kachumber"
+    diet: veg
+    meals: [dinner]
+    cuisine: North Indian
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      onion: 45
+      tomato: 60
+      capsicum: 50
+      cucumber: 90
+      oil: 5.4
+      spices: 4
+      coriander: 10
+      paneer_lowfat: 150
+  paneer-peanut-bowl:
+    title: "Peppered Paneer and Peanut Bowl"
+    diet: veg
+    meals: [snack]
+    cuisine: South Indian
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 10
+      cucumber: 70
+      peanuts: 11
+      capsicum: 40
+      oil: 2.4
+      spices: 3
+      paneer_lowfat: 110
+      greek_curd: 120
+  paneer-sabzi-thali:
+    title: "Paneer Sabzi Thali with Bhindi and Lauki"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      bhindi: 120
+      lauki: 120
+      jowar_flour: 25
+      flaxseed: 10
+      onion: 40
+      tomato: 50
+      oil: 6.0
+      spices: 5
+      cucumber: 60
+      paneer_lowfat: 160
+      greek_curd: 180
+  paneer-tikka-greens:
+    title: "Tandoori Paneer with Sautéed Greens"
+    diet: veg
+    meals: [dinner]
+    cuisine: Punjabi
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      hung_curd: 100
+      palak: 150
+      methi_leaves: 50
+      capsicum: 60
+      onion: 40
+      oil: 5.4
+      spices: 5
+      lemon: 8
+      paneer_lowfat: 150
+  paneer-tikka-snack:
+    title: "Tawa Paneer Tikka Skewers"
+    diet: veg
+    meals: [snack]
+    cuisine: Punjabi
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      capsicum: 50
+      onion: 40
+      hung_curd: 60
+      oil: 3.6
+      spices: 4
+      lemon: 8
+      paneer_lowfat: 120
+  pesarattu-hungcurd:
+    title: "Pesarattu with Hung Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Andhra
+    load: moderate
+    anchor: hung_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_dal: 60
+      hung_curd: 160
+      onion: 40
+      green_chilli: 5
+      ginger_garlic: 6
+      oil: 4.8
+      spices: 3
+  poha-sprouts-peanut:
+    title: "Sprouted Moong Poha with Peanuts"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Maharashtrian
+    load: moderate
+    anchor: hung_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      poha: 45
+      moong_sprouts: 100
+      hung_curd: 120
+      onion: 40
+      peanuts: 11
+      oil: 4.2
+      spices: 3
+      lemon: 8
+  quinoa-paneer-upma:
+    title: "Quinoa Upma with Paneer"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Fusion
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      quinoa: 45
+      carrot: 40
+      green_peas: 40
+      beans_french: 30
+      oil: 4.2
+      spices: 3
+      coriander: 10
+      paneer_lowfat: 80
+  ragi-dosa-paneer:
+    title: "Ragi Dosa with Paneer Podi Filling"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Karnataka
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      ragi_flour: 40
+      urad_dal: 15
+      coconut_fresh: 10
+      oil: 4.8
+      spices: 4
+      coriander: 10
+      paneer_lowfat: 100
+  rajma-brownrice:
+    title: "Rajma Masala with Brown Rice and Curd"
+    diet: veg
+    meals: [lunch]
+    cuisine: Punjabi
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      rajma: 70
+      rice_brown: 50
+      onion: 50
+      tomato: 60
+      oil: 6.0
+      spices: 5
+      ginger_garlic: 8
+      cucumber: 60
+      paneer_lowfat: 40
+      greek_curd: 200
+  roasted-chana-buttermilk:
+    title: "Roasted Chana with Masala Buttermilk"
+    diet: veg
+    meals: [snack]
+    cuisine: North Indian
+    load: light
+    anchor: kala_chana   # protein component the plan scales
+    ingredients:  # grams, base serving
+      kala_chana: 55
+      buttermilk: 300
+      peanuts: 9.0
+      spices: 3
+      coriander: 8
+  sambar-rice-poriyal:
+    title: "Sambar Rice with Beans Poriyal and Curd"
+    diet: veg
+    meals: [lunch]
+    cuisine: Tamil
+    load: hearty
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      toor_dal: 60
+      rice_brown: 50
+      beans_french: 70
+      drumstick: 50
+      coconut_fresh: 8.4
+      tamarind: 6
+      oil: 6.0
+      spices: 5
+      paneer_lowfat: 50
+      greek_curd: 200
+  sattu-paratha-curd:
+    title: "Sattu Paratha with Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Bihari
+    load: hearty
+    anchor: sattu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      sattu: 55
+      atta: 35
+      curd_toned: 200
+      onion: 30
+      oil: 4.8
+      spices: 3
+      lemon: 5
+  soya-chaat:
+    title: "Soya Chunk Chaat"
+    diet: veg
+    meals: [snack]
+    cuisine: North Indian
+    load: light
+    anchor: soya_chunks   # protein component the plan scales
+    ingredients:  # grams, base serving
+      soya_chunks: 35
+      onion: 30
+      tomato: 40
+      cucumber: 50
+      lemon: 8
+      spices: 3
+      greek_curd: 180
+  soya-curry-rice:
+    title: "Soya Chunk Curry with Rice and Raita"
+    diet: veg
+    meals: [lunch]
+    cuisine: North Indian
+    load: hearty
+    anchor: soya_chunks   # protein component the plan scales
+    ingredients:  # grams, base serving
+      soya_chunks: 55
+      rice_brown: 50
+      onion: 50
+      tomato: 60
+      green_peas: 40
+      oil: 6.0
+      spices: 5
+      cucumber: 50
+      greek_curd: 200
+  soya-masala-oats:
+    title: "Soya Granule Masala Oats"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Indo-Chinese
+    load: moderate
+    anchor: soya_chunks   # protein component the plan scales
+    ingredients:  # grams, base serving
+      oats: 45
+      soya_chunks: 35
+      onion: 40
+      capsicum: 40
+      tomato: 40
+      oil: 4.2
+      spices: 3
+      greek_curd: 150
+  soya-veg-bowl:
+    title: "Soya and Cabbage Bowl with Curd"
+    diet: veg
+    meals: [lunch]
+    cuisine: Indo-Chinese
+    load: moderate
+    anchor: soya_chunks   # protein component the plan scales
+    ingredients:  # grams, base serving
+      soya_chunks: 50
+      cabbage: 130
+      capsicum: 60
+      carrot: 70
+      flaxseed: 10
+      oil: 5.4
+      ginger_garlic: 8
+      spices: 4
+      greek_curd: 180
+  sprouts-chaat:
+    title: "Moong Sprouts Chaat with Curd"
+    diet: veg
+    meals: [snack]
+    cuisine: Maharashtrian
+    load: light
+    anchor: greek_curd   # protein component the plan scales
+    ingredients:  # grams, base serving
+      moong_sprouts: 150
+      onion: 30
+      tomato: 40
+      lemon: 8
+      spices: 3
+      coriander: 10
+      greek_curd: 200
+  tandoori-chicken-addon:
+    title: "Tandoori Chicken Tikka (add-on)"
+    diet: nonveg
+    meals: [lunch]
+    cuisine: Punjabi
+    load: light
+    anchor: chicken_breast   # protein component the plan scales
+    ingredients:  # grams, base serving
+      chicken_breast: 150
+      hung_curd: 60
+      oil: 3.0
+      spices: 4
+      lemon: 8
+      ginger_garlic: 8
+  thepla-paneer-curd:
+    title: "Methi Thepla with Paneer and Curd"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Gujarati
+    load: moderate
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      atta: 35
+      besan: 15
+      methi_leaves: 50
+      curd_toned: 150
+      oil: 5.4
+      spices: 3
+      paneer_lowfat: 90
+  tofu-akuri:
+    title: "Tofu Akuri with Bajra Roti"
+    diet: veg
+    meals: [breakfast]
+    cuisine: Parsi
+    load: moderate
+    anchor: tofu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 10
+      tofu: 180
+      bajra_flour: 35
+      onion: 45
+      tomato: 45
+      green_chilli: 5
+      oil: 5.4
+      spices: 4
+      coriander: 10
+  tofu-cucumber-salad:
+    title: "Sesame Tofu and Cucumber Salad"
+    diet: veg
+    meals: [snack]
+    cuisine: Japanese
+    load: light
+    anchor: tofu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 10
+      cabbage: 60
+      tofu: 200
+      cucumber: 100
+      carrot: 40
+      sesame: 8.0
+      oil: 3.0
+      lemon: 8
+      spices: 2
+  tofu-tikka-salad:
+    title: "Tofu Tikka with Beetroot Salad"
+    diet: veg
+    meals: [dinner]
+    cuisine: Fusion
+    load: light
+    anchor: tofu   # protein component the plan scales
+    ingredients:  # grams, base serving
+      flaxseed: 8
+      tofu: 220
+      hung_curd: 80
+      beetroot: 70
+      cucumber: 90
+      carrot: 50
+      oil: 4.8
+      spices: 4
+      lemon: 10
+  veg-clear-soup-paneer:
+    title: "Vegetable Clear Soup with Pepper Paneer"
+    diet: veg
+    meals: [dinner]
+    cuisine: Indo-Chinese
+    load: light
+    anchor: paneer_lowfat   # protein component the plan scales
+    ingredients:  # grams, base serving
+      cabbage: 90
+      carrot: 60
+      mushroom: 80
+      beans_french: 50
+      oil: 4.8
+      ginger_garlic: 8
+      spices: 4
+      paneer_lowfat: 150
+
+plan:
+  - week: 1
+    days:
+      - day: Monday
+        training: lift
+        meals:
+          breakfast:
+            veg: moong-chilla-paneer
+            portion: 1.25
+            anchorGrams: { paneer_lowfat: 60 }
+          lunch:
+            veg: rajma-brownrice
+            portion: 1.25
+            anchorGrams: { paneer_lowfat: 35 }
+          snack:
+            veg: sprouts-chaat
+            portion: 1.01
+            anchorGrams: { greek_curd: 140 }
+          dinner:
+            veg: paneer-tikka-greens
+            portion: 1.25
+            anchorGrams: { paneer_lowfat: 165 }
+      - day: Tuesday
+        training: lift
+        meals:
+          breakfast:
+            veg: besan-chilla-curd
+            portion: 1.0
+            anchorGrams: { hung_curd: 195 }
+          lunch:
+            veg: dal-tadka-paneer-roti
+            portion: 1.21
+            anchorGrams: { paneer_lowfat: 140 }
+          snack:
+            veg: paneer-tikka-snack
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 120 }
+          dinner:
+            veg: moong-soup-tofu
+            portion: 1.0
+            anchorGrams: { tofu: 275 }
+            nonVegAddOn: grilled-fish-addon
+      - day: Wednesday
+        training: swim
+        meals:
+          breakfast:
+            veg: oats-sprouts-curd
+            portion: 1.11
+            anchorGrams: { curd_toned: 425 }
+          lunch:
+            veg: mushroom-matar-paneer
+            portion: 1.05
+            anchorGrams: { paneer_lowfat: 130 }
+          snack:
+            veg: hung-curd-flax-bowl
+            portion: 0.8
+            anchorGrams: { hung_curd: 320 }
+          dinner:
+            veg: palak-tofu-jowar
+            portion: 0.8
+            anchorGrams: { tofu: 295 }
+      - day: Thursday
+        training: lift
+        meals:
+          breakfast:
+            veg: paneer-bhurji-jowar
+            portion: 0.98
+            anchorGrams: { paneer_lowfat: 125 }
+          lunch:
+            veg: masoor-bhindi-rice
+            portion: 1.02
+            anchorGrams: { paneer_lowfat: 105 }
+            nonVegAddOn: tandoori-chicken-addon
+          snack:
+            veg: roasted-chana-buttermilk
+            portion: 1.02
+            anchorGrams: { kala_chana: 60 }
+          dinner:
+            veg: dal-palak-veg
+            portion: 0.89
+            anchorGrams: { paneer_lowfat: 80 }
+      - day: Friday
+        training: lift
+        meals:
+          breakfast:
+            veg: pesarattu-hungcurd
+            portion: 1.25
+            anchorGrams: { hung_curd: 330 }
+          lunch:
+            veg: sambar-rice-poriyal
+            portion: 1.25
+            anchorGrams: { paneer_lowfat: 45 }
+          snack:
+            veg: soya-chaat
+            portion: 0.8
+            anchorGrams: { soya_chunks: 20 }
+          dinner:
+            veg: paneer-bhurji-salad
+            portion: 1.25
+            anchorGrams: { paneer_lowfat: 155 }
+      - day: Saturday
+        training: rest
+        meals:
+          breakfast:
+            veg: chana-dhokla-curd
+            portion: 0.89
+            anchorGrams: { hung_curd: 115 }
+          lunch:
+            veg: paneer-sabzi-thali
+            portion: 1.23
+            anchorGrams: { paneer_lowfat: 140 }
+          snack:
+            veg: tofu-cucumber-salad
+            portion: 0.8
+            anchorGrams: { tofu: 195 }
+            nonVegAddOn: boiled-egg-addon
+          dinner:
+            veg: mushroom-paneer-bhurji
+            portion: 0.8
+            anchorGrams: { paneer_lowfat: 105 }
+      - day: Sunday
+        training: rest
+        meals:
+          breakfast:
+            veg: thepla-paneer-curd
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 65 }
+          lunch:
+            veg: soya-veg-bowl
+            portion: 1.0
+            anchorGrams: { soya_chunks: 55 }
+          snack:
+            veg: paneer-peanut-bowl
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 110 }
+          dinner:
+            veg: tofu-tikka-salad
+            portion: 0.89
+            anchorGrams: { tofu: 265 }
+  - week: 2
+    days:
+      - day: Monday
+        training: lift
+        meals:
+          breakfast:
+            veg: sattu-paratha-curd
+            portion: 1.18
+            anchorGrams: { sattu: 85 }
+          lunch:
+            veg: soya-curry-rice
+            portion: 0.99
+            anchorGrams: { soya_chunks: 50 }
+          snack:
+            veg: sprouts-chaat
+            portion: 0.98
+            anchorGrams: { greek_curd: 185 }
+          dinner:
+            veg: lauki-chana-dal-paneer
+            portion: 1.23
+            anchorGrams: { paneer_lowfat: 220 }
+      - day: Tuesday
+        training: lift
+        meals:
+          breakfast:
+            veg: quinoa-paneer-upma
+            portion: 1.14
+            anchorGrams: { paneer_lowfat: 90 }
+          lunch:
+            veg: kala-chana-millet
+            portion: 1.09
+            anchorGrams: { paneer_lowfat: 45 }
+            nonVegAddOn: egg-curry-addon
+          snack:
+            veg: chana-sundal-snack
+            portion: 1.0
+            anchorGrams: { greek_curd: 195 }
+          dinner:
+            veg: methi-paneer-bajra
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 180 }
+      - day: Wednesday
+        training: swim
+        meals:
+          breakfast:
+            veg: soya-masala-oats
+            portion: 0.96
+            anchorGrams: { soya_chunks: 24 }
+          lunch:
+            veg: chana-dal-lauki-roti
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 110 }
+          snack:
+            veg: hung-curd-flax-bowl
+            portion: 0.99
+            anchorGrams: { hung_curd: 270 }
+          dinner:
+            veg: moringa-dal-tofu
+            portion: 0.9
+            anchorGrams: { greek_curd: 65 }
+      - day: Thursday
+        training: lift
+        meals:
+          breakfast:
+            veg: poha-sprouts-peanut
+            portion: 1.09
+            anchorGrams: { hung_curd: 215 }
+          lunch:
+            veg: lobia-masala-roti
+            portion: 1.18
+            anchorGrams: { paneer_lowfat: 33 }
+            nonVegAddOn: fish-curry-addon
+          snack:
+            veg: paneer-tikka-snack
+            portion: 0.93
+            anchorGrams: { paneer_lowfat: 110 }
+          dinner:
+            veg: cabbage-paneer-thoran
+            portion: 1.1
+            anchorGrams: { paneer_lowfat: 140 }
+      - day: Friday
+        training: lift
+        meals:
+          breakfast:
+            veg: idli-sambar-curd
+            portion: 0.99
+            anchorGrams: { toor_dal: 55 }
+          lunch:
+            veg: chole-jowar
+            portion: 0.8
+            anchorGrams: { paneer_lowfat: 70 }
+          snack:
+            veg: roasted-chana-buttermilk
+            portion: 0.9
+            anchorGrams: { kala_chana: 65 }
+          dinner:
+            veg: veg-clear-soup-paneer
+            portion: 1.0
+            anchorGrams: { paneer_lowfat: 265 }
+      - day: Saturday
+        training: rest
+        meals:
+          breakfast:
+            veg: ragi-dosa-paneer
+            portion: 0.8
+            anchorGrams: { paneer_lowfat: 105 }
+          lunch:
+            veg: moong-paneer-thali
+            portion: 1.18
+            anchorGrams: { paneer_lowfat: 105 }
+          snack:
+            veg: tofu-cucumber-salad
+            portion: 0.81
+            anchorGrams: { tofu: 195 }
+          dinner:
+            veg: baingan-bharta-curd
+            portion: 0.82
+            anchorGrams: { paneer_lowfat: 75 }
+            nonVegAddOn: chicken-stew-addon
+      - day: Sunday
+        training: rest
+        meals:
+          breakfast:
+            veg: tofu-akuri
+            portion: 0.8
+            anchorGrams: { tofu: 300 }
+          lunch:
+            veg: grilled-paneer-salad-lunch
+            portion: 0.98
+            anchorGrams: { paneer_lowfat: 115 }
+          snack:
+            veg: paneer-peanut-bowl
+            portion: 0.8
+            anchorGrams: { paneer_lowfat: 60 }
+          dinner:
+            veg: paneer-tikka-greens
+            portion: 0.8
+            anchorGrams: { paneer_lowfat: 85 }

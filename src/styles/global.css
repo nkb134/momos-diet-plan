@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/*
+  Token layer. Tailwind 4 is configured in CSS: every value under @theme
+  becomes a utility (bg-paper, text-ink, font-display, text-lg ...).
+  Components reference these names only, never raw hex.
+
+  Direction: "masala packet". Flat saturated colour blocks, a condensed
+  grotesque, mechanical rules. Six colours total.
+*/
+@theme {
+  /* colours: paper and ink swap in dark mode via the overrides below */
+  --color-paper: oklch(97% 0.008 80);
+  --color-ink: oklch(20% 0.012 60);
+  --color-chilli: oklch(56% 0.21 28);      /* primary accent, protein, "today" */
+  --color-turmeric: oklch(80% 0.16 85);    /* secondary, net carbs, training mark */
+  --color-veg: oklch(52% 0.17 145);        /* FSSAI green, fixed in both modes */
+  --color-nonveg: oklch(42% 0.09 50);      /* FSSAI brown, fixed in both modes */
+
+  /* type: one family, two widths */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+
+  /* modular scale, ratio 1.25 from 1rem */
+  --text-xs: 0.64rem;
+  --text-sm: 0.8rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-4xl: 3.052rem;
+
+  /* spacing: 4px base */
+  --spacing: 0.25rem;
+
+  /* rules */
+  --border-width-rule: 2px;
+}
+
+/* dark mode: swap paper and ink, keep accents and FSSAI marks fixed */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-paper: oklch(18% 0.01 60);
+    --color-ink: oklch(94% 0.008 80);
+  }
+}
+:root[data-theme="dark"] {
+  --color-paper: oklch(18% 0.01 60);
+  --color-ink: oklch(94% 0.008 80);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    color-scheme: light dark;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-chilli);
+    outline-offset: 2px;
+  }
+}
