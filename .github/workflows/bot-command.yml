@@ -46,8 +46,6 @@ jobs:
           CHANGED: ${{ steps.apply.outputs.changed }}
         run: |
           if [ -f bot-reply.txt ]; then TEXT=$(cat bot-reply.txt); else TEXT="✗ The command crashed. Check the Actions log."; fi
-          if [ "$CHANGED" = "true" ]; then TEXT="$TEXT
-
-Deploying, live in about two minutes."; fi
+          if [ "$CHANGED" = "true" ]; then TEXT="$(printf '%s\n\nDeploying, live in about two minutes.' "$TEXT")"; fi
           jq -n --arg c "$CHAT" --arg t "$TEXT" --arg r "$REPLY_TO" '{chat_id:$c, text:$t, parse_mode:"HTML", reply_to_message_id:($r|tonumber), disable_web_page_preview:true}' \
             | curl -s -X POST -H 'content-type: application/json' -d @- "https://api.telegram.org/bot$TOKEN/sendMessage" > /dev/null

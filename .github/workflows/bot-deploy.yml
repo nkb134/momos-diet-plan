@@ -8,14 +8,22 @@ on:
 
 jobs:
   deploy:
-    if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
     runs-on: ubuntu-latest
+    env:
+      HAS_CF: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
     steps:
+      - name: Skip until Cloudflare secrets exist
+        if: env.HAS_CF != 'true'
+        run: echo "CLOUDFLARE_API_TOKEN is not set; nothing to deploy yet."
       - uses: actions/checkout@v7
+        if: env.HAS_CF == 'true'
       - uses: actions/setup-node@v6
+        if: env.HAS_CF == 'true'
         with: { node-version: 22 }
       - run: npm ci --prefix bot
+        if: env.HAS_CF == 'true'
       - name: Deploy Worker with secrets
+        if: env.HAS_CF == 'true'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
