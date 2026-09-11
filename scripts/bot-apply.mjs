@@ -19,8 +19,12 @@ import { planConfig } from '../src/plan.config.ts';
 
 const dryRun = process.argv.includes('--dry-run');
 const payload = JSON.parse(process.argv[2] ?? '{}');
+const ALLOWED = ['swap', 'addon', 'training', 'portion', 'out', 'recipe', 'validate'];
 const command = String(payload.command ?? '').toLowerCase();
 const args = (payload.args ?? []).map(String);
+// Second line of defence behind the Worker: only known commands, only plain characters in args.
+if (!ALLOWED.includes(command)) { console.log(`✗ Unknown command "${command}".`); process.exit(1); }
+if (args.some((a) => !/^[A-Za-z0-9 _.:/-]{0,64}$/.test(a))) { console.log('✗ Arguments may only contain letters, digits, spaces, and _ . : / -'); process.exit(1); }
 const table = loadTable();
 const recipes = loadRecipes();
 const weeks = loadPlan();
