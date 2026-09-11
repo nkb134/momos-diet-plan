@@ -26,8 +26,8 @@ const weeks = [...new Set(days.map((d) => d.week))];
   </div>
 </nav>
 <style>
-  .daynav { position: sticky; bottom: 0; z-index: 20; background: color-mix(in oklch, var(--color-paper) 88%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--color-line); padding-bottom: env(safe-area-inset-bottom); }
-  @media (min-width: 640px) { .daynav { position: static; border-top: 0; border-bottom: 1px solid var(--color-line); background: transparent; backdrop-filter: none; } }
+  .daynav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: color-mix(in oklch, var(--color-paper) 88%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--color-line); padding-bottom: env(safe-area-inset-bottom); }
+  @media (min-width: 640px) { .daynav { position: static; left: auto; right: auto; border-top: 0; border-bottom: 1px solid var(--color-line); background: transparent; backdrop-filter: none; } }
   .daybtn { display: grid; gap: 2px; justify-items: center; min-width: 44px; padding: 6px 8px; border-radius: var(--radius-md); color: var(--color-muted); transition: background 150ms, color 150ms; scroll-snap-align: center; }
   .daybtn:hover { background: var(--color-surface); color: var(--color-ink); }
   .daybtn[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); }

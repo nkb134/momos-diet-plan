@@ -25,7 +25,7 @@ const views = days.map((d) => {
 ---
 <Base title="Momo's Diet Plan">
   <SiteHeader current="chart" />
-  <main id="chart" class="[--chrome-h:240px] sm:[--chrome-h:200px]">
+  <main id="chart" class="pb-20 [--chrome-h:240px] sm:pb-0 sm:[--chrome-h:200px]">
     <div class="hidden sm:block"><DayNav days={days} today={today} /></div>
 
     {views.map(({ d, slides, list }) => (
