@@ -1,0 +1,127 @@
+---
+/**
+ * Vertical reel of the day's meals. Pure scroll-snap; JS only decorates.
+ */
+interface Props { count: number }
+const { count } = Astro.props;
+---
+<div class="reel-frame">
+  <ol class="reel" aria-label="Meals of the day, swipe up for the next">
+    <slot />
+  </ol>
+  <ol class="dots" aria-hidden="true">
+    {Array.from({ length: count }, () => <li></li>)}
+  </ol>
+</div>
+
+<style>
+  .reel-frame {
+    position: relative;
+    height: calc(100dvh - var(--bar-h));
+    max-height: 900px;
+    max-width: 430px;
+    margin-inline: auto;
+    background: black;
+    overflow: hidden;
+  }
+  @media (min-width: 640px) {
+    .reel-frame { border-radius: var(--radius-lg); box-shadow: 0 30px 80px -30px oklch(0% 0 0 / 0.45); }
+  }
+  .reel {
+    height: 100%;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+  .reel::-webkit-scrollbar { display: none; }
+  .reel :global(.slide) {
+    position: relative;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .reel :global(.track) {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+  .reel :global(.track)::-webkit-scrollbar { display: none; }
+  .reel :global(.pane) {
+    position: relative;
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    overflow: hidden;
+  }
+  /* pane indicator */
+  .reel :global(.slide .bar:first-child) { background: white; }
+  .reel :global(.slide[data-pane="1"] .bar:first-child) { background: rgb(255 255 255 / 0.35); }
+  .reel :global(.slide[data-pane="1"] .bar:last-child) { background: white; }
+  /* slide dots */
+  .dots {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    translate: 0 -50%;
+    display: grid;
+    gap: 6px;
+  }
+  .dots li {
+    width: 4px; height: 14px; border-radius: 999px;
+    background: rgb(255 255 255 / 0.35);
+    transition: background 200ms, height 200ms var(--ease-out-quart);
+  }
+  .dots li.active { background: white; height: 24px; }
+  @media (prefers-reduced-motion: reduce) {
+    .reel, .reel :global(.track) { scroll-behavior: auto; }
+  }
+</style>
+
+<script>
+  // Decoration only: which pane is showing, which slide is active, arrow keys.
+  const frame = document.querySelector<HTMLElement>('.reel-frame');
+  const reel = frame?.querySelector<HTMLElement>('.reel');
+  if (frame && reel) {
+    const slides = [...reel.querySelectorAll<HTMLElement>('.slide')];
+    const dots = [...frame.querySelectorAll<HTMLElement>('.dots li')];
+
+    // pane index per slide
+    for (const slide of slides) {
+      const track = slide.querySelector<HTMLElement>('.track')!;
+      track.addEventListener('scroll', () => {
+        slide.dataset.pane = String(Math.round(track.scrollLeft / track.clientWidth));
+      }, { passive: true });
+    }
+
+    // active slide
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          const i = slides.indexOf(e.target as HTMLElement);
+          dots.forEach((d, j) => d.classList.toggle('active', j === i));
+          history.replaceState(null, '', `#${(e.target as HTMLElement).id}`);
+        }
+      }
+    }, { root: reel, threshold: 0.6 });
+    slides.forEach((s) => io.observe(s));
+
+    // keyboard
+    reel.addEventListener('keydown', (ev) => {
+      const active = slides.findIndex((s, j) => dots[j]?.classList.contains('active'));
+      const track = slides[active]?.querySelector<HTMLElement>('.track');
+      const map: Record<string, () => void> = {
+        ArrowDown: () => slides[active + 1]?.scrollIntoView({ block: 'start' }),
+        ArrowUp: () => slides[active - 1]?.scrollIntoView({ block: 'start' }),
+        ArrowRight: () => track?.scrollBy({ left: track.clientWidth }),
+        ArrowLeft: () => track?.scrollBy({ left: -track.clientWidth }),
+      };
+      const fn = map[ev.key];
+      if (fn) { ev.preventDefault(); fn(); }
+    });
+  }
+</script>

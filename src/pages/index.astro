@@ -1,106 +1,65 @@
 ---
 import Base from '../layouts/Base.astro';
+import Reel from '../components/Reel.astro';
+import MealSlide from '../components/MealSlide.astro';
 import { planConfig } from '../plan.config';
 
-const base = import.meta.env.BASE_URL;
 const startLabel = new Date(planConfig.startDate + 'T00:00:00').toLocaleDateString('en-IN', {
-  day: 'numeric', month: 'long', timeZone: planConfig.timeZone,
+  day: 'numeric', month: 'short', timeZone: planConfig.timeZone,
 });
 
-// Static preview of one day from the reference plan (Week 1, Saturday).
+// Static preview of Week 1, Saturday. Ingredient grams are the seed values
+// with the plan's portion and anchorGrams applied; macros are from the
+// reference plan. All of this becomes collection-driven in milestone 2.
 const day = {
-  name: 'Saturday', date: '12 Sep', training: 'Rest day',
-  macros: [
-    { key: 'Protein', value: 144, target: 150, unit: 'g', primary: true },
-    { key: 'Net carbs', value: 116, target: 120, unit: 'g', primary: true },
-    { key: 'Fibre', value: 38, target: 35, unit: 'g', primary: false },
-    { key: 'Energy', value: 1956, target: 1900, unit: 'kcal', primary: false },
+  name: 'Saturday', training: 'Rest day',
+  totals: [
+    { key: 'Protein', value: 144, target: 150, unit: 'g' },
+    { key: 'Net carbs', value: 116, target: 120, unit: 'g' },
+    { key: 'Fibre', value: 38, target: 35, unit: 'g' },
+    { key: 'Energy', value: 1956, target: 1900, unit: 'kcal' },
   ],
   meals: [
-    { slot: 'Breakfast', slug: 'chana-dhokla-curd', dish: 'Chana Dal Dhokla with Curd', kcal: 508, protein: 30, min: 35 },
-    { slot: 'Lunch', slug: 'paneer-sabzi-thali', dish: 'Paneer Sabzi Thali with Bhindi and Lauki', kcal: 789, protein: 64, min: 40 },
-    { slot: 'Snack', slug: 'tofu-cucumber-salad', dish: 'Sesame Tofu and Cucumber Salad', kcal: 293, protein: 20, min: 15 },
-    { slot: 'Dinner', slug: 'mushroom-paneer-bhurji', dish: 'Mushroom Paneer Bhurji', kcal: 365, protein: 30, min: 20 },
+    { slot: 'Breakfast', slug: 'chana-dhokla-curd', dish: 'Chana Dal Dhokla with Curd', minutes: 35, diet: 'veg' as const,
+      macros: [{ key: 'Protein', value: 30, target: 35, unit: 'g' }, { key: 'Net carbs', value: 37, target: 40, unit: 'g' }, { key: 'Fibre', value: 10, target: 8, unit: 'g' }, { key: 'Energy', value: 508, target: 500, unit: 'kcal' }],
+      ingredients: [{ name: 'Toned curd', grams: 178 }, { name: 'Hung curd', grams: 115 }, { name: 'Chana dal', grams: 49 }, { name: 'Flaxseed', grams: 9 }, { name: 'Coriander', grams: 9 }, { name: 'Green chilli', grams: 4 }] },
+    { slot: 'Lunch', slug: 'paneer-sabzi-thali', dish: 'Paneer Sabzi Thali with Bhindi and Lauki', minutes: 40, diet: 'veg' as const,
+      macros: [{ key: 'Protein', value: 64, target: 50, unit: 'g' }, { key: 'Net carbs', value: 53, target: 55, unit: 'g' }, { key: 'Fibre', value: 15, target: 12, unit: 'g' }, { key: 'Energy', value: 789, target: 700, unit: 'kcal' }],
+      ingredients: [{ name: 'Greek curd', grams: 221 }, { name: 'Bhindi', grams: 148 }, { name: 'Lauki', grams: 148 }, { name: 'Low-fat paneer', grams: 140 }, { name: 'Cucumber', grams: 74 }, { name: 'Jowar flour', grams: 31 }] },
+    { slot: 'Snack', slug: 'tofu-cucumber-salad', dish: 'Sesame Tofu and Cucumber Salad', minutes: 15, diet: 'veg' as const,
+      macros: [{ key: 'Protein', value: 20, target: 25, unit: 'g' }, { key: 'Net carbs', value: 11, target: 20, unit: 'g' }, { key: 'Fibre', value: 7, target: 5, unit: 'g' }, { key: 'Energy', value: 293, target: 300, unit: 'kcal' }],
+      ingredients: [{ name: 'Tofu', grams: 195 }, { name: 'Cucumber', grams: 80 }, { name: 'Cabbage', grams: 48 }, { name: 'Carrot', grams: 32 }, { name: 'Flaxseed', grams: 8 }, { name: 'Sesame', grams: 6 }] },
+    { slot: 'Dinner', slug: 'mushroom-paneer-bhurji', dish: 'Mushroom Paneer Bhurji', minutes: 20, diet: 'veg' as const,
+      macros: [{ key: 'Protein', value: 30, target: 45, unit: 'g' }, { key: 'Net carbs', value: 14, target: 25, unit: 'g' }, { key: 'Fibre', value: 6, target: 10, unit: 'g' }, { key: 'Energy', value: 365, target: 600, unit: 'kcal' }],
+      ingredients: [{ name: 'Mushroom', grams: 120 }, { name: 'Low-fat paneer', grams: 105 }, { name: 'Tomato', grams: 40 }, { name: 'Capsicum', grams: 40 }, { name: 'Onion', grams: 32 }, { name: 'Coriander', grams: 8 }] },
   ],
 };
 ---
 <Base title="Momo's Diet Plan">
-  <main class="mx-auto max-w-5xl px-5 py-14 sm:py-20">
-    <header class="max-w-2xl">
-      <p class="reveal text-xs font-medium uppercase tracking-[0.18em] text-muted" style="--i:0">
-        14 days · starts {startLabel}
-      </p>
-      <h1 class="reveal mt-4 text-5xl sm:text-[4.5rem]" style="--i:1">
-        Momo's <em class="text-accent">Diet Plan</em>
-      </h1>
-      <p class="reveal mt-5 max-w-[44ch] text-lg leading-relaxed text-muted" style="--i:2">
-        High protein, carb-cycled by training day, fibre-forward, dinners lightest. Every number computed from the ingredient table.
-      </p>
-    </header>
-
-    <section class="mt-14" aria-labelledby="day-heading">
-      <!-- Day header -->
-      <div class="reveal flex flex-wrap items-end justify-between gap-x-8 gap-y-4 border-b border-line pb-4" style="--i:3">
-        <div class="flex items-baseline gap-3">
-          <h2 id="day-heading" class="text-3xl">{day.name}</h2>
-          <span class="text-sm text-muted">{day.date}</span>
-          <span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-xs font-medium uppercase tracking-wider text-muted">{day.training}</span>
-        </div>
-        <ul class="flex flex-wrap gap-x-6 gap-y-2" aria-label="Day totals against targets">
-          {day.macros.map((m) => {
-            const pct = Math.min(100, Math.round((m.value / m.target) * 100));
-            return (
-              <li class="flex items-center gap-2" aria-label={`${m.key} ${m.value} of ${m.target} ${m.unit}`}>
-                <span class:list={['relative block h-1 overflow-hidden rounded-full bg-line', m.primary ? 'w-16' : 'w-10']} aria-hidden="true">
-                  <span class:list={['absolute inset-y-0 left-0 rounded-full', m.primary ? 'bg-accent' : 'bg-muted']} style={`width:${pct}%`}></span>
-                </span>
-                <span class:list={['tabular-nums', m.primary ? 'text-sm font-medium' : 'text-xs text-muted']}>
-                  {m.value}<span class="font-normal text-muted">/{m.target}</span>
-                </span>
-                <span class="text-xs text-muted">{m.key}</span>
-              </li>
-            );
-          })}
-        </ul>
+  <main class="[--bar-h:64px]">
+    <!-- day bar -->
+    <header class="reveal mx-auto flex h-[var(--bar-h)] max-w-5xl items-center justify-between gap-4 px-5" style="--i:0">
+      <div class="flex items-baseline gap-2.5">
+        <h1 class="font-display text-2xl">{day.name}</h1>
+        <span class="whitespace-nowrap text-sm text-muted">{startLabel}</span>
+        <span class="hidden rounded-full border border-line bg-surface px-2.5 py-0.5 text-xs font-medium uppercase tracking-wider text-muted sm:inline">{day.training}</span>
       </div>
-
-      <!-- Meal tiles -->
-      <ol class="mt-6 grid gap-5 sm:grid-cols-2">
-        {day.meals.map((meal, i) => (
-          <li class="reveal tile group" style={`--i:${4 + i}`}>
-            <a href={`${base}recipes/${meal.slug}/`} class="block overflow-hidden rounded-lg bg-surface shadow-[0_1px_2px_oklch(0%_0_0/0.05),0_12px_32px_-16px_oklch(0%_0_0/0.18)] ring-1 ring-line">
-              <div class="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={`${base}recipes/${meal.slug}.jpg`}
-                  alt=""
-                  width="1024" height="768"
-                  loading={i < 2 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  class="size-full object-cover"
-                />
-                <span class="absolute left-3 top-3 rounded-full bg-surface/90 px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-ink backdrop-blur">{meal.slot}</span>
-              </div>
-              <div class="flex items-start justify-between gap-4 px-4 py-3.5">
-                <div class="min-w-0">
-                  <span class="flex items-center gap-2">
-                    <svg class="size-3 shrink-0" viewBox="0 0 16 16" role="img" aria-label="Vegetarian">
-                      <rect x="1" y="1" width="14" height="14" fill="none" stroke="var(--color-veg)" stroke-width="1.5" />
-                      <circle cx="8" cy="8" r="3.5" fill="var(--color-veg)" />
-                    </svg>
-                    <span class="truncate text-lg leading-snug">{meal.dish}</span>
-                  </span>
-                  <span class="mt-1 block text-xs text-muted">{meal.min} min</span>
-                </div>
-                <span class="shrink-0 text-right text-sm tabular-nums text-muted">
-                  <span class="block text-ink"><span class="font-medium">{meal.protein}</span> g protein</span>
-                  <span class="block">{meal.kcal} kcal</span>
-                </span>
-              </div>
-            </a>
+      <ul class="flex gap-x-4" aria-label="Day totals against targets">
+        {day.totals.map((m, i) => (
+          <li class:list={['flex flex-col items-end leading-tight tabular-nums', i > 1 && 'hidden sm:flex']} aria-label={`${m.key} ${m.value} of ${m.target} ${m.unit}`}>
+            <span class:list={['whitespace-nowrap text-sm', i < 2 ? 'font-medium' : 'text-muted']}>{m.value}<span class="font-normal text-muted">/{m.target}</span></span>
+            <span class="whitespace-nowrap text-[11px] uppercase tracking-wider text-muted">{m.key}</span>
           </li>
         ))}
-      </ol>
-      <p class="mt-4 text-xs text-muted">Values are estimates computed from the ingredient table.</p>
-    </section>
+      </ul>
+    </header>
+
+    <div class="reveal" style="--i:1">
+      <Reel count={day.meals.length}>
+        {day.meals.map((meal, i) => (
+          <MealSlide index={i} total={day.meals.length} {...meal} />
+        ))}
+      </Reel>
+    </div>
   </main>
 </Base>
