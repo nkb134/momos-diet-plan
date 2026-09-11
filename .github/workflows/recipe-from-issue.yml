@@ -35,7 +35,7 @@ jobs:
           body: |
             Scaffolded from #${{ github.event.issue.number }}. Add `src/assets/recipes/${{ steps.write.outputs.slug }}.jpg` before merging, or the placeholder card will be used.
       - name: Comment on the issue
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
