@@ -11,7 +11,7 @@ try {
   for (const [name, url] of Object.entries(pages)) {
     const out = `./.lighthouse-${name}.json`;
     await new Promise((res, rej) => {
-      const p = spawn('npx', ['lighthouse', url, '--quiet', '--chrome-flags=--headless=new --no-sandbox', '--only-categories=performance,accessibility,best-practices,seo', '--form-factor=mobile', '--screenEmulation.mobile', `--output=json`, `--output-path=${out}`], { stdio: 'inherit' });
+      const p = spawn('npx', ['lighthouse', url, '--quiet', '--chrome-flags=--headless=new --no-sandbox', '--only-categories=performance,accessibility,best-practices,seo', '--form-factor=mobile', `--output=json`, `--output-path=${out}`], { stdio: 'inherit' });
       p.on('exit', (c) => (c === 0 ? res() : rej(new Error(`lighthouse exit ${c}`))));
     });
     const j = JSON.parse((await import('node:fs')).readFileSync(out, 'utf8'));

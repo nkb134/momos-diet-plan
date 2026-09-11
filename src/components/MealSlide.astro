@@ -37,7 +37,7 @@ const detail = [
 <li class="slide" id={`m-${dayDate}-${index}`} data-addon={isAddOn ? '' : undefined} aria-label={`${label}: ${recipe.title}`}>
   <div class="track" tabindex="0" aria-roledescription="carousel" aria-label={`${label} card. Swipe or use arrow keys for ingredients${recipe.video ? ' and video' : ''}`}>
     <section class="pane" aria-label="Photo and headline macros">
-      <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading={eager ? 'eager' : 'lazy'} />
+      <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading={eager ? 'eager' : 'lazy'} priority={eager} />
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/30" aria-hidden="true"></div>
       <div class="relative flex h-full flex-col justify-between p-5 text-white">
         <div class="flex items-center justify-between pt-3">

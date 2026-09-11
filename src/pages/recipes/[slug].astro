@@ -27,7 +27,7 @@ const glance = [
     <article class="grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
       <div class="lg:sticky lg:top-20 lg:self-start">
         <div class="relative overflow-hidden rounded-lg bg-line" style="aspect-ratio: 4 / 3;">
-          <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading="eager" widths={[640, 1024, 1600]} sizes="(min-width: 1024px) 560px, 100vw" decorative={false} />
+          <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading="eager" priority widths={[480, 800, 1200]} sizes="(min-width: 1024px) 560px, 100vw" decorative={false} />
         </div>
         {recipe.video && (
           <section class="mt-6 print:hidden" aria-labelledby="video-h">

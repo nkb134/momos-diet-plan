@@ -6,13 +6,13 @@
 import { Picture } from 'astro:assets';
 import { recipeImage } from '../lib/images';
 import { placeholderDataUri } from '../lib/placeholder';
-interface Props { image?: string; slug: string; title: string; class?: string; sizes?: string; widths?: number[]; loading?: 'eager' | 'lazy'; decorative?: boolean }
-const { image, slug, title, class: cls = '', sizes = '(min-width: 640px) 430px, 100vw', widths = [480, 800, 1200], loading = 'lazy', decorative = true } = Astro.props;
+interface Props { image?: string; slug: string; title: string; class?: string; sizes?: string; widths?: number[]; loading?: 'eager' | 'lazy'; decorative?: boolean; priority?: boolean }
+const { image, slug, title, class: cls = '', sizes = '(min-width: 640px) 430px, 100vw', widths = [480, 800, 1200], loading = 'lazy', decorative = true, priority = false } = Astro.props;
 const meta = recipeImage(image);
 const alt = decorative ? '' : title;
 ---
 {meta ? (
-  <Picture src={meta} formats={['avif', 'webp']} widths={widths} sizes={sizes} alt={alt} loading={loading} decoding="async" class={cls} pictureAttributes={{ class: 'contents' }} />
+  <Picture src={meta} formats={['avif', 'webp']} widths={widths} sizes={sizes} alt={alt} loading={loading} decoding={priority ? 'sync' : 'async'} fetchpriority={priority ? 'high' : 'auto'} class={cls} pictureAttributes={{ class: 'contents' }} />
 ) : (
   <img src={placeholderDataUri(slug, title)} alt={alt} width="1024" height="768" loading={loading} decoding="async" class={cls} />
 )}

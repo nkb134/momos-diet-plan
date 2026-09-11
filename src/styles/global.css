@@ -15,7 +15,7 @@
   --color-paper: oklch(98.5% 0.006 85);
   --color-surface: oklch(100% 0 0);
   --color-ink: oklch(16% 0.008 60);
-  --color-muted: oklch(50% 0.01 60);
+  --color-muted: oklch(44% 0.012 60);   /* AA on paper at 10px uppercase labels */
   --color-line: oklch(90% 0.004 90);
   --color-accent: oklch(62% 0.15 60);      /* warm saffron, darkened for AA on paper */
 
