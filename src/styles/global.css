@@ -12,7 +12,7 @@
 */
 @theme {
   /* palette: six named colours. paper/surface/ink/muted/line flip in dark mode */
-  --color-paper: oklch(98.5% 0.003 90);
+  --color-paper: oklch(98.5% 0.006 85);
   --color-surface: oklch(100% 0 0);
   --color-ink: oklch(16% 0.008 60);
   --color-muted: oklch(50% 0.01 60);
@@ -47,17 +47,7 @@
   --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
-/* dark mode: manual override wins, then system preference */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-paper: oklch(14% 0.006 60);
-    --color-surface: oklch(18% 0.006 60);
-    --color-ink: oklch(95% 0.005 90);
-    --color-muted: oklch(66% 0.01 60);
-    --color-line: oklch(27% 0.006 60);
-    --color-accent: oklch(78% 0.14 70);
-  }
-}
+/* dark mode is opt-in only via data-theme="dark"; the default is light */
 :root[data-theme="dark"] {
   --color-paper: oklch(14% 0.006 60);
   --color-surface: oklch(18% 0.006 60);
@@ -72,7 +62,7 @@
     background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-body);
-    color-scheme: light dark;
+    color-scheme: light;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -108,5 +98,8 @@
   *, ::before, ::after { transition-duration: 1ms !important; }
 }
 
-/* hairline rule with the accent as a short leading tick */
 .rule { border-top: 1px solid var(--color-line); }
+
+/* image tiles: the photo is the colour; only user interaction moves it */
+.tile img { transition: transform 600ms var(--ease-out-quart); }
+.tile:hover img, .tile:focus-within img { transform: scale(1.03); }
