@@ -57,4 +57,37 @@ The chart, recipe, and library pages work with JavaScript disabled (native scrol
 
 Photos come from Wikimedia Commons under free licences and are converted to AVIF and WebP at build time; a recipe with no photo gets a deterministic SVG card instead of a broken image. Videos are YouTube Shorts loaded only when tapped, through the privacy-friendly no-cookie domain.
 
+## Telegram bot
+
+A private bot edits the plan from your phone. It is a Cloudflare Worker (`bot/`) that answers read commands from the live site's `plan.json` and forwards write commands to GitHub, where the **Bot command** workflow applies the change, runs the validator, commits only if all 14 rules pass, redeploys, and replies with the day's numbers.
+
+```
+/today  /day w2 sat  /shop w1  /recipes dinner  /find paneer
+/swap tue dinner palak-tofu-jowar     /addon thu lunch tandoori-chicken-addon
+/training sat rest   /portion mon lunch 1.1   /out tofu w1   /recipe …   /validate
+```
+
+Swaps try portions from 0.7 to 1.3 to keep the day inside the rules and say which one they used. A change that cannot pass is refused with the validator's table and nothing is committed.
+
+### One-time setup
+
+1. Create the bot in Telegram with **@BotFather** (`/newbot`) and copy the token. If a token has ever been pasted anywhere public, `/revoke` it and use the new one.
+2. Create a fine-grained GitHub token for this repository with **Contents: read and write** and **Actions: read and write** (it only needs to fire `repository_dispatch`).
+3. In Cloudflare, create an API token from the **Edit Cloudflare Workers** template and note your account id.
+4. Add the repository secrets (`gh secret set NAME` prompts for the value, or use the GitHub UI):
+
+   | Secret | Value |
+   |---|---|
+   | `TELEGRAM_BOT_TOKEN` | from BotFather |
+   | `TELEGRAM_WEBHOOK_SECRET` | any long random string, e.g. `openssl rand -hex 24` |
+   | `TELEGRAM_ALLOWED_USER_ID` | your numeric Telegram id; message the bot once after step 5 and it tells you |
+   | `BOT_GITHUB_TOKEN` | the fine-grained token from step 2 |
+   | `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` | from step 3 |
+
+5. Run the **Deploy bot** workflow (Actions tab, or `gh workflow run bot-deploy.yml`). It prints the Worker URL, like `https://momos-diet-plan-bot.<you>.workers.dev`.
+6. Open `https://<worker-url>/setup?secret=<TELEGRAM_WEBHOOK_SECRET>` once. That registers the webhook and the command menu.
+7. Send `/help` to the bot.
+
+The Worker only accepts updates carrying the webhook secret and only acts for the allowed user id. Tokens live in GitHub and Cloudflare secrets, never in the repo.
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the recipe schema field by field.

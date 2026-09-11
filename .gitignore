@@ -10,3 +10,7 @@ npm-debug.log*
 .lighthouse-*.json
 lighthouse-scores.json
 .*-shot.png
+bot-reply.txt
+bot/node_modules/
+bot/.wrangler/
+bot/.dev.vars

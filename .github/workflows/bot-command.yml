@@ -1,0 +1,53 @@
+name: Bot command
+
+on:
+  repository_dispatch:
+    types: [bot-command]
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: bot
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Apply the command
+        id: apply
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: node --experimental-strip-types scripts/bot-apply.mjs "$PAYLOAD"
+      - name: Commit and push
+        if: steps.apply.outputs.changed == 'true'
+        run: |
+          git config user.name "momo-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add src/content src/data
+          git commit -m "chore(bot): /${{ github.event.client_payload.command }} ${{ join(github.event.client_payload.args, ' ') }}" || exit 0
+          git push
+      - name: Trigger deploy
+        if: steps.apply.outputs.changed == 'true'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh workflow run deploy.yml --ref main
+      - name: Reply on Telegram
+        if: always()
+        env:
+          TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT: ${{ github.event.client_payload.chat_id }}
+          REPLY_TO: ${{ github.event.client_payload.message_id }}
+          CHANGED: ${{ steps.apply.outputs.changed }}
+        run: |
+          if [ -f bot-reply.txt ]; then TEXT=$(cat bot-reply.txt); else TEXT="✗ The command crashed. Check the Actions log."; fi
+          if [ "$CHANGED" = "true" ]; then TEXT="$TEXT
+
+Deploying, live in about two minutes."; fi
+          jq -n --arg c "$CHAT" --arg t "$TEXT" --arg r "$REPLY_TO" '{chat_id:$c, text:$t, parse_mode:"HTML", reply_to_message_id:($r|tonumber), disable_web_page_preview:true}' \
+            | curl -s -X POST -H 'content-type: application/json' -d @- "https://api.telegram.org/bot$TOKEN/sendMessage" > /dev/null

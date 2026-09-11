@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob, file } from 'astro/loaders';
 import { parse } from 'yaml';
 import { equipmentAllowlist } from './nutrition.config';
@@ -25,7 +26,7 @@ export const recipeSchema = z.object({
   cuisine: z.string(),
   region: z.string().default(''),
   image: z.string().default(''),
-  imageCredit: z.object({ name: z.string().default(''), url: z.string().default(''), license: z.string().default('') }).default({}),
+  imageCredit: z.object({ name: z.string().default(''), url: z.string().default(''), license: z.string().default('') }).default({ name: '', url: '', license: '' }),
   /** YouTube id of a Short showing a similar method; optional. */
   video: z.object({ youtubeId: z.string().regex(/^[\w-]{11}$/), title: z.string().default(''), channel: z.string().default(''), isShort: z.boolean().default(true) }).nullable().default(null),
   prepMin: z.number().int().nonnegative(),

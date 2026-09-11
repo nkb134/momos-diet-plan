@@ -1,0 +1,11 @@
+name = "momos-diet-plan-bot"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+GITHUB_REPO = "nkb134/momos-diet-plan"
+SITE_URL = "https://nkb134.github.io/momos-diet-plan/"
+# ALLOWED_USER_ID is set as a secret in the deploy workflow.
+
+# Secrets (set via `wrangler secret put` or the deploy workflow):
+#   TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, GITHUB_TOKEN, ALLOWED_USER_ID
