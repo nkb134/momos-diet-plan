@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Kerala_(Naadan)_Chicken_Curry.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: z5I-Wsn_vfQ
-  title: Chicken kali mirch | चिकन काली मिर्च | chicken kali mirch with white gravy chicken kali mirch recipe
-  channel: Rooma food corner
+  youtubeId: SGc23kFn2oM
+  title: "चिकन स्टू रेसिपी |Healthy Chicken Stew|চিকেন স্ট্যু #shorts #chicken"
+  channel: Glam Popy
   isShort: true
 prepMin: 10
 cookMin: 20

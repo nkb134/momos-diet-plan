@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Bajra_Roti_and_Dal.JPG
   license: CC BY-SA 4.0
 video:
-  youtubeId: -tmynzltpJI
-  title: "Methi Matar Malai Paneer | मेथी पनीर की सब्ज़ी | Methi Paneer recipe #youtubeshorts #shortsfeed"
-  channel: Hum Bihar Se Hain Recipes
+  youtubeId: KX96Mjlr1qw
+  title: "Methi Paneer Sabzi | Quick & Healthy Fenugreek Paneer Recipe | Easy Indian Sabzi #shorts #food"
+  channel: Sneha's Annapurna Kitchen
   isShort: true
 prepMin: 20
 cookMin: 25

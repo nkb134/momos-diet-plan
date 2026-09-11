@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:A_traditional_south_Indian_home_cooked_meal.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: i8CLPtN3FOE
-  title: "Very Delicious Samber Rice Recipe By Ammi Ke Khane #ammikekhane #ammikekhanerecipe"
-  channel: Ammi Ke Khane
+  youtubeId: rlJss8Lxq7I
+  title: "One Pot Sambar Rice #food #recipe #rice #sambar #sambarrice #southindianfood"
+  channel: Koustubh Koli
   isShort: true
 prepMin: 20
 cookMin: 40

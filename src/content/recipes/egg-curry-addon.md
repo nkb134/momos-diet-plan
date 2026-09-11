@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Egg_Curry_(Anda_Curry).JPG
   license: CC BY-SA 4.0
 video:
-  youtubeId: BicnKtPk7hw
-  title: "BIHARI EGG CURRY RECIPE - #bharatzkitchen #spicy #shorts"
-  channel: Bharatzkitchen Shorts
+  youtubeId: 2pBbG_YYrQA
+  title: "Oilfree Egg Curry🥚Recipe in Description #shorts #youtubeshorts #eggcurry #andacurry #eggcurryrecipe"
+  channel: Amitgasm
   isShort: true
 prepMin: 10
 cookMin: 25

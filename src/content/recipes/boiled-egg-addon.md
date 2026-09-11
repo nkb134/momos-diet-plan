@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Masala_Eggs.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: kF-KVTLRFwo
-  title: अंडा फ्राई रेसिपी | Boiled Egg Fry Recipe | Quick Snack
-  channel: Tasty & Spicy by Anishi
+  youtubeId: FLC39K9S0_Q
+  title: "Boiled egg masala #egg #eggrecipe #recipevideo #boiledegg"
+  channel: Food and Frolic
   isShort: true
 prepMin: 2
 cookMin: 13

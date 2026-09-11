@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Tawa_Meen_Fry.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: DiApRxKKlZg
-  title: "बंगडा फिश फ्राई | Mackerel Fish Fry |মাছ ভাজা #shorts #cooking"
-  channel: Glam Popy
+  youtubeId: lt0Ihl2P7AM
+  title: "Grilled Fish With Lemon Coriander | Weight Loss Recipe | #healthy #fish #fishfry"
+  channel: Tulika's Recipes
   isShort: true
 prepMin: 10
 cookMin: 10

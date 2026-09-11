@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Paneer_Capsicum_Bhurji.JPG
   license: CC BY-SA 4.0
 video:
-  youtubeId: G2npKavg9pM
-  title: "Paneer bhurji recipe | पनीर भुर्जी | Restaurant Style paneer bhurji recipe | Desi HomeCook #shorts"
-  channel: Desi HomeCook
+  youtubeId: PhZkyrs7HIU
+  title: "No Oil Paneer Bhurji | High Protein Recipe | #shorts #viral"
+  channel: Rashika Patel
   isShort: true
 prepMin: 10
 cookMin: 12

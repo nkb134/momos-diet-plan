@@ -4,7 +4,7 @@ A static, content-driven 14-day meal plan: high protein, carb-cycled by training
 
 **Live:** https://nkb134.github.io/momos-diet-plan/
 
-![Chart screenshot](docs/screenshot.png)
+![Chart screenshot](docs/screenshot.jpg)
 
 The chart is a reel: swipe up through the day's meals, swipe right on a meal for its key ingredients and macros, once more for a short video of a similar method. The bar at the bottom switches days. Every recipe has its own page with a serving scaler, checkable ingredients, and a cook mode that keeps the screen awake.
 
@@ -38,6 +38,20 @@ To put a recipe on the plan, reference its slug in `src/content/plan/week-NN.yam
 ## Nutrition rules
 
 All thresholds live in [`src/nutrition.config.ts`](src/nutrition.config.ts) with a comment per value. `scripts/validate-plan.mjs` runs before every build and in CI, and prints a per-day table of actuals against targets when something fails. Figures on the site are estimates: cooking losses, portion drift, and ingredient variation are real.
+
+Every ingredient row carries a `source` traced to IFCT 2017 or USDA FoodData Central. The audit in [`src/data/ingredient-audit.json`](src/data/ingredient-audit.json) records the primary value next to the table value; 45 of 77 rows differ from the primary by more than 15% on at least one nutrient, mostly IFCT-versus-USDA disagreements on vegetables and pulse fibre. Values were left as they are because the plan's day totals depend on them; tune a row, run `npm run compute-macros && npm run validate`, and the validator will tell you which days move.
+
+## Quality
+
+Mobile Lighthouse, run with `npm run lighthouse` against the production build on 12 September 2026:
+
+| Page | Performance | Accessibility | Best practices | SEO |
+|---|---:|---:|---:|---:|
+| Chart | 96 | 100 | 100 | 100 |
+| Recipe | 99 | 100 | 100 | 100 |
+| Library | 99 | 100 | 100 | 100 |
+
+The chart, recipe, and library pages work with JavaScript disabled (native scroll-snap and `<details>`-free markup), are keyboard operable (arrow keys move through the reel), and respect `prefers-reduced-motion`.
 
 ## Images and videos
 

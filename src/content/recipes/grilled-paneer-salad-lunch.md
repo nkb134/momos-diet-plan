@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Paneer_tikka_1.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: DA3TRN97RK0
-  title: Paneer Tikka | Paneer Tandoori | Tandoori Paneer | paneer starter | paneer recipes | पनीर टिक्का
-  channel: FoodieSayz
+  youtubeId: 2L5cb1S07rY
+  title: Paneer tikka recipe| high protein paneer tikka| weight loss recipe|
+  channel: Tasty Bite
   isShort: true
 prepMin: 20
 cookMin: 15

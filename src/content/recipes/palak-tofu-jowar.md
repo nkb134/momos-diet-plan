@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Palak_Paneer_(Cottage_cheese_in_spinach_gravy).jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: aSw2s978WIM
-  title: पालक टोफू | Palak Tofu | Vegan Recipes India
-  channel: YVCARE
+  youtubeId: wJs8vSM5_qc
+  title: "High Protein Palak Tofu | Healthy Vegan Recipe #shorts #palakrecipe"
+  channel: Indicious Kitchen
   isShort: true
 prepMin: 15
 cookMin: 30

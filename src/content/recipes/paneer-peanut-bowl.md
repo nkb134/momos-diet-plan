@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Paneer_Jalfrezi.jpg
   license: CC BY-SA 2.0
 video:
-  youtubeId: 9VyEw0BqNiE
-  title: "Peanut Paneer Salad 🥗 🥜 #artespices #food #cooking #salad #recipe #healthyeating #peanuts #paneer"
-  channel: Arte Spices
+  youtubeId: kV-bgCr-wDs
+  title: "High Protein Peanut Paneer Salad 🥗💪 | Healthy & Filling Meal #Shorts"
+  channel: Mom’s Telugu Kitchen
   isShort: true
 prepMin: 10
 cookMin: 10

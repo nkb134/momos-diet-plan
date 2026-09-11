@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Punjabi_Chana_Chaat.JPG
   license: CC0
 video:
-  youtubeId: tZ_k0a337Yg
-  title: हलवाई ने बनाया सबसे स्वादिष्ट चना सुंडल 😱 | Chickpea Sundal Recipe
-  channel: Ankit Verma
+  youtubeId: KoA-3Z7dhYY
+  title: Kabuli Chana Sundal | Sundal recipe | Chickpeas Sundal | Healthy snack
+  channel: The Iyer Paati
   isShort: true
 prepMin: 10
 cookMin: 25

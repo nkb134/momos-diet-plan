@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Paneer_tikka_1.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: DA3TRN97RK0
-  title: Paneer Tikka | Paneer Tandoori | Tandoori Paneer | paneer starter | paneer recipes | पनीर टिक्का
-  channel: FoodieSayz
+  youtubeId: Gpehx2CScSc
+  title: Oil Free Healthy Paneer Tikka Recipe | पनीर टिक्का
+  channel: Cook with Veena
   isShort: true
 prepMin: 15
 cookMin: 20

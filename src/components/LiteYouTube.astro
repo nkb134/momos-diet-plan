@@ -9,8 +9,9 @@ const { id, title, isShort = true, class: cls = '' } = Astro.props;
 ---
 <div class:list={['yt overflow-hidden bg-black', cls]} data-yt={id} data-short={isShort ? '1' : '0'}>
   <img
-    src={`https://i.ytimg.com/vi/${id}/${isShort ? 'oardefault' : 'hqdefault'}.jpg`}
-    onerror={`this.onerror=null;this.src='https://i.ytimg.com/vi/${id}/hqdefault.jpg'`}
+    src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+    data-hi={isShort ? `https://i.ytimg.com/vi/${id}/oar2.jpg` : `https://i.ytimg.com/vi/${id}/sddefault.jpg`}
+    width="480" height="360"
     alt="" loading="lazy" decoding="async"
     class="absolute inset-0 size-full object-cover opacity-90" />
   <button type="button" class="yt-play absolute inset-0 grid place-items-center" aria-label={`Play video: ${title}`}>
@@ -20,9 +21,18 @@ const { id, title, isShort = true, class: cls = '' } = Astro.props;
   </button>
 </div>
 <script>
+  // Upgrade the 15 kB poster to the full portrait frame only once the pane is actually on screen.
+  const upgrade = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) {
+      const img = e.target as HTMLImageElement;
+      if (img.dataset.hi) { const hi = new Image(); hi.onload = () => { img.src = hi.src; }; hi.src = img.dataset.hi; delete img.dataset.hi; }
+      upgrade.unobserve(img);
+    }
+  }, { threshold: 0.5 });
   function init() {
     document.querySelectorAll<HTMLElement>('.yt:not([data-ready])').forEach((el) => {
       el.dataset.ready = '1';
+      const img = el.querySelector('img'); if (img) upgrade.observe(img);
       el.querySelector('.yt-play')?.addEventListener('click', () => {
         const id = el.dataset.yt!;
         const f = document.createElement('iframe');

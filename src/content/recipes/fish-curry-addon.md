@@ -12,9 +12,9 @@ imageCredit:
   url: https://commons.wikimedia.org/wiki/File:Fish_Pulusu_FoodBells_of_WELLBELLS_Guntur_Andhra_Pradesh.jpg
   license: CC BY-SA 4.0
 video:
-  youtubeId: lhdmRlwnSvs
-  title: "Rohu Fish Curry | Masala Fish Curry Recipe #shorts #youtubeshorts #ytshorts #recipe"
-  channel: "Neha Home kitchen "
+  youtubeId: eTfROhSI5_0
+  title: "बिना फ्राई मछली की करी | Easy Fish Curry Without Frying  #easyrecipe #recipe #cooking #fishcurry"
+  channel: Homely Cooking With Afreen
   isShort: true
 prepMin: 10
 cookMin: 25
