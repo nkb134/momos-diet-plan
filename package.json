@@ -14,8 +14,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/barlow": "^5.3.0",
-    "@fontsource/barlow-condensed": "^5.3.0",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.2",
     "tailwindcss": "^4.3.3"

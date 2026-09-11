@@ -1,53 +1,70 @@
 @import "tailwindcss";
 
 /*
-  Token layer. Tailwind 4 is configured in CSS: every value under @theme
-  becomes a utility (bg-paper, text-ink, font-display, text-lg ...).
-  Components reference these names only, never raw hex.
+  Token layer. Tailwind 4 is configured here: every value under @theme becomes
+  a utility (bg-paper, text-ink, border-line, font-display ...). Components use
+  these names only, never raw hex.
 
-  Direction: "masala packet". Flat saturated colour blocks, a condensed
-  grotesque, mechanical rules. Six colours total.
+  Direction: editorial. A neutral scale with hairline rules, one warm accent
+  spent on the chart, a high-contrast serif for display and a quiet grotesque
+  for everything else. Motion is one staggered reveal on load, then only in
+  response to the user.
 */
 @theme {
-  /* colours: paper and ink swap in dark mode via the overrides below */
-  --color-paper: oklch(97% 0.008 80);
-  --color-ink: oklch(20% 0.012 60);
-  --color-chilli: oklch(56% 0.21 28);      /* primary accent, protein, "today" */
-  --color-turmeric: oklch(80% 0.16 85);    /* secondary, net carbs, training mark */
-  --color-veg: oklch(52% 0.17 145);        /* FSSAI green, fixed in both modes */
-  --color-nonveg: oklch(42% 0.09 50);      /* FSSAI brown, fixed in both modes */
+  /* palette: six named colours. paper/surface/ink/muted/line flip in dark mode */
+  --color-paper: oklch(98.5% 0.003 90);
+  --color-surface: oklch(100% 0 0);
+  --color-ink: oklch(16% 0.008 60);
+  --color-muted: oklch(50% 0.01 60);
+  --color-line: oklch(90% 0.004 90);
+  --color-accent: oklch(62% 0.15 60);      /* warm saffron, darkened for AA on paper */
 
-  /* type: one family, two widths */
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  /* FSSAI marks, fixed in both modes; semantic, not palette */
+  --color-veg: oklch(50% 0.16 145);
+  --color-nonveg: oklch(42% 0.09 50);
+
+  /* type */
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Geist Variable", system-ui, -apple-system, sans-serif;
 
   /* modular scale, ratio 1.25 from 1rem */
-  --text-xs: 0.64rem;
-  --text-sm: 0.8rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.25rem;
   --text-xl: 1.5625rem;
   --text-2xl: 1.953rem;
   --text-3xl: 2.441rem;
   --text-4xl: 3.052rem;
+  --text-5xl: 3.815rem;
 
-  /* spacing: 4px base */
   --spacing: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
 
-  /* rules */
-  --border-width-rule: 2px;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
-/* dark mode: swap paper and ink, keep accents and FSSAI marks fixed */
+/* dark mode: manual override wins, then system preference */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-paper: oklch(18% 0.01 60);
-    --color-ink: oklch(94% 0.008 80);
+    --color-paper: oklch(14% 0.006 60);
+    --color-surface: oklch(18% 0.006 60);
+    --color-ink: oklch(95% 0.005 90);
+    --color-muted: oklch(66% 0.01 60);
+    --color-line: oklch(27% 0.006 60);
+    --color-accent: oklch(78% 0.14 70);
   }
 }
 :root[data-theme="dark"] {
-  --color-paper: oklch(18% 0.01 60);
-  --color-ink: oklch(94% 0.008 80);
+  --color-paper: oklch(14% 0.006 60);
+  --color-surface: oklch(18% 0.006 60);
+  --color-ink: oklch(95% 0.005 90);
+  --color-muted: oklch(66% 0.01 60);
+  --color-line: oklch(27% 0.006 60);
+  --color-accent: oklch(78% 0.14 70);
 }
 
 @layer base {
@@ -56,15 +73,40 @@
     color: var(--color-ink);
     font-family: var(--font-body);
     color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3 {
     font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    line-height: 1;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    text-wrap: balance;
   }
   :focus-visible {
-    outline: 3px solid var(--color-chilli);
-    outline-offset: 2px;
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
+  ::selection { background: color-mix(in oklch, var(--color-accent) 30%, transparent); }
 }
+
+/*
+  Load reveal. Elements with .reveal fade and rise once, staggered by --i.
+  Nothing else animates on load. Reduced motion collapses it to instant.
+*/
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal {
+  animation: reveal 700ms var(--ease-out-quart) both;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation-duration: 1ms; animation-delay: 0ms; }
+  *, ::before, ::after { transition-duration: 1ms !important; }
+}
+
+/* hairline rule with the accent as a short leading tick */
+.rule { border-top: 1px solid var(--color-line); }
