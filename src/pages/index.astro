@@ -74,17 +74,6 @@ const views = days.map((d) => {
         try { const s = localStorage.getItem('day'); if (s && dates.includes(s)) return s; } catch {}
         return sections.find((s) => !s.hidden)?.dataset.date ?? dates[0]!;
       };
-      const show = (date: string, push = false) => {
-        for (const s of sections) s.hidden = s.dataset.date !== date;
-        for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.date === date));
-        buttons.find((b) => b.dataset.date === date && b.offsetParent)?.scrollIntoView({ inline: 'center', block: 'nearest' });
-        try { localStorage.setItem('day', date); } catch {}
-        requestAnimationFrame(() => measure());
-        if (push) history.replaceState(null, '', `#${date}`);
-        // let lazy images inside the newly shown reel start loading
-        document.getElementById(`reel-${date}`)?.querySelector('.reel')?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-      };
-      buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.date!, true)));
       const chart = document.getElementById('chart')!;
       const measure = () => {
         // Reel height = viewport minus everything above the reel and any fixed bar below it.
@@ -94,6 +83,17 @@ const views = days.map((d) => {
         const fixedNav = [...document.querySelectorAll<HTMLElement>('.daynav')].filter((n) => getComputedStyle(n).position === 'fixed').reduce((a, n) => a + n.getBoundingClientRect().height, 0);
         chart.style.setProperty('--chrome-h', `${Math.round(above + fixedNav)}px`);
       };
+      const show = (date: string, push = false) => {
+        for (const s of sections) s.hidden = s.dataset.date !== date;
+        for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.date === date));
+        buttons.find((b) => b.dataset.date === date && b.offsetParent)?.scrollIntoView({ inline: 'center', block: 'nearest' });
+        try { localStorage.setItem('day', date); } catch {}
+        measure(); requestAnimationFrame(measure);
+        if (push) history.replaceState(null, '', `#${date}`);
+        // let lazy images inside the newly shown reel start loading
+        document.getElementById(`reel-${date}`)?.querySelector('.reel')?.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+      };
+      buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.date!, true)));
       new ResizeObserver(measure).observe(document.body);
       addEventListener('resize', measure);
       addEventListener('hashchange', () => show(pick()));
