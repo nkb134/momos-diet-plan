@@ -15,7 +15,7 @@ const weeks = [...new Set(days.map((d) => d.week))];
         <span class="hidden self-center pr-1 text-[10px] font-medium uppercase tracking-wider text-muted sm:block">W{w}</span>
         {days.filter((d) => d.week === w).map((d) => (
           <button type="button" class="daybtn" data-date={d.date} aria-pressed="false" data-today={d.date === today ? '' : undefined} data-training={d.training}>
-            <span class="text-[10px] uppercase tracking-wider">{d.day.slice(0, 3)}</span>
+            <span class="text-[11px] uppercase tracking-wider">{d.day.slice(0, 3)}</span>
             <span class="text-base font-medium tabular-nums leading-none">{formatDate(d.date, { day: 'numeric' })}</span>
             <span class="sr-only">{formatDate(d.date, { month: 'long' })}, {d.training} day</span>
           </button>
@@ -28,7 +28,7 @@ const weeks = [...new Set(days.map((d) => d.week))];
 <style>
   .daynav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: color-mix(in oklch, var(--color-paper) 88%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--color-line); padding-bottom: env(safe-area-inset-bottom); }
   @media (min-width: 640px) { .daynav { position: static; left: auto; right: auto; border-top: 0; border-bottom: 1px solid var(--color-line); background: transparent; backdrop-filter: none; } }
-  .daybtn { display: grid; gap: 2px; justify-items: center; min-width: 44px; padding: 6px 8px; border-radius: var(--radius-md); color: var(--color-muted); transition: background 150ms, color 150ms; scroll-snap-align: center; }
+  .daybtn { display: grid; gap: 2px; justify-items: center; min-width: 46px; min-height: 46px; align-content: center; padding: 4px 8px; border-radius: var(--radius-md); color: var(--color-muted); transition: background 150ms, color 150ms; scroll-snap-align: center; }
   .daybtn:hover { background: var(--color-surface); color: var(--color-ink); }
   .daybtn[aria-pressed="true"] { background: var(--color-ink); color: var(--color-paper); }
   .daybtn[data-today] > span:nth-child(2) { position: relative; }

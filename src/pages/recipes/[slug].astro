@@ -29,15 +29,6 @@ const glance = [
         <div class="relative overflow-hidden rounded-lg bg-line" style="aspect-ratio: 4 / 3;">
           <RecipeImage image={recipe.image} slug={recipe.slug} title={recipe.title} class="absolute inset-0 size-full object-cover" loading="eager" priority widths={[480, 800, 1200]} sizes="(min-width: 1024px) 560px, 100vw" decorative={false} />
         </div>
-        {recipe.video && (
-          <section class="mt-6 print:hidden" aria-labelledby="video-h">
-            <h2 id="video-h" class="text-xs font-medium uppercase tracking-[0.16em] text-muted">Watch a similar method</h2>
-            <div class="mx-auto mt-2 w-full max-w-[320px] overflow-hidden rounded-lg" style="aspect-ratio: 9 / 16;">
-              <LiteYouTube id={recipe.video.youtubeId} title={recipe.video.title || recipe.title} isShort={recipe.video.isShort} class="relative size-full" />
-            </div>
-            <p class="mt-2 text-xs text-muted">{recipe.video.title}{recipe.video.channel ? ` · ${recipe.video.channel}` : ''}. Quantities here are fixed by the plan; follow the technique, not the amounts.</p>
-          </section>
-        )}
       </div>
 
       <div>
@@ -53,7 +44,7 @@ const glance = [
           <div><dt class="sr-only">Difficulty</dt><dd class="capitalize">{recipe.difficulty}</dd></div>
           <div><dt class="sr-only">Load</dt><dd class="capitalize">{recipe.load}</dd></div>
         </dl>
-        <dl class="mt-3 grid grid-cols-5 gap-2">
+        <dl class="mt-3 grid grid-cols-3 gap-x-2 gap-y-3 sm:grid-cols-5">
           {glance.map((g) => <div><dt class="text-[11px] uppercase tracking-wider text-muted">{g.k}</dt><dd class="text-lg font-medium tabular-nums leading-tight">{g.v}</dd></div>)}
         </dl>
         <p class="mt-1 text-xs text-muted">Per serving · estimates computed from the ingredient table</p>
@@ -63,16 +54,16 @@ const glance = [
             <h2 id="ing-h" class="text-2xl">Ingredients</h2>
             <div class="scaler flex items-center gap-2 text-sm print:hidden" data-serves={recipe.serves}>
               <span class="text-muted">Cooks for</span>
-              <button type="button" class="grid size-7 place-items-center rounded-full border border-line hover:bg-surface" data-step="-1" aria-label="Fewer servings">−</button>
+              <button type="button" class="grid size-10 place-items-center rounded-full border border-line hover:bg-surface" data-step="-1" aria-label="Fewer servings">−</button>
               <output class="w-5 text-center font-medium tabular-nums" aria-live="polite">{recipe.serves}</output>
-              <button type="button" class="grid size-7 place-items-center rounded-full border border-line hover:bg-surface" data-step="1" aria-label="More servings">+</button>
+              <button type="button" class="grid size-10 place-items-center rounded-full border border-line hover:bg-surface" data-step="1" aria-label="More servings">+</button>
             </div>
           </div>
           <ul class="mt-3 divide-y divide-line">
             {recipe.ingredients.map((i, n) => (
               <li>
-                <label class="flex cursor-pointer items-baseline gap-3 py-2">
-                  <input type="checkbox" class="ing-check mt-1 size-4 shrink-0 accent-[var(--color-accent)] print:hidden" data-i={n} />
+                <label class="flex min-h-11 cursor-pointer items-baseline gap-3 py-2.5">
+                  <input type="checkbox" class="ing-check mt-1 size-5 shrink-0 accent-[var(--color-accent)] print:hidden" data-i={n} />
                   <span class="flex-1"><span class="ing-name">{i.item}</span>{i.household ? <span class="text-muted"> · {i.household}</span> : null}{i.note ? <span class="text-muted"> · {i.note}</span> : null}</span>
                   <span class="shrink-0 tabular-nums text-muted"><span class="ing-qty" data-g={i.qty}>{Math.round(i.qty * recipe.serves)}</span> {i.unit}</span>
                 </label>
@@ -108,6 +99,15 @@ const glance = [
           {recipe.notes && <p class="mt-5 rounded-md bg-surface p-4 text-sm leading-relaxed ring-1 ring-line">{recipe.notes}</p>}
         </section>
 
+        {recipe.video && (
+          <section class="mt-10 print:hidden" aria-labelledby="video-h">
+            <h2 id="video-h" class="text-xs font-medium uppercase tracking-[0.16em] text-muted">Watch a similar method</h2>
+            <div class="mx-auto mt-2 w-full max-w-[320px] overflow-hidden rounded-lg" style="aspect-ratio: 9 / 16;">
+              <LiteYouTube id={recipe.video.youtubeId} title={recipe.video.title || recipe.title} isShort={recipe.video.isShort} class="relative size-full" />
+            </div>
+            <p class="mt-2 text-xs text-muted">{recipe.video.title}{recipe.video.channel ? ` · ${recipe.video.channel}` : ''}. Quantities here are fixed by the plan; follow the technique, not the amounts.</p>
+          </section>
+        )}
         <footer class="mt-10 space-y-2 text-xs text-muted">
           {recipe.equipment.length > 0 && <p>Equipment: {recipe.equipment.join(', ')}</p>}
           {recipe.tags.length > 0 && <p class="flex flex-wrap gap-1.5">{recipe.tags.map((t) => <span class="rounded-full border border-line px-2 py-0.5">{t}</span>)}</p>}

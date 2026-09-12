@@ -1,21 +1,22 @@
 ---
 /** Dialog with a grouped shopping list; copyable and printable. */
 import type { ShoppingList } from '../lib/plan';
-interface Props { id: string; title: string; list: ShoppingList; note?: string }
-const { id, title, list, note = '' } = Astro.props;
+interface Props { id: string; title: string; list: ShoppingList; note?: string; links?: { id: string; label: string }[] }
+const { id, title, list, note = '', links = [] } = Astro.props;
 const text = list.map((g) => `${g.label}\n` + g.lines.map((l) => `  ${l.name} — ${l.grams} g${l.hint ? ` (${l.hint})` : ''}`).join('\n')).join('\n\n');
 ---
 <dialog id={id} class="shop m-auto w-[min(92vw,34rem)] rounded-lg border border-line bg-surface p-0 text-ink shadow-2xl backdrop:bg-black/40 backdrop:backdrop-blur-sm">
   <form method="dialog" class="flex items-center justify-between gap-3 border-b border-line px-5 py-3 print:hidden">
     <h2 class="font-display text-2xl">{title}</h2>
     <div class="flex gap-1">
-      <button type="button" class="copy rounded-full border border-line px-3 py-1 text-sm hover:bg-paper" data-text={text}>Copy</button>
-      <button type="button" class="rounded-full border border-line px-3 py-1 text-sm hover:bg-paper" onclick="window.print()">Print</button>
-      <button class="rounded-full px-3 py-1 text-sm text-muted hover:bg-paper" aria-label="Close">✕</button>
+      <button type="button" class="copy min-h-10 rounded-full border border-line px-3 text-sm hover:bg-paper" data-text={text}>Copy</button>
+      <button type="button" class="min-h-10 rounded-full border border-line px-3 text-sm hover:bg-paper" onclick="window.print()">Print</button>
+      <button class="min-h-10 min-w-10 rounded-full px-3 text-sm text-muted hover:bg-paper" aria-label="Close">✕</button>
     </div>
   </form>
   <div class="max-h-[70vh] overflow-y-auto px-5 py-4">
     {note && <p class="mb-3 text-xs text-muted">{note}</p>}
+    {links.length > 0 && <p class="mb-4 flex flex-wrap gap-2 print:hidden">{links.map((l) => <button type="button" class="min-h-10 rounded-full border border-line px-3 text-sm hover:bg-paper" data-switch={l.id}>{l.label}</button>)}</p>}
     {list.map((g) => (
       <section class="mb-4">
         <h3 class="mb-1 text-xs font-medium uppercase tracking-wider text-muted">{g.label}</h3>
@@ -33,6 +34,10 @@ const text = list.map((g) => `${g.label}\n` + g.lines.map((l) => `  ${l.name} �
 </dialog>
 <script>
   function init() {
+    document.querySelectorAll<HTMLButtonElement>('dialog.shop [data-switch]:not([data-ready])').forEach((b) => {
+      b.dataset.ready = '1';
+      b.addEventListener('click', () => { (b.closest('dialog') as HTMLDialogElement).close(); (document.getElementById(b.dataset.switch!) as HTMLDialogElement)?.showModal(); });
+    });
     document.querySelectorAll<HTMLButtonElement>('dialog.shop .copy:not([data-ready])').forEach((b) => {
       b.dataset.ready = '1';
       b.addEventListener('click', async () => {

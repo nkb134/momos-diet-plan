@@ -44,18 +44,18 @@ const views = days.map((d) => {
                 { key: 'Fibre', value: d.totals.fibre_g, target: d.targets.fibre_g, unit: 'g' },
                 { key: 'kcal', value: d.totals.kcal, target: d.targets.kcal, unit: 'kcal' },
               ]} />
-              <button type="button" class="rounded-full border border-line px-3 py-1 text-xs hover:bg-surface" data-open={`shop-${d.date}`} aria-label="Shopping list for this day"><span class="sm:hidden" aria-hidden="true">🛒</span><span class="hidden sm:inline">Shopping list</span></button>
+              <button type="button" class="grid size-10 place-items-center rounded-full border border-line hover:bg-surface sm:h-9 sm:w-auto sm:px-3 sm:text-xs" data-open={`shop-${d.date}`} aria-label="Shopping list for this day"><svg class="size-4 sm:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg><span class="hidden sm:inline">Shopping list</span></button>
             </div>
           </div>
           <Reel id={`reel-${d.date}`} slides={slides} table={table} dayDate={d.date} eagerFirst={d.date === defaultDate} />
-          <ShoppingList id={`shop-${d.date}`} title={`${d.day} ${formatDate(d.date)}`} list={list} note="Quantities cook every veg dish for 2 and each add-on for 1." />
+          <ShoppingList id={`shop-${d.date}`} title={`${d.day} ${formatDate(d.date)}`} list={list} note="Quantities cook every veg dish for 2 and each add-on for 1." links={weeks.map((w) => ({ id: `shop-week-${w}`, label: `Week ${w} list` }))} />
         </section>
     ))}
 
     {weeks.map((w) => (
       <ShoppingList id={`shop-week-${w}`} title={`Week ${w} shopping list`} list={shoppingList(days.filter((d) => d.week === w), table)} note="Seven days. Veg dishes for 2, add-ons for 1." />
     ))}
-    <div class="mx-auto flex max-w-5xl flex-wrap gap-2 px-4 py-4 text-xs text-muted">
+    <div class="mx-auto hidden max-w-5xl flex-wrap gap-2 px-4 py-4 text-xs text-muted sm:flex">
       {weeks.map((w) => <button type="button" class="rounded-full border border-line px-3 py-1 hover:bg-surface" data-open={`shop-week-${w}`}>Week {w} shopping list</button>)}
       <span class="ml-auto self-center">Plan starts {formatDate(planConfig.startDate, { day: 'numeric', month: 'long' })} · all figures are estimates</span>
     </div>
@@ -87,10 +87,12 @@ const views = days.map((d) => {
       buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.date!, true)));
       const chart = document.getElementById('chart')!;
       const measure = () => {
-        const header = document.querySelector<HTMLElement>('header')?.offsetHeight ?? 0;
-        const bar = document.querySelector<HTMLElement>('section.day:not([hidden]) .daybar')?.offsetHeight ?? 0;
-        const navs = [...document.querySelectorAll<HTMLElement>('.daynav')].filter((n) => n.offsetParent).reduce((a, n) => a + n.offsetHeight, 0);
-        chart.style.setProperty('--chrome-h', `${header + bar + navs}px`);
+        // Reel height = viewport minus everything above the reel and any fixed bar below it.
+        const frame = document.querySelector<HTMLElement>('section.day:not([hidden]) .reel-frame');
+        if (!frame) return;
+        const above = frame.getBoundingClientRect().top + scrollY;
+        const fixedNav = [...document.querySelectorAll<HTMLElement>('.daynav')].filter((n) => getComputedStyle(n).position === 'fixed').reduce((a, n) => a + n.getBoundingClientRect().height, 0);
+        chart.style.setProperty('--chrome-h', `${Math.round(above + fixedNav)}px`);
       };
       new ResizeObserver(measure).observe(document.body);
       addEventListener('resize', measure);
