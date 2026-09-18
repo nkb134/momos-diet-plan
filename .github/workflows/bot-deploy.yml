@@ -24,7 +24,7 @@ jobs:
         if: env.HAS_CF == 'true'
       - name: Deploy Worker with secrets
         if: env.HAS_CF == 'true'
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
