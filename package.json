@@ -23,16 +23,16 @@
   "dependencies": {
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource/instrument-serif": "^5.3.0",
-    "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.3.2",
-    "sharp": "^0.35.4",
+    "@tailwindcss/vite": "^4.3.4",
+    "astro": "^7.4.5",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "yaml": "^2.9.0"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "lighthouse": "^12.8.2",
-    "typescript": "^6.0.3"
+    "@astrojs/check": "^0.9.12",
+    "lighthouse": "^13.6.0",
+    "typescript": "^7.0.2"
   },
   "allowScripts": {
     "esbuild": true
